@@ -27,18 +27,15 @@ prestation1 = Prestation.create!(title: 'Arrosage des fleurs', price: '30 €', 
 prestation2 = Prestation.create!(title: 'Petit bouquet de fleurs', price: '20 €', content: 'fleurs bleues');
 prestation3 = Prestation.create!(title: 'Entretien du marbre', price: '80 €', content: '');
 
-
 UserTombstone.create(user_id: user1.id, tombstone_id: tombe2.id);
 UserTombstone.create(user_id: user2.id, tombstone_id: tombe1.id);
 UserTombstone.create(user_id: user3.id, tombstone_id: tombe4.id);
 UserTombstone.create(user_id: user4.id, tombstone_id: tombe3.id);
 
-
 order1 = Order.create!(review: '', rating: nil, date: '29/11/2022', progress: 'pending', user_id: user2.id, tombstone_id: tombe3.id);
 order2 = Order.create!(review: '', rating: nil, date: '26/11/2022', progress: 'pending', user_id: user3.id, tombstone_id: tombe2.id);
 order3 = Order.create!(review: 'Bravo!', rating: 4, date: '27/11/2022', progress: 'Finish', user_id: user4.id, tombstone_id: tombe4.id);
 order4 = Order.create!(review: 'Super!', rating: 5, date: '24/11/2022', progress: 'Validate', user_id: user1.id, tombstone_id: tombe1.id);
-
 
 OrderItem.create!(details: '', prestation_id: prestation1.id, order_id: order1.id);
 OrderItem.create!(details: '', prestation_id: prestation2.id, order_id: order3.id);
