@@ -3,6 +3,11 @@
 <h1>Orders#show</h1>
 <p>Find me in app/views/orders/show.html.erb</p>
 
-<%# <%= link_to "Edit this offer", edit_offer_path, class: "btn btn-primary" %> %>
+<%= simple_form_for [@order, OrderItem.new] do |f| %>
+  <%= f.input :prestation_id, as: :select, collection: Prestation.all %>
+  <%= f.input :details %>
+  <%= f.button :submit, "Valider cette prestation", class: "btn btn-primary" %>
+  <%= link_to 'Annuler', :back, class: 'btn btn-danger' %>
+<% end %>
 
 </div>
