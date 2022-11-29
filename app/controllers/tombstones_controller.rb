@@ -1,5 +1,7 @@
 class TombstonesController < ApplicationController
+
   def show
+    @tomstone = Tombstone.fond(params[:id])
   end
 
   def new
