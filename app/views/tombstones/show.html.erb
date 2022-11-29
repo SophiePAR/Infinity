@@ -1,2 +1,6 @@
-<h1>Tombstones#show</h1>
-<p>Find me in app/views/tombstones/show.html.erb</p>
+<div class="container">
+  <h1>La sépulture de <%= @tombstone.first_name %></h1>
+  <p>Find me in app/views/tombstones/show.html.erb</p>
+  <p><%= link_to "Modifier cette tombe", edit_tombstone_path(@tombstone) %></p>
+  <%= link_to "Retour", user_path, class: "btn btn-warning" %>
+</div>

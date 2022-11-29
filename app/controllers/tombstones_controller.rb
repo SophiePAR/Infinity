@@ -1,7 +1,7 @@
 class TombstonesController < ApplicationController
 
   def show
-    @tomstone = Tombstone.fond(params[:id])
+    @tombstone = Tombstone.find(params[:id])
   end
 
   def new
@@ -11,8 +11,19 @@ class TombstonesController < ApplicationController
   end
 
   def edit
+    @tombstone = Tombstone.find(params[:id])
   end
 
   def update
+    @tombstone = Tombstone.find(params[:id])
+    @tombstone.update(tombstone_params)
+
+    redirect_to tombstone_path(@tombstone)
+  end
+
+  private
+
+  def tombstone_params
+    params.require(:tombstone).permit(:first_name, :last_name, :birth_date, :death_date)
   end
 end
