@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :messages
-  has_many :orders
-  has_many :user_tombstones
+  has_many :orders, dependent: :destroy
+  has_many :user_tombstones, dependent: :destroy
   has_many :tombstones, through: :user_tombstones
 
   # validates :first_name, :last_name, :phone, presence: true
