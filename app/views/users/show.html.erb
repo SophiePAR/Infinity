@@ -1,15 +1,14 @@
 <div class="container justify-content-center">
-  <h1>Bienvenue <%=@user.email %></h1>
+  <h1>Bienvenue <%=@user.first_name %></h1>
   <p>Find me in app/views/users/show.html.erb</p>
-  <h3>Mes sépulture</h3>
+    <p><%= link_to "Voir des missions", provider_orders_path , class: "btn btn-primary" %></p>
+    <p><%= link_to "Ajouter une sépulture", new_tombstone_path, class: "btn btn-primary" %></p>
+  <h2>Mes sépulture</h2>
   <ul>
     <% @tombstones.each do |tombstone| %>
     <li>
-      <%= link_to tombstone.first_name, tombstone_path(tombstone) %>
-      <%= link_to "Modifier cette tombe", edit_tombstone_path(tombstone) %>
+      <h3><%= link_to tombstone.first_name, tombstone_path(tombstone) %></h3>
     </li>
     <% end %>
   </ul>
-  <p><%= link_to "Ajouter une sépulture", new_tombstone_path %></p>
-  <%= link_to "Voir des missions", provider_orders_path , class: "btn btn-primary" %>
 </div>

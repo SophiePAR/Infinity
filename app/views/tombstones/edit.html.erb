@@ -1,2 +1,12 @@
-<h1>Tombstones#edit</h1>
-<p>Find me in app/views/tombstones/edit.html.erb</p>
+<div class="container">
+  <h1>Tombstones#edit</h1>
+  <p>Find me in app/views/tombstones/edit.html.erb</p>
+  <%= simple_form_for @tombstone do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :birth_date %>
+    <%= f.input :death_date %>
+    <%= f.button :submit, "Editer cette sépulture", class: "btn btn-primary" %>
+    <%= link_to "Retour", :back, class: "btn btn-warning" %>
+  <% end %>
+</div>
