@@ -9,6 +9,6 @@ class User < ApplicationRecord
   has_many :user_tombstones
   has_many :tombstones, through: :user_tombstones
 
-  validates :first_name, :last_name, :phone, presence: true
+  # validates :first_name, :last_name, :phone, presence: true
 
 end
