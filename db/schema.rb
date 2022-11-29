@@ -10,9 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_113210) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_115140) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.bigint "tombstone_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tombstone_id"], name: "index_messages_on_tombstone_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.string "details"
+    t.bigint "prestation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "order_id", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["prestation_id"], name: "index_order_items_on_prestation_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "review"
+    t.integer "rating"
+    t.date "date"
+    t.string "progress"
+    t.bigint "user_id", null: false
+    t.bigint "tombstone_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tombstone_id"], name: "index_orders_on_tombstone_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "prestations", force: :cascade do |t|
+    t.string "title"
+    t.integer "price"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tombstones", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.date "birth_date"
+    t.date "death_date"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_tombstones", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "tombstone_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tombstone_id"], name: "index_user_tombstones_on_tombstone_id"
+    t.index ["user_id"], name: "index_user_tombstones_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +87,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_113210) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "messages", "tombstones"
+  add_foreign_key "messages", "users"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "prestations"
+  add_foreign_key "orders", "tombstones"
+  add_foreign_key "orders", "users"
+  add_foreign_key "user_tombstones", "tombstones"
+  add_foreign_key "user_tombstones", "users"
 end
