@@ -5,3 +5,43 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+puts 'cleaning db'
+
+User.destroy_all
+Tombstone.destroy_all
+Order.destroy_all
+Prestation.destroy_all
+
+puts 'creating users'
+user1 = User.create!(email: 'alex@mail.com', password: 'azerty', first_name: 'Alex', last_name: 'Cazacu', phone:'0680808080');
+user2 = User.create!(email: 'franci@mail.com', password: 'azerty', first_name: 'Franci', last_name: 'Lalane', phone:'0610101010');
+user3 = User.create!(email: 'sophie@mail.com', password: 'azerty', first_name: 'Sophie', last_name: 'Parisot', phone:'0620202020');
+user4 = User.create!(email: 'vanessa@mail.com', password: 'azerty', first_name: 'Vanessa', last_name: 'Reynes', phone:'0630303030');
+
+tombe1 = Tombstone.create!(first_name: 'Charles', last_name: 'Holle', birth_date: '10/11/1989', death_date: '12/11/2022', latitude:'48.862725', longitude:'2.287592');
+tombe2 = Tombstone.create!(first_name: 'henri', last_name: 'Chalot', birth_date: '10/10/1945', death_date: '12/12/2000', latitude:'30.862725', longitude:'1.287592');
+tombe3 = Tombstone.create!(first_name: 'Michelle', last_name: 'Tourny', birth_date: '09/01/1950', death_date: '01/02/2010', latitude:'20.862725', longitude:'2.287592');
+tombe4 = Tombstone.create!(first_name: 'Gabrielle', last_name: 'Solisse', birth_date: '30/03/1946', death_date: '04/03/1990', latitude:'48.862725', longitude:'1.287592');
+
+prestation1 = Prestation.create!(title: 'Arrosage des fleurs', price: '30 €', content: '');
+prestation2 = Prestation.create!(title: 'Petit bouquet de fleurs', price: '20 €', content: 'fleurs bleues');
+prestation3 = Prestation.create!(title: 'Entretien du marbre', price: '80 €', content: '');
+
+
+UserTombstone.create(user_id: user1.id, tombstone_id: tombe2.id);
+UserTombstone.create(user_id: user2.id, tombstone_id: tombe1.id);
+UserTombstone.create(user_id: user3.id, tombstone_id: tombe4.id);
+UserTombstone.create(user_id: user4.id, tombstone_id: tombe3.id);
+
+
+order1 = Order.create!(review: '', rating: nil, date: '29/11/2022', progress: 'pending', user_id: user2.id, tombstone_id: tombe3.id);
+order2 = Order.create!(review: '', rating: nil, date: '26/11/2022', progress: 'pending', user_id: user3.id, tombstone_id: tombe2.id);
+order3 = Order.create!(review: 'Bravo!', rating: 4, date: '27/11/2022', progress: 'Finish', user_id: user4.id, tombstone_id: tombe4.id);
+order4 = Order.create!(review: 'Super!', rating: 5, date: '24/11/2022', progress: 'Validate', user_id: user1.id, tombstone_id: tombe1.id);
+
+
+OrderItem.create!(details: '', prestation_id: prestation1.id, order_id: order1.id);
+OrderItem.create!(details: '', prestation_id: prestation2.id, order_id: order3.id);
+OrderItem.create!(details: '', prestation_id: prestation3.id, order_id: order2.id);
+
+puts 'all is good !'
