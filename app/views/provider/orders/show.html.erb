@@ -1,16 +1,31 @@
 <h1>Provider::Orders#show</h1>
 <p>Find me in app/views/provider/orders/show.html.erb</p>
+<div class="banner">
+  <div class="container">
+    <h1 id="banner-txt">Infinity</h1>
+    <p>Change your life and learn to code at one of our campuses around the world.</p>
+  </div>
+</div>
 <div class="container">
   <div class="show-map">
     <div id="show">
-        <img id="img" src="https://t4.ftcdn.net/jpg/04/06/71/29/360_F_406712903_N0Sf8cl8XxgdpGSkBAHc0aO9zr2O6WCJ.jpg" alt="">
-        <h4>
-          <strong><%= @order.user.first_name %> <%= @order.user.last_name %></strong>
-        </h4>
-        <%= @order.date %>
-      <% @order.order_items.each do |order_item|%>
-        <li><%= order_item.prestation.title %></li>
-      <% end %>
+         <%= image_tag "tombstone.png", class: "img" %>
+        <div class="info">
+          <div class="text">
+            <h4><strong><%= @order.user.first_name %> <%= @order.user.last_name %></strong></h4>
+            <%= @order.date %>
+            <% sum = 0 %>
+            <h5>Prestation:</h5>
+            <% @order.order_items.each do |order_item|%>
+              <li><%= order_item.prestation.title %> - <%= order_item.prestation.price %>,00€</li>
+              <% sum = sum + order_item.prestation.price %>
+            <% end %>
+          </div>
+          <div class="total">
+             <h5>Total: <strong><%= sum %>,00€</strong></h5>
+             <%= link_to "Accept", "#", class: " btn btn-success" %>
+          </div>
+        </div>
     </div>
     <div class="map">
     <h1>Map</h1>
@@ -21,5 +36,10 @@
     <h4><%= @order.tombstone.first_name %> <%= @order.tombstone.last_name %></h4>
     <p>Birthday: <%= @order.tombstone.birth_date%></p>
     <p>Death date: <%= @order.tombstone.death_date%></p>
+    <% @order.order_items.each do |order_item|%>
+      <% if order_item.details.length > 0%>
+        <p>Details: <%= order_item.details%></p>
+      <% end %>
+    <% end %>
   </div>
 </div>

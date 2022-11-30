@@ -1,16 +1,18 @@
 
 .show-map{
   display: flex;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 #show{
-  height: 500px;
+  height: auto;
   width: 50%;
-  // background-color: red;
   box-shadow: 8px 4px 4px gray;;
   border: solid 2px;
-  border-color: red;
+  border-color: gray;
   margin-right: 20px;
   padding: 8px;
+  border-radius: 8px;
 }
 .map{
   height: 600px;
@@ -19,14 +21,24 @@
   border-color: green;
   box-shadow: 8px 4px 4px gray;;
 }
-#img{
+.img{
+  object-fit: cover;
   width: 100%;
-  height: auto;
+  height: 380px;
   margin-bottom: 8px;
 }
 .details{
   height: auto;
   width: 50%;
   border: solid 2px;
-  border-color: red;
+  border-color: gray;
+  padding: 8px;
+}
+.info{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+p{
+  margin: 0px;
 }

@@ -37,8 +37,8 @@
 
 
 
-
-  <%= simple_form_for [@order] do |f| %>
+  <%= simple_form_for @order do |f| %>
+  <%= f.input :progress, value: 'pending', as: :hidden %>
   <%= f.button :submit, "Valider les prestations", class: "btn btn-primary" %>
   <%= link_to 'Annuler', :back, class: 'btn btn-danger' %>
 <% end %>
