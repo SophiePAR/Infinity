@@ -1,0 +1,32 @@
+
+.show-map{
+  display: flex;
+}
+#show{
+  height: 500px;
+  width: 50%;
+  // background-color: red;
+  box-shadow: 8px 4px 4px gray;;
+  border: solid 2px;
+  border-color: red;
+  margin-right: 20px;
+  padding: 8px;
+}
+.map{
+  height: 600px;
+  width: 50%;
+  border: solid 2px;
+  border-color: green;
+  box-shadow: 8px 4px 4px gray;;
+}
+#img{
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+}
+.details{
+  height: auto;
+  width: 50%;
+  border: solid 2px;
+  border-color: red;
+}
