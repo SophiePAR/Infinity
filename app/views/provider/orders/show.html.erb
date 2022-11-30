@@ -1,2 +1,25 @@
 <h1>Provider::Orders#show</h1>
 <p>Find me in app/views/provider/orders/show.html.erb</p>
+<div class="container">
+  <div class="show-map">
+    <div id="show">
+        <img id="img" src="https://t4.ftcdn.net/jpg/04/06/71/29/360_F_406712903_N0Sf8cl8XxgdpGSkBAHc0aO9zr2O6WCJ.jpg" alt="">
+        <h4>
+          <strong><%= @order.user.first_name %> <%= @order.user.last_name %></strong>
+        </h4>
+        <%= @order.date %>
+      <% @order.order_items.each do |order_item|%>
+        <li><%= order_item.prestation.title %></li>
+      <% end %>
+    </div>
+    <div class="map">
+    <h1>Map</h1>
+    </div>
+  </div>
+  <div class="details">
+    <h1>Details of tombstone</h1>
+    <h4><%= @order.tombstone.first_name %> <%= @order.tombstone.last_name %></h4>
+    <p>Birthday: <%= @order.tombstone.birth_date%></p>
+    <p>Death date: <%= @order.tombstone.death_date%></p>
+  </div>
+</div>

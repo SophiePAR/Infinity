@@ -1,2 +1,15 @@
 <h1>Provider::Orders#index</h1>
 <p>Find me in app/views/provider/orders/index.html.erb</p>
+<div class="container">
+  <% @orders.each do |order| %>
+      <div class="card-product">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+          <h4>Demandé: <strong><%= order.user.first_name %> <%= order.user.last_name %></strong></h4>
+          <h6>Quand: <%= order.date %></h6>
+          <p><%= order.tombstone.latitude%> <%=order.tombstone.longitude %></p>
+          <%= link_to "Details", provider_order_path(order), class:"btn-accept" %>
+        </div>
+      </div>
+  <% end %>
+</div>
