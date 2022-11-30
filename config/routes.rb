@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :tombstones, only: [:show, :new, :create, :edit, :update] do
-    resources :orders, only: [:show, :new, :create, :update]
+    resources :orders, only: :create
     resources :messages, only: [:create]
   end
+
+  resources :orders, only: [:show, :update]
 
   namespace :provider do
     resources :orders, only: [:index, :show, :update]
