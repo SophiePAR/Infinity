@@ -1,13 +1,27 @@
 <div class="container">
 
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<h1>Choix des prestations</h1>
+<p>Selectionnez une prestation, puis validez la </p>
+
+<%# <%= @order.prestation.title %>
+<%# <%= @order.prestation.price %> %> %>
 
 <%= simple_form_for [@order, OrderItem.new] do |f| %>
-  <%= f.input :prestation_id, as: :select, collection: Prestation.all %>
+  <%= f.input :prestation_id, as: :select, collection: @prestations = Prestation.all %>
   <%= f.input :details %>
   <%= f.button :submit, "Valider cette prestation", class: "btn btn-primary" %>
   <%= link_to 'Annuler', :back, class: 'btn btn-danger' %>
 <% end %>
+
+<%# <%= link_to 'Confirmer toutes vos prestations', :back, class: 'btn btn-danger' %>
+<% @order.order_items.each do |order_item| %>
+<li class="list-group-item">
+  <strong><%= order_item.prestation.title %></strong>
+  <%= order_item.prestation.price %>
+  <%= order_item.prestation.content %>
+  <%= order_item.details %>
+</li>
+<% end %>
+<%# <%= f.button :submit, "Confirmer les prestations", class: "btn btn-primary" %>
 
 </div>
