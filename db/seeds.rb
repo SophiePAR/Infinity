@@ -37,10 +37,10 @@ UserTombstone.create(user_id: user2.id, tombstone_id: tombe1.id);
 UserTombstone.create(user_id: user3.id, tombstone_id: tombe4.id);
 UserTombstone.create(user_id: user4.id, tombstone_id: tombe3.id);
 
-order1 = Order.create!(review: '', rating: nil, date: '29/11/2022', progress: 'pending', user_id: user2.id, tombstone_id: tombe3.id);
-order2 = Order.create!(review: '', rating: nil, date: '26/11/2022', progress: 'pending', user_id: user3.id, tombstone_id: tombe2.id);
-order3 = Order.create!(review: 'Bravo!', rating: 4, date: '27/11/2022', progress: 'pending', user_id: user4.id, tombstone_id: tombe4.id);
-order4 = Order.create!(review: 'Super!', rating: 5, date: '24/11/2022', progress: 'pending', user_id: user1.id, tombstone_id: tombe1.id);
+order1 = Order.create!(review: '', rating: nil, date: '29/11/2022', user_id: user2.id, tombstone_id: tombe3.id);
+order2 = Order.create!(review: '', rating: nil, date: '26/11/2022', user_id: user3.id, tombstone_id: tombe2.id);
+order3 = Order.create!(review: 'Bravo!', rating: 4, date: '27/11/2022', user_id: user4.id, tombstone_id: tombe4.id);
+order4 = Order.create!(review: 'Super!', rating: 5, date: '24/11/2022', user_id: user1.id, tombstone_id: tombe1.id);
 
 OrderItem.create!(details: '', prestation_id: prestation1.id, order_id: order1.id);
 OrderItem.create!(details: 'Fleurs bleues', prestation_id: prestation2.id, order_id: order3.id);
