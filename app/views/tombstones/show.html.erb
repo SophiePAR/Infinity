@@ -2,5 +2,10 @@
   <h1>La sépulture de <%= @tombstone.first_name %></h1>
   <p>Find me in app/views/tombstones/show.html.erb</p>
   <p><%= link_to "Modifier cette tombe", edit_tombstone_path(@tombstone) %></p>
-  <%= link_to "Retour", user_path, class: "btn btn-warning" %>
+  <%= link_to "Retour au profil", user_path, class: "btn btn-warning" %>
+
+  <%= simple_form_for [@tombstone, @order] do |f| %>
+    <%= f.submit "Créer une prestation pour cette tombe", class: "btn btn-primary" %>
+  <% end %>
+  <%  %>
 </div>
