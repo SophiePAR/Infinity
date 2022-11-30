@@ -1,10 +1,11 @@
 class Order < ApplicationRecord
 
   include AASM
+  aasm.attribute_name :progress
 
   aasm do
-    progress :pending, initial: true
-    progress :accepted, :validated, :finished
+    state :pending, initial: true
+    state :accepted, :validated, :finished
 
     event :declare_accepted do
       transitions from: :pending, to: :accepted
