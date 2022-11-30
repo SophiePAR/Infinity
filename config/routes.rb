@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show]
+  get 'pages/about', to: 'pages#about'
 end
