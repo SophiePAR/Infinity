@@ -1,9 +1,14 @@
-<h1>Tombstones#new</h1>
-<p>Find me in app/views/tombstones/new.html.erb</p>
+<div class= 'container row m-auto'> 
+<h1>Créer la nouvelle sépulture</h1>
+<p>N'hésitez pas à la partager avec votre famille</p>
 
   <%= simple_form_for @tombstone do |f| %>
+    <%= f.input  :first_name %>
     <%= f.input  :last_name %>
-    <%= f.date  :birth_day  %>
-    <%= f.date  :death_date %>
+    <%= f.input  :photo, as: :file %>
+    <%= f.input  :birth_date %>
+    <%= f.input  :death_date %>
+    <%= f.button :submit, "Ajouter la sépulture", class: "btn btn-large btn-primary" %>
+    <%= link_to 'Annuler', :back, class: 'btn btn-danger' %>
     <% end %>
 </div>
