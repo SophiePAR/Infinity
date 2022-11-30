@@ -1,2 +1,9 @@
 <h1>Tombstones#new</h1>
 <p>Find me in app/views/tombstones/new.html.erb</p>
+
+  <%= simple_form_for @tombstone do |f| %>
+    <%= f.input  :last_name %>
+    <%= f.date  :birth_day  %>
+    <%= f.date  :death_date %>
+    <% end %>
+</div>

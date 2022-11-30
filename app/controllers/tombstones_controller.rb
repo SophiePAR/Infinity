@@ -5,6 +5,7 @@ class TombstonesController < ApplicationController
   end
 
   def new
+    @tombstone = Tombstone.new
   end
 
   def create
