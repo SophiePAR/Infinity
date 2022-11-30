@@ -4,7 +4,7 @@
 <p>Selectionnez une prestation, puis validez la </p>
 
 <%# <%= @order.prestation.title %>
-<%# <%= @order.prestation.price %> %> %>
+<%# <%= @order.prestation.price %>
 
 <%= simple_form_for [@order, OrderItem.new] do |f| %>
   <%= f.input :prestation_id, as: :select, collection: @prestations = Prestation.all %>
@@ -13,15 +13,34 @@
   <%= link_to 'Annuler', :back, class: 'btn btn-danger' %>
 <% end %>
 
-<%# <%= link_to 'Confirmer toutes vos prestations', :back, class: 'btn btn-danger' %>
-<% @order.order_items.each do |order_item| %>
-<li class="list-group-item">
-  <strong><%= order_item.prestation.title %></strong>
-  <%= order_item.prestation.price %>
-  <%= order_item.prestation.content %>
-  <%= order_item.details %>
-</li>
+  <div class="card">
+  <%# <%= link_to 'Confirmer toutes vos prestations', :back, class: 'btn btn-danger' %>
+  <% @order.order_items.each do |order_item| %>
+  <li class="list-group-item">
+  <ul> <strong><%= order_item.prestation.title %></strong> - <%= order_item.prestation.price %> euros </ul>
+    <ul><%= order_item.prestation.content %></ul>
+    <ul>details de la prestation : <%= order_item.details %></ul>
+  </li>
+  <% end %>
+  </div>
+<br>
+  <div class="card">
+    <h2>Total des prestations : </h2>
+    <% @sum = 0 %>
+    <% @order.order_items.each do |order_item| %>
+    <% @price = order_item.prestation.price %>
+    <% @sum += @price %>
+    <% end %>
+    <%= @sum %>
+    euros
+  </div>
+
+
+
+
+  <%= simple_form_for [@order] do |f| %>
+  <%= f.button :submit, "Valider les prestations", class: "btn btn-primary" %>
+  <%= link_to 'Annuler', :back, class: 'btn btn-danger' %>
 <% end %>
-<%# <%= f.button :submit, "Confirmer les prestations", class: "btn btn-primary" %>
 
 </div>
