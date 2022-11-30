@@ -7,22 +7,20 @@ class OrdersController < ApplicationController
 
   def create
     @tombstone = Tombstone.find(params[:tombstone_id])
-    @user = current_user
     @order = Order.new
     @order.tombstone = @tombstone
-    @order.user = @user
     if @order.save
-      redirect_to @order
+      redirect_to order_path(@order)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    @order = Order.find(params[:id])
-    @order.update(order_params)
-
-    redirect_to order_path(@order)
+  @order = Order.find(params[:id])
+  #faire une méthode case when geant
+  @order.update(order_params)
+  redirect_to tombstone_path(@order.tombstone)
   end
 
   private
