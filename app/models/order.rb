@@ -1,4 +1,23 @@
 class Order < ApplicationRecord
+  include AASM
+
+  aasm do
+    progress :pending, initial: true
+    progress :accepted, :validated, :finished
+
+    event :declare_accepted do
+      transitions from: :pending, to: :accepted
+    end
+
+    event :declare_validated do
+      transitions from: :accepted, to: :validated
+    end
+
+    event :declare_finished do
+      transitions from: :validated, to: :finished
+    end
+  end
+
   belongs_to :user
   belongs_to :tombstone
   has_many :order_items, dependent: :destroy
