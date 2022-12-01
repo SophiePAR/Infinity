@@ -17,10 +17,10 @@ class OrdersController < ApplicationController
   end
 
   def update
-  @order = Order.find(params[:id])
-  #faire une méthode case when geant
-  @order.update(order_params)
-  redirect_to tombstone_path(@order.tombstone)
+    @order = Order.find(params[:id])
+    #faire une méthode case when geant
+    @order.update(order_params)
+    redirect_to tombstone_path(@order.tombstone)
   end
 
   private

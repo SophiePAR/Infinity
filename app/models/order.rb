@@ -25,4 +25,13 @@ class Order < ApplicationRecord
   belongs_to :tombstone
   has_many :order_items, dependent: :destroy
   has_many :prestations, through: :order_items
+
+  def go_to_next_step
+    case self.aasm.current_state
+      when :pending then self.declare_accepted
+      when :accepted then self.declare_validated
+      when :validated then self.declare_finished
+      else
+    end
+  end
 end

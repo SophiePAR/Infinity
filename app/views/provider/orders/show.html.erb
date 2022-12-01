@@ -23,7 +23,10 @@
           </div>
           <div class="total">
              <h5>Total: <strong><%= sum %>,00€</strong></h5>
-             <%= link_to "Accept", "#", class: " btn btn-success" %>
+              <%= simple_form_for [:provider, @order] do |f| %>
+                <%= f.input :progress, value: 'pending', as: :hidden %>
+                <%= f.button :submit, "Valider les prestations", class: "btn btn-primary" %>
+              <% end %>
           </div>
         </div>
     </div>
