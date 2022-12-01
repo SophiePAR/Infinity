@@ -8,7 +8,9 @@
     <%= f.input  :photo, as: :file %>
     <%= f.input  :birth_date %>
     <%= f.input  :death_date %>
+    <%= f.input  :birth_date, as: :string, input_html: {class: 'form-datepicker'} %>
     <%= f.button :submit, "Ajouter la sépulture", class: "btn btn-large btn-primary" %>
     <%= link_to 'Annuler', :back, class: 'btn btn-danger' %>
+  
     <% end %>
 </div>
