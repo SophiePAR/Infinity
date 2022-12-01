@@ -1,11 +1,5 @@
 <h1>Provider::Orders#show</h1>
 <p>Find me in app/views/provider/orders/show.html.erb</p>
-<div class="banner">
-  <div class="container">
-    <h1 id="banner-txt">Infinity</h1>
-    <p>Change your life and learn to code at one of our campuses around the world.</p>
-  </div>
-</div>
 <div class="container">
   <div class="show-map">
     <div id="show">
@@ -23,6 +17,7 @@
           </div>
           <div class="total">
              <h5>Total: <strong><%= sum %>,00€</strong></h5>
+             <br>
               <%= simple_form_for [:provider, @order] do |f| %>
                 <%= f.input :progress, value: 'pending', as: :hidden %>
                 <%= f.button :submit, "Valider les prestations", class: "btn btn-primary" %>
