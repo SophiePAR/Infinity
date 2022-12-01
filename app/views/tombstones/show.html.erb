@@ -8,4 +8,10 @@
     <%= f.submit "Créer une prestation pour cette tombe", class: "btn btn-primary" %>
   <% end %>
   <%  %>
+   <% if @tombstone.photo.key? %>
+           <%= cl_image_tag @tombstone.photo.key, height: 300, width: 400, crop: :fill %>
+           <% else %>
+            <i class="fa-solid fa-house"></i> 
+          <% end %>
+
 </div>
