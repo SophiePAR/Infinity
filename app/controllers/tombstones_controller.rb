@@ -16,7 +16,7 @@ class TombstonesController < ApplicationController
       redirect_to user_path(@user)
     else
       render :new, status: :unprocessable_entity
-    end    
+    end
   end
 
   def edit

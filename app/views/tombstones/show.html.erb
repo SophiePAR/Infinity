@@ -7,5 +7,13 @@
   <%= simple_form_for [@tombstone, @order] do |f| %>
     <%= f.submit "Créer une prestation pour cette tombe", class: "btn btn-primary" %>
   <% end %>
-  <%  %>
+    <% @tombstone.orders.each do |order| %>
+      <% if order.accepted? %>
+        <%= simple_form_for order do |f| %>
+          <%= f.input :progress, value: 'accepted', as: :hidden %>
+          <%= f.button :submit, "Valider le prestataire", class: "btn btn-primary" %>
+        <% end %>
+        <%= link_to "Refuse le prestation", order_path(order), class: "btn btn-primary"  %>
+       <% end %>
+    <% end %>
 </div>

@@ -12,6 +12,15 @@
           <% @tombstones.each do |tombstone| %>
             <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
               <%= link_to tombstone.first_name, tombstone %> <%= link_to tombstone.last_name, tombstone %>
+              <% tombstone.orders.each do |order| %>
+                <% if order.aasm.current_state == :pending%>
+                    <div class="statut-pending"></div>
+                    <% elsif order.aasm.current_state == :accepted %>
+                      <div class="statut-accepted"></div>
+                    <% elsif order.aasm.current_state == :validated %>
+                      <div class="statut-validated"></div>
+                <% end %>
+              <% end %>
             </div>
           <% end %>
           <p><%= link_to "Ajouter une sépulture", new_tombstone_path, class: "btn btn-primary" %></p>

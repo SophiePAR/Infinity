@@ -18,6 +18,10 @@ class Order < ApplicationRecord
     event :declare_finished do
       transitions from: :validated, to: :finished
     end
+
+    event :declare_refused do
+      transitions from: :accepted, to: :pending
+    end
   end
 
   belongs_to :user, optional: true
@@ -33,5 +37,9 @@ class Order < ApplicationRecord
       when :validated then self.declare_finished
       else
     end
+  end
+
+  def go_back
+    self.declare_refused
   end
 end
