@@ -1,25 +1,29 @@
 <div class="container">
 
 <h1>Choix des prestations</h1>
-<p>Selectionnez une prestation, puis validez la </p>
+<br>
+<p>Validez chacune des prestations désirées avant de valider la selection.</p>
+
+<br>
 
 <%# <%= @order.prestation.title %>
 <%# <%= @order.prestation.price %>
 
 <%= simple_form_for [@order, OrderItem.new] do |f| %>
   <%= f.input :prestation_id, as: :select, collection: @prestations = Prestation.all %>
-  <%= f.input :details %>
+  <%= f.input :details, label: 'Commentaire (une précision à nous donner ?)' %>
   <%= f.button :submit, "Valider cette prestation", class: "btn btn-primary" %>
-  <%= link_to 'Annuler', :back, class: 'btn btn-danger' %>
 <% end %>
-
+<br>
   <div class="card">
   <%# <%= link_to 'Confirmer toutes vos prestations', :back, class: 'btn btn-danger' %>
   <% @order.order_items.each do |order_item| %>
   <li class="list-group-item">
-  <ul> <strong><%= order_item.prestation.title %></strong> - <%= order_item.prestation.price %> euros </ul>
+  <ul> <strong><%= order_item.prestation.title %></strong> : <%= order_item.prestation.price %> euros </ul>
     <ul><%= order_item.prestation.content %></ul>
     <ul>details de la prestation : <%= order_item.details %></ul>
+    <ul><%= button_to "Retirer la prestation", order_item, class: "btn btn-warning", method: :delete %></ul>
+
   </li>
   <% end %>
   </div>
@@ -35,12 +39,13 @@
     euros
   </div>
 
+<br>
 
 
   <%= simple_form_for @order do |f| %>
   <%= f.input :progress, value: 'pending', as: :hidden %>
   <%= f.button :submit, "Valider les prestations", class: "btn btn-primary" %>
-  <%= link_to 'Annuler', :back, class: 'btn btn-danger' %>
+  <%= button_to "Annuler", @order, class: "btn btn-warning", method: :create %>
 <% end %>
 
 </div>
