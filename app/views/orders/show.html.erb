@@ -21,9 +21,9 @@
   <li class="list-group-item">
   <ul> <strong><%= order_item.prestation.title %></strong> : <%= order_item.prestation.price %> euros </ul>
     <ul><%= order_item.prestation.content %></ul>
-    <ul>details de la prestation : <%= order_item.details %></ul>
+    <ul><% if order_item.details != nil && order_item.details!= ""%> <%='Details de la prestation :'%> <%= order_item.details %>
+        <% end %></ul>
     <ul><%= button_to "Retirer la prestation", order_item, class: "btn btn-warning", method: :delete %></ul>
-
   </li>
   <% end %>
   </div>
