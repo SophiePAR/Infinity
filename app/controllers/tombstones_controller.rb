@@ -1,5 +1,5 @@
 class TombstonesController < ApplicationController
-
+  
   def show
     @order = Order.new
     @tombstone = Tombstone.find(params[:id])
