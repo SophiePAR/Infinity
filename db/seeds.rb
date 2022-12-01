@@ -23,15 +23,11 @@ tombe2 = Tombstone.create!(first_name: 'henri', last_name: 'Chalot', birth_date:
 tombe3 = Tombstone.create!(first_name: 'Michelle', last_name: 'Tourny', birth_date: '09/01/1950', death_date: '01/02/2010', latitude:'20.862725', longitude:'2.287592');
 tombe4 = Tombstone.create!(first_name: 'Gabrielle', last_name: 'Solisse', birth_date: '30/03/1946', death_date: '04/03/1990', latitude:'48.862725', longitude:'1.287592');
 
-prestation0 = Prestation.create!(title: 'Arrosage', price: '20 €', content: '');
-prestation1 = Prestation.create!(title: 'Photographie', price: '20', content: '');
-prestation2 = Prestation.create!(title: 'Bouquet de fleurs - Taille S', price: '20 €', content: 'bouquet composé de 3 fleurs');
-prestation3 = Prestation.create!(title: 'Bouquet de fleurs - Taille M', price: '40 €', content: 'bouquet composé de 6 fleurs');
-prestation4 = Prestation.create!(title: 'Bouquet de fleurs - Taille L', price: '70 €', content: 'bouquet composé de 9 fleurs');
-prestation5 = Prestation.create!(title: 'Entretien de la tombe - Marbre', price: '100 €', content: '');
-prestation6 = Prestation.create!(title: 'Entretien de la tombe - Granit', price: '80 €', content: '');
-prestation7 = Prestation.create!(title: 'Entretien de la tombe - Pierre', price: '80 €', content: '');
-prestation8 = Prestation.create!(title: 'Autres', price: '', content: '');
+prestation0 = Prestation.create!(title: 'Arrosage', price: '', content: '');
+prestation1 = Prestation.create!(title: 'Photographie', price: '', content: '');
+prestation2 = Prestation.create!(title: 'Bouquet de fleurs', price: '', content: 'bouquet composé de 3 fleurs');
+prestation3 = Prestation.create!(title: 'Entretien de la tombe', price: '', content: '');
+prestation4 = Prestation.create!(title: 'Autres', price: '', content: '');
 
 UserTombstone.create(user_id: user1.id, tombstone_id: tombe2.id);
 UserTombstone.create(user_id: user2.id, tombstone_id: tombe1.id);
@@ -43,8 +39,8 @@ order2 = Order.create!(review: '', rating: nil, date: '26/11/2022', user_id: use
 order3 = Order.create!(review: 'Bravo!', rating: 4, date: '27/11/2022', user_id: user4.id, tombstone_id: tombe4.id);
 order4 = Order.create!(review: 'Super!', rating: 5, date: '24/11/2022', user_id: user1.id, tombstone_id: tombe1.id);
 
-OrderItem.create!(details: '', prestation_id: prestation1.id, order_id: order1.id);
-OrderItem.create!(details: 'Fleurs bleues', prestation_id: prestation2.id, order_id: order3.id);
-OrderItem.create!(details: '', prestation_id: prestation3.id, order_id: order2.id);
+OrderItem.create!(details: '', price: 30, prestation_id: prestation1.id, order_id: order1.id);
+OrderItem.create!(details: 'Fleurs bleues', price: 20, prestation_id: prestation2.id, order_id: order3.id);
+OrderItem.create!(details: '', price: 60, prestation_id: prestation3.id, order_id: order2.id);
 
 puts 'all is good !'

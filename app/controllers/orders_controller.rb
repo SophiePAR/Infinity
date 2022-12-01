@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def show
     @order = Order.find(params[:id])
     @tombstone = @order.tombstone
@@ -18,7 +17,6 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    #faire une méthode case when geant
     @order.update(order_params)
     redirect_to tombstone_path(@order.tombstone)
   end
