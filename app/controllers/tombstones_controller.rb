@@ -1,5 +1,5 @@
 class TombstonesController < ApplicationController
-
+  
   def show
     @order = Order.new
     @tombstone = Tombstone.find(params[:id])
@@ -33,6 +33,7 @@ class TombstonesController < ApplicationController
   private
 
   def tombstone_params
-    params.require(:tombstone).permit(:first_name, :last_name, :birth_date, :death_date)
+    params.require(:tombstone).permit(:first_name, :last_name, :birth_date, :death_date, :photo)
   end
+
 end

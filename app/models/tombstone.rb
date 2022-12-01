@@ -4,5 +4,7 @@ class Tombstone < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :users, through: :user_tombstones
 
+  has_one_attached :photo
+
   validates :first_name, :last_name, presence: true
 end
