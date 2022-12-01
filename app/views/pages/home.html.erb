@@ -4,7 +4,11 @@
     <br>
     <h2 class ='text-white shadow-sem'>Rendre hommage à nos proches, en toute sérennité </h2>
     <br>
-    <%= link_to "Demander une prestation", user_path(current_user), class: "btn btn-flat" %>
+    <% if user_signed_in? %>
+      <%= link_to "Demander une prestation", user_path(current_user), class: "btn btn-flat" %>
+    <% else %>
+      <%= link_to "Demander une prestation", user_session_path, class: "btn btn-flat" %>
+    <% end %>
     <br>
     <br>
       <%= link_to "Effectuer une prestation", provider_orders_path, class: "btn btn-primary" %>
