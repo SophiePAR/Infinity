@@ -2,6 +2,7 @@ class Order < ApplicationRecord
 
   include AASM
   aasm.attribute_name :progress
+
   aasm do
     state :pending, initial: true
     state :accepted, :validated, :finished

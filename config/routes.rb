@@ -18,5 +18,8 @@ Rails.application.routes.draw do
     resources :prestations, only: [:create]
   end
 
+  resources :order_items, only: [:destroy]
+
   resources :users, only: [:show]
+  get 'pages/about', to: 'pages#about'
 end

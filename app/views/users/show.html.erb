@@ -1,14 +1,28 @@
 <div class="container justify-content-center">
-  <h1>Bienvenue <%=@user.first_name %></h1>
+  <h1>Bienvenue sur votre profile <%= @user.first_name %> <%= @user.last_name %></h1>
   <p>Find me in app/views/users/show.html.erb</p>
-    <p><%= link_to "Voir des missions", provider_orders_path , class: "btn btn-primary" %></p>
-    <p><%= link_to "Ajouter une sépulture", new_tombstone_path, class: "btn btn-primary" %></p>
-  <h2>Mes sépulture</h2>
-  <ul>
-    <% @tombstones.each do |tombstone| %>
-    <li>
-      <h3><%= link_to tombstone.first_name, tombstone_path(tombstone) %></h3>
-    </li>
-    <% end %>
-  </ul>
+  <div class="profil">
+    <div class="left-profil">
+      <div class="user-info">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quod non error eum nostrum? Id sequi modi voluptatem, harum optio expedita illo quo facere, neque at nam delectus nesciunt aut.</p>
+      </div>
+      <div class="tombstone-cards">
+        <h2>Mes sépulture</h2>
+        <div class="cards">
+          <% @tombstones.each do |tombstone| %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+              <%= link_to tombstone.first_name, tombstone %> <%= link_to tombstone.last_name, tombstone %>
+            </div>
+          <% end %>
+          <p><%= link_to "Ajouter une sépulture", new_tombstone_path, class: "btn btn-primary" %></p>
+        </div>
+      </div>
+    </div>
+    <div class="right-profil">
+      <p class="provider-show"><%= link_to "Rechercher des missions", provider_orders_path , class: "btn btn-primary" %></p>
+      <div class="geo-map">
+      <h2>Une map</h2>
+      </div>
+    </div>
+  </div>
 </div>
