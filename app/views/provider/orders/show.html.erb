@@ -17,8 +17,8 @@
             <% sum = 0 %>
             <h5>Prestation:</h5>
             <% @order.order_items.each do |order_item|%>
-              <li><%= order_item.prestation.title %> - <%= order_item.prestation.price %>,00€</li>
-              <% sum = sum + order_item.prestation.price %>
+              <li><%= order_item.prestation.title %> - <%= order_item.price %>,00€</li>
+              <% sum = sum + order_item.price %>
             <% end %>
           </div>
           <div class="total">
