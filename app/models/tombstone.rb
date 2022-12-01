@@ -4,5 +4,5 @@ class Tombstone < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :users, through: :user_tombstones
 
-  validates :first_name, :last_name, :latitude, :longitude, presence: true
+  validates :first_name, :last_name, presence: true
 end
