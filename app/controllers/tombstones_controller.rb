@@ -1,6 +1,7 @@
 class TombstonesController < ApplicationController
-  
+
   def show
+    @user = User.find(params[:id])
     @order = Order.new
     @tombstone = Tombstone.find(params[:id])
   end
@@ -16,7 +17,7 @@ class TombstonesController < ApplicationController
       redirect_to user_path(@user)
     else
       render :new, status: :unprocessable_entity
-    end    
+    end
   end
 
   def edit
