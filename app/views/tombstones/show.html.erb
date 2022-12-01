@@ -7,8 +7,10 @@
   <%= simple_form_for [@tombstone, @order] do |f| %>
     <%= f.submit "Créer une prestation pour cette tombe", class: "btn btn-primary" %>
   <% end %>
+  <br>
   <div class="order-statut">
-    <p>Les prestations en cours sur cette tombe:</p>
+    <h2>Les prestations en cours sur cette tombe:</h2>
+    <br>
       <ul>
         <% @tombstone.orders.each do |order| %>
           <li>
@@ -25,7 +27,7 @@
       <ul>
         <% @tombstone.user_tombstones.each do |user| %>
           <li>
-            <%= user.first_name %> <%= user.last_name %>
+            <%= @user.first_name %> <%= @user.last_name %>
           </li>
         <% end %>
       </ul>
