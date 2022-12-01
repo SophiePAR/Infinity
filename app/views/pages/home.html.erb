@@ -3,7 +3,11 @@
     <h1 id="banner-txt">Infinity</h1>
     <p>Rendre hommage à vos proches, et entretenir leurs tombes en toute serenité</p>
     <br>
-    <%= link_to "Demander une prestation", user_path(current_user), class: "btn btn-flat" %>
+    <% if user_signed_in? %>
+      <%= link_to "Demander une prestation", user_path(current_user), class: "btn btn-flat" %>
+    <% else %>
+      <%= link_to "Demander une prestation", user_session_path, class: "btn btn-flat" %>
+    <% end %>
     <br>
     <br>
       <%= link_to "Effectuer une prestation", provider_orders_path, class: "btn btn-primary" %>
