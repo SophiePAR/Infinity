@@ -1,11 +1,16 @@
 .footer {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
   bottom: 0;
   background-color: #126B9A;
   right: 0;
   left: 0;
   background-repeat: no-repeat;
-  height: 90px;
+  height: 30px;
+  bottom: 0;
   width: 100%;
   color: white;
   padding: 20px;
