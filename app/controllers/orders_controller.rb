@@ -2,8 +2,10 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @tombstone = @order.tombstone
-    @order.go_back
-    @order.save
+    if @order.aasm.current_state == :accepted
+      @order.go_back
+      @order.save
+    end
   end
 
   def create
