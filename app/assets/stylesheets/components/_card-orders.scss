@@ -36,17 +36,17 @@
   position: absolute;
   height: 30px;
   width: 80px;
-  color: green;
+  color: #126B9A;
   background-color: transparent;
   border-radius: 8px;
-  border: 1px solid green;
-  top: 35px;
-  left: 1060px;
+  border: 1px solid #126B9A;
+  bottom: 5px;
+  left: 100%;
   text-align: center;
   text-decoration: none;
 }
 .btn-accept:hover{
   transition: 1s;
   color: white;
-  background-color: green;
+  background-color: #126B9A;
 }

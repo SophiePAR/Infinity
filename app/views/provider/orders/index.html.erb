@@ -1,6 +1,7 @@
-<h1>Provider::Orders#index</h1>
-<p>Find me in app/views/provider/orders/index.html.erb</p>
-<div class="container">
+<div class="container row m-auto">
+  <h1>Provider::Orders#index</h1>
+  <p>Find me in app/views/provider/orders/index.html.erb</p>
+
   <% @orders.each do |order| %>
       <div class="card-product">
         <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
@@ -11,5 +12,6 @@
           <%= link_to "Details", provider_order_path(order), class:"btn-accept" %>
         </div>
       </div>
+
   <% end %>
 </div>
