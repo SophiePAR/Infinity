@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def show
     @order = Order.find(params[:id])
     @tombstone = @order.tombstone
@@ -20,7 +19,6 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    #faire une méthode case when geant
     @order.update(order_params)
     if @order.aasm.current_state == :accepted
       @order.go_to_next_step
