@@ -7,5 +7,27 @@
   <%= simple_form_for [@tombstone, @order] do |f| %>
     <%= f.submit "Créer une prestation pour cette tombe", class: "btn btn-primary" %>
   <% end %>
-  <%  %>
+  <div class="order-statut">
+    <p>Les prestations en cours sur cette tombe:</p>
+      <ul>
+        <% @tombstone.orders.each do |order| %>
+          <li>
+            <h3>Commande du :<%= link_to order.date, order_path(order) %></h3>
+            <p>Commande faite par <strong><%= order.user.first_name %> <%= order.user.last_name  %></strong></p>
+            <p>Statut de la commande: <%= order.progress %></p>
+            <p> note: <%= order.rating %> <%= order.review %></p>
+          </li>
+        <% end %>
+      </ul>
+  </div>
+  <div class="shared-with">
+    <h3>Cette tombe est partagé avec</h3>
+      <ul>
+        <% @tombstone.user_tombstones.each do |user| %>
+          <li>
+            <%= user.first_name %> <%= user.last_name %>
+          </li>
+        <% end %>
+      </ul>
+  </div>
 </div>
