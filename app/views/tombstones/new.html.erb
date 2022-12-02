@@ -1,15 +1,45 @@
-<div class= 'container row m-auto w-50 mt-5 mb-5 bg-white p-4 rounded-4'>
-<h1>Créer la nouvelle sépulture</h1>
-<p>N'hésitez pas à la partager avec votre famille</p>
 
+<div class= 'container row m-auto w-50 mt-5 mb-2 bg-white p-4 rounded-2 shadow'> 
+  <h2 class='text-primary text-center'>Enregistrez une nouvelle sépulture</h2>
   <%= simple_form_for @tombstone do |f| %>
-    <%= f.input  :first_name %>
-    <%= f.input  :last_name %>
+    <div class="row">
+      <div class="col">
+        <%= f.input  :first_name %>
+      </div>
+      <div class="col">
+        <%= f.input  :last_name %>
+      </div>
+    </div>
     <%= f.input  :photo, as: :file %>
     <%= f.input  :birth_date, start_year: 1800, end_year:2022 %>
     <%= f.input  :death_date, start_year: 1800, end_year:2022 %>
+    <div class="row">
+      <div class="col">
+        <%= f.input  :longitude %>
+      </div>
+      <div class="col">
+        <%= f.input  :latitude %>
+      </div>
+    </div>
+
+    <div class="row">
+  <div class="col">
+    <%= f.input :birth_date, as: :string,
+                wrapper_html: { class: "mb-4" },
+                label_html: { class: "form-label text-secondary fw-bold" },
+                input_html: { data: { controller: "flatpickr" } } %>
+  </div>
+  <div class="col">
+    <%= f.input :death_date, as: :string,
+                wrapper_html: { class: "mb-4" },
+                label_html: { class: "form-label text-secondary fw-bold" },
+                input_html: { data: { controller: "flatpickr" } } %>
+  </div>
+</div>
+
     <%= f.button :submit, "Ajouter la sépulture", class: "btn btn-large btn-primary" %>
     <%= link_to 'Annuler', user_path(current_user), class: 'btn btn-danger' %>
 
     <% end %>
 </div>
+
