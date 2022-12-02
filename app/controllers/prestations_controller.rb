@@ -1,6 +1,7 @@
 class PrestationsController < ApplicationController
   def create
     if @prestation.title == 'Autres'
+    end
   end
   #   @prestation = Prestation.new(order_params)
   #   if @prestation.save
