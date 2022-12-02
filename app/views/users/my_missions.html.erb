@@ -4,7 +4,7 @@
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
           <div class="card-infos">
             <div class="infos">
-              <% @ser = UserTombstone.find(order.user_tombstone_id).user %>
+              <% user = UserTombstone.find(order.user_tombstone_id).user %>
               <h4>Commande faite par: <strong><%= user.first_name %> <%= user.last_name %></strong></h4>
               <h6>Quand: <%= order.date %></h6>
               <p><%= order.tombstone.latitude%> <%=order.tombstone.longitude %></p>
