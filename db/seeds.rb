@@ -24,11 +24,11 @@ tombe2 = Tombstone.create!(first_name: 'henri', last_name: 'Chalot', birth_date:
 tombe3 = Tombstone.create!(first_name: 'Michelle', last_name: 'Tourny', birth_date: '09/01/1950', death_date: '01/02/2010', latitude:'20.862725', longitude:'2.287592');
 tombe4 = Tombstone.create!(first_name: 'Gabrielle', last_name: 'Solisse', birth_date: '30/03/1946', death_date: '04/03/1990', latitude:'48.862725', longitude:'1.287592');
 
-# prestation0 = Prestation.create!(title: 'Arrosage', price: '', content: '');
+prestation0 = Prestation.create!(title: 'Arrosage', price: '', content: '');
 prestation1 = Prestation.create!(title: 'Photographie', price: '', content: '');
 prestation2 = Prestation.create!(title: 'Bouquet de fleurs', price: '', content: 'bouquet composé de 3 fleurs');
 prestation3 = Prestation.create!(title: 'Entretien de la tombe', price: '', content: '');
-# prestation4 = Prestation.create!(title: 'Autres', price: '', content: '');
+prestation4 = Prestation.create!(title: 'Autres', price: '', content: '');
 
 user_tombstone1 = UserTombstone.create(user_id: user1.id, tombstone_id: tombe2.id);
 user_tombstone2 = UserTombstone.create(user_id: user2.id, tombstone_id: tombe1.id);
