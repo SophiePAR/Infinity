@@ -1,5 +1,5 @@
-<h1>Provider::Orders#show</h1>
-<p>Find me in app/views/provider/orders/show.html.erb</p>
+<br>
+<h1>Details de la prestation</h1>
 <div class="container">
   <div class="show-map">
     <div id="show">
@@ -7,12 +7,14 @@
         <div class="info">
           <div class="text">
             <% user = UserTombstone.find(@order.user_tombstone_id).user %>
-            <h4><strong><%= user.first_name %> <%= user.last_name %></strong></h4>
-            <%= @order.date %>
+            <h4>Commande effectuée par:
+            <br><strong><%= user.first_name %> <%= user.last_name %></strong></h4>
+            <p>le <%= @order.date %> </p>
             <% sum = 0 %>
-            <h5>Prestation:</h5>
+            <br>
+            <h5>Details des prestations :</h5>
             <% @order.order_items.each do |order_item|%>
-              <li><%= order_item.prestation.title %> - <%= order_item.price %>,00€</li>
+              <li><%= order_item.prestation.title %> - <%= order_item.price %>,00€ <br> Details: <%= order_item.details%></li>
               <% sum = sum + order_item.price %>
             <% end %>
           </div>
@@ -21,7 +23,7 @@
              <br>
               <%= simple_form_for [:provider, @order] do |f| %>
                 <%= f.input :progress, value: 'pending', as: :hidden %>
-                <%= f.button :submit, "Valider les prestations", class: "btn btn-primary" %>
+                <%= f.button :submit, "Accepter", class: "btn btn-primary" %>
               <% end %>
           </div>
         </div>
@@ -31,7 +33,7 @@
     </div>
   </div>
   <div class="details">
-    <h1>Details of tombstone</h1>
+    <h1>Informations sur la tombe</h1>
     <h4><%= @order.tombstone.first_name %> <%= @order.tombstone.last_name %></h4>
     <p>Birthday: <%= @order.tombstone.birth_date%></p>
     <p>Death date: <%= @order.tombstone.death_date%></p>
