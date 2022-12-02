@@ -12,7 +12,32 @@
     <%= f.input  :photo, as: :file %>
     <%= f.input  :birth_date, start_year: 1800, end_year:2022 %>
     <%= f.input  :death_date, start_year: 1800, end_year:2022 %>
+    <div class="row">
+      <div class="col">
+        <%= f.input  :longitude %>
+      </div>
+      <div class="col">
+        <%= f.input  :latitude %>
+      </div>
+    </div>
+
+    <div class="row">
+  <div class="col">
+    <%= f.input :birth_date, as: :string,
+                wrapper_html: { class: "mb-4" },
+                label_html: { class: "form-label text-secondary fw-bold" },
+                input_html: { data: { controller: "flatpickr" } } %>
+  </div>
+  <div class="col">
+    <%= f.input :death_date, as: :string,
+                wrapper_html: { class: "mb-4" },
+                label_html: { class: "form-label text-secondary fw-bold" },
+                input_html: { data: { controller: "flatpickr" } } %>
+  </div>
+</div>
+
     <%= f.button :submit, "Ajouter la sépulture", class: "btn btn-large btn-primary" %>
     <%= link_to 'Annuler', :back, class: 'btn btn-danger' %>
   <% end %>
+
 </div>
