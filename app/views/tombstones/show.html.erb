@@ -1,12 +1,25 @@
-<div class="container">
-  <h1>La sépulture de <%= @tombstone.first_name %></h1>
-  <p>Find me in app/views/tombstones/show.html.erb</p>
-  <p><%= link_to "Modifier cette tombe", edit_tombstone_path(@tombstone) %></p>
-  <%= link_to "Retour au profil", user_path, class: "btn btn-warning" %>
+<div class="container row m-auto mt-5 w-75 p-5 bg-white" >
+  <h1 class='text-center text-primary'>Bienvenue sur la sépulture de <%= @tombstone.first_name %></h1>
+  
+ 
+    <% if @tombstone.photo.key? %>
+      <%= cl_image_tag @tombstone.photo.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
+          <img src="tombstone.png" alt="sepulture">
+    <% end %>
 
-  <%= simple_form_for [@tombstone, @order] do |f| %>
-    <%= f.submit "Créer une prestation pour cette tombe", class: "btn btn-primary" %>
-  <% end %>
+  <div class="btn-container row>
+    <div>
+    <%= link_to "Modifier cette tombe", edit_tombstone_path(@tombstone), class: "btn btn-danger mb-2" %>
+    </div>
+    <div>
+    <%= link_to "Retour au profil", user_path, class: "btn btn-danger mb-2" %>
+    </div>
+    <div>
+    <%= simple_form_for [@tombstone, @order] do |f| %>
+      <%= f.submit "Créer une prestation", class: "btn btn-primary" %>
+    <% end %>
+    </div>
 
     <% @tombstone.orders.each do |order| %>
       <% if order.accepted? %>
@@ -18,31 +31,22 @@
        <% end %>
     <% end %>
 
-   <% if @tombstone.photo.key? %>
-           <%= cl_image_tag @tombstone.photo.key, height: 300, width: 400, crop: :fill %>
-           <% else %>
-            <i class="fa-solid fa-house"></i> 
-          <% end %>
-  <br>
-  <div class="order-statut">
-    <h2>Les prestations en cours sur cette tombe:</h2>
-    <br>
-      <ul>
+  <div class="order-statut m-5">
+    <h3>Les prestations en cours sur cette tombe:</h3>
+  
         <% @tombstone.orders.each do |order| %>
-          <li>
-            <h3>Commande du :<%= link_to order.date, order_path(order) %></h3>
-            <p>Commande faite par <strong><%= order.user.first_name %> <%= order.user.last_name  %></strong></p>
-            <p>Statut de la commande: <%= order.progress %></p>
-            <p> note: <%= order.rating %> <%= order.review %></p>
-          </li>
+          <h4 >Commande du : <%= link_to order.date, order_path(order) %></h4>
+          <p>Commande faite par <strong><%= order.user.first_name %> <%= order.user.last_name  %></strong></p>
+          <p>Statut de la commande : <%= order.progress %></p>
+          <p> note : <%= order.rating %> <%= order.review %></p>
         <% end %>
-      </ul>
+
   </div>
-  <div class="shared-with">
-    <h3>Cette tombe est partagé avec</h3>
+  <div class="shared-with bg-primary p-2">
+    <h4 class='text-white text-center'>Cette tombe est partagé avec</h4>
       <ul>
         <% @tombstone.user_tombstones.each do |user| %>
-          <li>
+          <li class='text-white text-center'>
             <%= @user.first_name %> <%= @user.last_name %>
           </li>
         <% end %>
