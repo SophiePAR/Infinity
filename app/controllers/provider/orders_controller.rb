@@ -12,6 +12,7 @@ class Provider::OrdersController < ApplicationController
     @order.update(user: current_user)
     @order.go_to_next_step
     @order.save
+    redirect_to my_missions_path
     # case @order.aasm.current_state
     #   when "pending" then @order.declare_accepted
     #   when "accepted" then @order.declare_validated
