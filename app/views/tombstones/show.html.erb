@@ -1,8 +1,8 @@
 
 <div class="container row m-auto mt-5 w-75 p-5 bg-white" >
   <h1 class='text-center text-primary'>Bienvenue sur la sépulture de <%= @tombstone.first_name %></h1>
-  
- 
+
+
     <% if @tombstone.photo.key? %>
       <%= cl_image_tag @tombstone.photo.key, height: 300, width: 400, crop: :fill %>
         <% else %>
@@ -35,11 +35,11 @@
 
   <div class="order-statut m-5">
     <h3>Les prestations en cours sur cette tombe:</h3>
-  
+
         <% @tombstone.orders.each do |order| %>
           <h4 >Commande du : <%= link_to order.date, order_path(order) %></h4>
-          <% user = UserTombstone.find(order.user_tombstone_id).user %>
-          <p>Commande faite par <strong><%= order.user.first_name %> <%= order.user.last_name  %></strong></p>
+          <% @user = UserTombstone.find(order.user_tombstone_id).user %>
+          <p>Commande faite par <strong><%= @user.first_name %> <%= @user.last_name  %></strong></p>
           <p>Statut de la commande : <%= order.progress %></p>
           <p> note : <%= order.rating %> <%= order.review %></p>
         <% end %>
