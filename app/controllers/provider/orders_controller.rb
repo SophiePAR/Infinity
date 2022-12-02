@@ -9,6 +9,7 @@ class Provider::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
+    @order.update(user: current_user)
     @order.go_to_next_step
     @order.save
     # case @order.aasm.current_state
