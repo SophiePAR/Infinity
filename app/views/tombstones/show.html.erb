@@ -4,9 +4,9 @@
 
 
     <% if @tombstone.photo.key? %>
-      <%= cl_image_tag @tombstone.photo.key, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag @tombstone.photo.key, height: 300, width: 200, crop: :fill %>
         <% else %>
-          <img src="tombstone.png" alt="sepulture">
+        <%= image_tag asset_path('tombstone.png'), height: 300, width: 400%>
     <% end %>
 
   <div class="btn-container row">
@@ -18,7 +18,7 @@
     </div>
     <div>
       <%= simple_form_for [@tombstone, @order] do |f| %>
-      <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id} %>
+      <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id}, as: :hidden  %>
       <%= f.submit "Créer une prestation pour cette tombe", class: "btn btn-primary" %>
       <% end %>
     </div>
@@ -28,9 +28,12 @@
           <%= f.input :progress, value: 'accepted', as: :hidden %>
           <%= f.button :submit, "Valider le prestataire", class: "btn btn-primary" %>
         <% end %>
+
         <%= link_to "Refuse le prestation", order_path(order), class: "btn btn-danger"  %>
        <% end %>
+
     <% end %>
+  </div>
 
   <div class="order-statut m-5">
     <h3>Les prestations en cours sur cette tombe:</h3>
@@ -43,7 +46,7 @@
           <p> note : <%= order.rating %> <%= order.review %></p>
         <% end %>
 
-  </div>
+
   <div class="shared-with bg-primary p-2">
     <h4 class='text-white text-center'>Cette tombe est partagé avec</h4>
       <ul>
