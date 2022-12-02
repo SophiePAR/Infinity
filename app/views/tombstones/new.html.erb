@@ -1,3 +1,4 @@
+
 <div class= 'container row m-auto w-50 mt-5 mb-2 bg-white p-4 rounded-2 shadow'> 
   <h2 class='text-primary text-center'>Enregistrez une nouvelle sépulture</h2>
   <%= simple_form_for @tombstone do |f| %>
@@ -37,7 +38,8 @@
 </div>
 
     <%= f.button :submit, "Ajouter la sépulture", class: "btn btn-large btn-primary" %>
-    <%= link_to 'Annuler', :back, class: 'btn btn-danger' %>
-  <% end %>
+    <%= link_to 'Annuler', user_path(current_user), class: 'btn btn-danger' %>
 
+    <% end %>
 </div>
+

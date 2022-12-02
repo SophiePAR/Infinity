@@ -6,7 +6,8 @@
          <%= image_tag "tombstone.png", class: "img" %>
         <div class="info">
           <div class="text">
-            <h4><strong><%= @order.user.first_name %> <%= @order.user.last_name %></strong></h4>
+            <% user = UserTombstone.find(@order.user_tombstone_id).user %>
+            <h4><strong><%= user.first_name %> <%= user.last_name %></strong></h4>
             <%= @order.date %>
             <% sum = 0 %>
             <h5>Prestation:</h5>

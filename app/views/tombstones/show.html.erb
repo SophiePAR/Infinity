@@ -1,3 +1,4 @@
+
 <div class="container row m-auto mt-5 w-75 p-5 bg-white" >
   <h1 class='text-center text-primary'>Bienvenue sur la sépulture de <%= @tombstone.first_name %></h1>
   
@@ -13,12 +14,13 @@
     <%= link_to "Modifier cette tombe", edit_tombstone_path(@tombstone), class: "btn btn-danger mb-2" %>
     </div>
     <div>
-    <%= link_to "Retour au profil", user_path, class: "btn btn-danger mb-2" %>
+    <%= link_to "Retour au profil", user_path(current_user), class: "btn btn-danger mb-2" %>
     </div>
     <div>
-    <%= simple_form_for [@tombstone, @order] do |f| %>
-      <%= f.submit "Créer une prestation", class: "btn btn-primary" %>
-    <% end %>
+      <%= simple_form_for [@tombstone, @order] do |f| %>
+      <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id} %>
+      <%= f.submit "Créer une prestation pour cette tombe", class: "btn btn-primary" %>
+      <% end %>
     </div>
 
     <% @tombstone.orders.each do |order| %>
@@ -36,6 +38,7 @@
   
         <% @tombstone.orders.each do |order| %>
           <h4 >Commande du : <%= link_to order.date, order_path(order) %></h4>
+          <% user = UserTombstone.find(order.user_tombstone_id).user %>
           <p>Commande faite par <strong><%= order.user.first_name %> <%= order.user.last_name  %></strong></p>
           <p>Statut de la commande : <%= order.progress %></p>
           <p> note : <%= order.rating %> <%= order.review %></p>
@@ -45,9 +48,10 @@
   <div class="shared-with bg-primary p-2">
     <h4 class='text-white text-center'>Cette tombe est partagé avec</h4>
       <ul>
-        <% @tombstone.user_tombstones.each do |user| %>
+        <% @tombstone.user_tombstones.each do |user_tombstone| %>
           <li class='text-white text-center'>
-            <%= @user.first_name %> <%= @user.last_name %>
+            <%= user_tombstone.user.first_name %> <%= user_tombstone.user.last_name %>
+
           </li>
         <% end %>
       </ul>

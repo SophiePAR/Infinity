@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    @tombstones = Tombstone.all
     @user = User.find(params[:id])
+    @tombstones = @user.tombstones
   end
 end

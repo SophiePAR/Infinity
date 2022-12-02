@@ -7,6 +7,6 @@
     <%= f.input :birth_date %>
     <%= f.input :death_date %>
     <%= f.button :submit, "Editer cette sépulture", class: "btn btn-primary" %>
-    <%= link_to "Retour", :back, class: "btn btn-warning" %>
+    <%= link_to "Retour", user_path(current_user), class: "btn btn-warning" %>
   <% end %>
 </div>
