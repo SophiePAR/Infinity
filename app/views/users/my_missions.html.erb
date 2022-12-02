@@ -1,0 +1,24 @@
+<div class="container">
+  <% @orders.each do |order| %>
+        <div class="card-product">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-infos">
+            <div class="infos">
+              <h4>Demandé: <strong><%= order.user.first_name %> <%= order.user.last_name %></strong></h4>
+              <h6>Quand: <%= order.date %></h6>
+              <p><%= order.tombstone.latitude%> <%=order.tombstone.longitude %></p>
+            </div>
+            <div class="status">
+              <h5 class="statut">Statut</h5>
+                    <% if order.aasm.current_state == :accepted %>
+                      <div class="statut-pending"></div>
+                    <% elsif order.aasm.current_state == :validated %>
+                      <div class="statut-accepted"></div>
+                    <% elsif order.aasm.current_state == :finished %>
+                      <div class="statut-validated"></div>
+                <% end %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+</div>

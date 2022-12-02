@@ -29,7 +29,10 @@
       </div>
     </div>
     <div class="right-profil">
-      <p class="provider-show"><%= link_to "Rechercher des missions", provider_orders_path , class: "btn btn-primary" %></p>
+    <div class="btn-mission" style="display: flex" >
+        <%= link_to "Rechercher des missions", provider_orders_path , class: "btn btn-primary provider-show" %>
+        <%= link_to "Voir mes missions", my_missions_path , class: "btn btn-primary btn-mymission" %>
+    </div>
       <div class="geo-map">
       <h2>Une map</h2>
       </div>
