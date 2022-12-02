@@ -4,12 +4,12 @@
 
 
     <% if @tombstone.photo.key? %>
-      <%= cl_image_tag @tombstone.photo.key, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag @tombstone.photo.key, height: 300, width: 200, crop: :fill %>
         <% else %>
-          <img src="tombstone.png" alt="sepulture">
+        <%= image_tag asset_path('tombstone.png'), height: 300, width: 400%>
     <% end %>
 
-  <div class="btn-container row>
+  <div class="btn-container row">
     <div>
     <%= link_to "Modifier cette tombe", edit_tombstone_path(@tombstone), class: "btn btn-danger mb-2" %>
     </div>
@@ -32,6 +32,7 @@
         <%= link_to "Refuse le prestation", order_path(order), class: "btn btn-primary"  %>
       <% end %>
     <% end %>
+  </div>
 
   <div class="order-statut m-5">
     <h3>Les prestations en cours sur cette tombe:</h3>
@@ -44,7 +45,7 @@
           <p> note : <%= order.rating %> <%= order.review %></p>
         <% end %>
 
-  </div>
+
   <div class="shared-with bg-primary p-2">
     <h4 class='text-white text-center'>Cette tombe est partagé avec</h4>
       <ul>

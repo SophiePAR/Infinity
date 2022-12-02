@@ -12,9 +12,9 @@ class TombstonesController < ApplicationController
 
   def create
     @tombstone = Tombstone.new(tombstone_params)
-    @user = current_user
     if @tombstone.save
-      redirect_to user_path(@user)
+      UserTombstone.create(user: current_user, tombstone: @tombstone)
+      redirect_to user_path(current_user)
     else
       render :new, status: :unprocessable_entity
     end
