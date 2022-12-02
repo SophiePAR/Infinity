@@ -34,7 +34,7 @@ class TombstonesController < ApplicationController
   private
 
   def tombstone_params
-    params.require(:tombstone).permit(:first_name, :last_name, :birth_date, :death_date, :photo)
+    params.require(:tombstone).permit(:first_name, :last_name, :birth_date, :latitude, :longitude, :death_date, :photo)
   end
 
 end
