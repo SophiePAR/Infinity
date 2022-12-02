@@ -15,4 +15,4 @@ class PrestationsController < ApplicationController
   # def prestation_params
   #   params.require(:prestation).permit(:title, :price, :content)
   # end
-ends
+end
