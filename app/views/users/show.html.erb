@@ -1,5 +1,5 @@
 <div class="container justify-content-center">
-  <h1>Bienvenue sur votre profile <%= @user.first_name %> <%= @user.last_name.upcase %></h1>
+  <h1>Bienvenue sur votre profile <%= @user.first_name %> <%= @user.last_name %></h1>
   <p>Find me in app/views/users/show.html.erb</p>
   <div class="profil">
     <div class="left-profil">
@@ -11,7 +11,7 @@
         <div class="cards">
           <% @tombstones.each do |tombstone| %>
             <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
-              <%= link_to tombstone.first_name, tombstone %> <%= link_to tombstone.last_name, tombstone %>
+              <%= link_to tombstone.first_name, tombstone_path(tombstone) %> <%= link_to tombstone.last_name, tombstone_path(tombstone) %>
               <% tombstone.orders.each do |order| %>
                 <% if order.aasm.current_state == :pending%>
                     <div class="statut-pending"></div>

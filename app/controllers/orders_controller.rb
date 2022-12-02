@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
 
   def create
     @tombstone = Tombstone.find(params[:tombstone_id])
-    @order = Order.new
+    @order = Order.new(order_params)
     @order.tombstone = @tombstone
     if @order.save
       redirect_to order_path(@order)
@@ -32,6 +32,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:review, :rating, :date, :progress)
+    params.require(:order).permit(:review, :rating, :date, :progress, :user_tombstone_id)
   end
 end

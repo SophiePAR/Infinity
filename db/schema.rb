@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_153629) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_02_104808) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,8 +72,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_153629) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "progress"
+    t.bigint "user_tombstone_id", null: false
     t.index ["tombstone_id"], name: "index_orders_on_tombstone_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+    t.index ["user_tombstone_id"], name: "index_orders_on_user_tombstone_id"
   end
 
   create_table "prestations", force: :cascade do |t|
@@ -126,6 +128,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_153629) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "prestations"
   add_foreign_key "orders", "tombstones"
+  add_foreign_key "orders", "user_tombstones"
   add_foreign_key "orders", "users"
   add_foreign_key "user_tombstones", "tombstones"
   add_foreign_key "user_tombstones", "users"
