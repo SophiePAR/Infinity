@@ -18,7 +18,7 @@
     </div>
     <div>
       <%= simple_form_for [@tombstone, @order] do |f| %>
-      <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id} %>
+      <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id}, as: :hidden  %>
       <%= f.submit "Créer une prestation pour cette tombe", class: "btn btn-primary" %>
       <% end %>
     </div>
@@ -30,7 +30,7 @@
           <%= f.button :submit, "Valider le prestataire", class: "btn btn-primary" %>
         <% end %>
         <%= link_to "Refuse le prestation", order_path(order), class: "btn btn-primary"  %>
-       <% end %>
+      <% end %>
     <% end %>
 
   <div class="order-statut m-5">
