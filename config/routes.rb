@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
 
-  resources :orders, only: [:show, :update]
+  resources :orders, only: [:show, :update] do
+    get 'finish', to: 'orders#finish'
+  end
 
   namespace :provider do
     resources :orders, only: [:index, :show, :update]
