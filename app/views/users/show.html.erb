@@ -21,10 +21,10 @@
                       <div class="statut-validated"></div>
                 <% end %>
               <% end %>
-
+                <p class="badge"><%= tombstone.orders.count %></p>
             </div>
           <% end %>
-          <p><%= link_to "Ajouter une sépulture", new_tombstone_path, class: "btn btn-primary" %></p>
+          <p class="add-tomb"><%= link_to "Ajouter une sépulture", new_tombstone_path, class: "btn btn-primary" %></p>
         </div>
       </div>
     </div>

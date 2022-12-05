@@ -17,3 +17,20 @@
 .card-text{
   text-align: center;
 }
+.add-tomb{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.badge{
+  margin-left: auto;
+  position: relative;
+  top: -10px;
+  right: -10px;
+  align-self: flex-start;
+  padding: 5px 10px;
+  font-size: 16pt;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+}

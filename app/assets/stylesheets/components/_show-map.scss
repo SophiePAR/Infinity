@@ -22,7 +22,9 @@
   width: 50%;
   border: solid 2px;
   border-color: green;
-  box-shadow: 8px 4px 4px gray;;
+  margin-left: auto;
+  position: sticky;
+  top: 20px;
 }
 .img{
   border-radius: 8px;
@@ -46,4 +48,11 @@
 }
 p{
   margin: 0px;
+}
+.btn-accept{
+  align-self: flex-end;
+  border-radius: 8px;
+}
+.title{
+  text-align: center;
 }
