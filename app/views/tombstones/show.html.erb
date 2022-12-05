@@ -2,7 +2,7 @@
     <h1 class='text-center text-primary'>Bienvenue sur la sépulture de <%= @tombstone.first_name %></h1>
       <p class='back-btn'><%= link_to "Retour au profil", user_path(current_user), class: "btn btn-flat mb-2" %></p>
 </div>
-<div class="container mt-5">
+<div class="container my-container mt-5">
   <div class="photo">
     <% if @tombstone.photo.key? %>
       <%= cl_image_tag @tombstone.photo.key, height: 300, width: 200, crop: :fill %>
@@ -28,12 +28,12 @@
       <div class="meteo">
         <h3>Météo sur place</h3>
           <p><%= Date.today.strftime("%d %B %Y") %></p>
-            <img src="http://openweathermap.org/img/wn/<%=  @data["weather"].first["icon"] %>@2x.png" alt="">
+            <%# <img src="http://openweathermap.org/img/wn/<%=  @data["weather"].first["icon"] %>@2x.png" alt=""> %>
             <div class="meteo-card">
-              <p><%= @data["weather"].first["description"] %></p>
-              <p>Température : <%= @data["main"]["temp"].round(1) %> °c</p>
-              <p>Ressenti : <%= @data["main"]["feels_like"].round(1) %> °c</p>
-              <p>Ville : <%= @data["name"] %></p>
+              <%# <p><%= @data["weather"].first["description"] %></p> %>
+              <%# <p>Température : <%= @data["main"]["temp"].round(1) %> °c</p> %>
+              <%# <p>Ressenti : <%= @data["main"]["feels_like"].round(1) %> °c</p> %>
+              <%# <p>Ville : <%= @data["name"] %></p> %>
       </div>
     </div>
   </div>
