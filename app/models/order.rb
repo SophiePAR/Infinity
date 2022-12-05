@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-
+  has_one_attached :photo
   include AASM
   aasm.attribute_name :progress
 

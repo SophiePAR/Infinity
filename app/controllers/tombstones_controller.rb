@@ -4,6 +4,12 @@ class TombstonesController < ApplicationController
     # @user = User.find(params[:id])
     @order = Order.new
     @tombstone = Tombstone.find(params[:id])
+    api_key = ENV["OPENWHEATHER_KEY"]
+    url = "https://api.openweathermap.org/data/2.5/weather?lat=#{@tombstone.latitude}&lon=#{@tombstone.longitude}&appid=#{api_key}&units=metric&lang=fr"
+    uri = URI(url)
+    res = Net::HTTP.get_response(uri)
+    @data = JSON.parse(res.body)
+    @message = Message.new
   end
 
   def new
@@ -12,6 +18,7 @@ class TombstonesController < ApplicationController
 
   def create
     @tombstone = Tombstone.new(tombstone_params)
+
     if @tombstone.save
       UserTombstone.create(user: current_user, tombstone: @tombstone)
       redirect_to user_path(current_user)
