@@ -12,17 +12,20 @@
                 <div class="infos">
                   <% user = UserTombstone.find(order.user_tombstone_id).user %>
                   <h5>Demandé par : </br><strong><%= user.first_name %> <%= user.last_name %></strong></h5>
-                  <h6>le : <%= order.date %></h6>
+                  <a>le <%= order.date %> </a>
                   <p>adresse : <%= order.tombstone.latitude%> <%=order.tombstone.longitude %></p>
                 </div>
+                
+
                 <%= link_to "Details", provider_order_path(order), class:"btn-details" %>   
+
               </div>
             </div>
         <% end %>
         
       </div>
 
-    <div class="container col-lg-5 mt-3 border">
+    <div class="container col-lg-5 mt-3 border"> 
       <p class="text-center mt-3">Filtrer suivant ma géolocalisation</p>
     </div>
 
