@@ -44,6 +44,9 @@
           <p>Commande faite par <strong><%= @user.first_name %> <%= @user.last_name  %></strong></p>
           <p>Statut de la commande : <%= order.progress %></p>
           <p> note : <%= order.rating %> <%= order.review %></p>
+          <% if order.photo.key? %>
+          <%= cl_image_tag order.photo.key, crop: :fill, class: "card-img-top" %>
+        <% end %>
         <% end %>
 
 
