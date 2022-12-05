@@ -48,12 +48,14 @@ export default class extends Controller {
   clickmap() {
     this.map.on('click', (e) => {
 
-    this.longTarget.value = parseFloat(e.lngLat.lng)
-    this.latTarget.value = parseFloat(e.lngLat.lat)
+    // this.longTarget.value = parseFloat(e.lngLat.lng)
+    // this.latTarget.value = parseFloat(e.lngLat.lat)
+    this.longTarget.value = e.lngLat.lng
+    console.log(e.lngLat.lng)
+    this.latTarget.value = e.lngLat.lat
 
-    console.log([ parseFloat(e.lngLat.lng), parseFloat(e.lngLat.lat) ])
-    new mapboxgl.Marker()
-        .setLngLat([ parseFloat(e.lngLat.lng) , parseFloat(e.lngLat.lat) ])
+        new mapboxgl.Marker()
+        .setLngLat([ e.lngLat.lng , e.lngLat.lat ])
         .addTo(this.map)
     })
 
