@@ -1,0 +1,48 @@
+.meteo {
+  background-color: #daedf7;
+}
+
+.tomb-info {
+  margin-bottom: 40px;
+  .back-btn {
+    padding-left: 140px;
+  }
+}
+
+
+.my-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  // grid-template-rows: 1fr 1fr 1fr;
+  gap: 5px 5px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "photo info meteo"
+    "fil-actualité fil-actualité membre-de-la-famille"
+    "fil-actualité fil-actualité prestation-en-cours";
+}
+
+.photo {
+  grid-area: photo;
+}
+
+.info {
+  grid-area: info;
+  display: block;
+}
+
+.meteo {
+  grid-area: meteo;
+}
+
+.fil-actualité {
+  grid-area: fil-actualité;
+}
+
+.membre-de-la-famille {
+  grid-area: membre-de-la-famille;
+}
+
+.prestation-en-cours {
+  grid-area: prestation-en-cours;
+}
