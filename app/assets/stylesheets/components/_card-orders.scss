@@ -2,11 +2,14 @@
   overflow: hidden;
   height: auto;
   background: white;
-  box-shadow: 3px 5px 6px  rgba(54, 54, 54, 0.2);
+
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background-color:aliceblue;
   display: flex;
   align-items: center;
-  margin-top: 30px;
-  border-radius: 8px;
+  margin-top: 12px;
+  border: 5px solid aliceblue;
+  border-radius: 20px 20px 0 0;
 }
 
 .card-product img {
@@ -40,20 +43,14 @@
   margin-left: auto;
   height: 30px;
   width: 80px;
-  color: #126B9A;
-  background-color: transparent;
-  border-radius: 8px;
-  border: 1px solid #126B9A;
-  bottom: 5px;
-  left: 100%;
+
+.btn-details:hover{
+  transition: 1s;
+
+  color: white;
+  background-color: #126B9A;
+  border-radius: 4px;
   text-align: center;
   text-decoration: none;
 }
-.btn-details:hover{
-  transition: 1s;
-  color: white;
-  background-color: #126B9A;
-}
-.prestation-list{
-  padding-left: 24px;
-}
+
