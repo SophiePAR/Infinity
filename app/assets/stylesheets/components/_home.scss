@@ -25,12 +25,43 @@
 .badge{
   margin-left: auto;
   position: relative;
-  top: -10px;
-  right: -10px;
+  top: -24mm;
+  right: -17mm;
   align-self: flex-start;
-  padding: 5px 10px;
+  padding: 5px 13px;
   font-size: 16pt;
   border-radius: 50%;
-  background-color: red;
+  background-color: #CF0A0A;
   color: white;
+}
+.badge-orange{
+  margin-left: auto;
+  position: relative;
+  font-size: 16pt;
+  top: -24mm;
+  right: -17mm;
+  align-self: flex-start;
+  padding: 5px 13px;
+  border-radius: 50%;
+  background-color: #F49D1A;
+  box-shadow:0 0 0 rgba(#b5710d, 0.4) ;
+  color: white;
+  animation: pulse 2s infinite;
+}
+.name{
+  text-decoration: none;
+  color: white;
+}
+
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(#d38614, 0.4);
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 10px rgba(#d38614, 0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(#d38614, 0);
+  }
 }

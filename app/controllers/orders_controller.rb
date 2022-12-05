@@ -25,13 +25,20 @@ class OrdersController < ApplicationController
     if @order.aasm.current_state == :accepted
       @order.go_to_next_step
       @order.save
+    elsif @order.aasm.current_state == :validated
+      @order.go_to_next_step
+      @order.save
     end
     redirect_to tombstone_path(@order.tombstone)
+  end
+
+  def finish
+    @order = Order.find(params[:order_id])
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:review, :rating, :date, :progress, :user_tombstone_id)
+    params.require(:order).permit(:review, :rating, :date, :progress, :user_tombstone_id, :photo)
   end
 end
