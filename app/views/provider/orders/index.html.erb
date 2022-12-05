@@ -1,20 +1,29 @@
-<div class="container row m-auto">
-  <h1>Toutes les demandes de prestation</h1>
-  <p>Filtrer suivant ma géolocalisation </p>
+<div class="container">
+  <div class="row">
+    <%# stylessheets/componements/_card-orders.scss%>
+    <div class="container col-lg-5 mt-2"> 
+      <h1 class="text-primary">Demandes de prestation</h1>
 
-  <% @orders.each do |order| %>
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-infos">
-          <div class="infos">
-            <% user = UserTombstone.find(order.user_tombstone_id).user %>
-            <h4>Demandé par: <strong><%= user.first_name %> <%= user.last_name %></strong></h4>
-            <h6>le: <%= order.date %></h6>
-            <p>adresse: <%= order.tombstone.latitude%> <%=order.tombstone.longitude %></p>
-          </div>
-          <%= link_to "Details", provider_order_path(order), class:"btn-accept" %>
-        </div>
+        <% @orders.each do |order| %>
+            <div class="card-product">
+              <%= image_tag asset_path('avatar-fille.png') %>
+              <div class="card-infos">
+                <div class="infos">
+                  <% user = UserTombstone.find(order.user_tombstone_id).user %>
+                  <h5>Demandé par : </br><strong><%= user.first_name %> <%= user.last_name %></strong></h5>
+                  <h6>le : <%= order.date %></h6>
+                  <p>adresse : <%= order.tombstone.latitude%> <%=order.tombstone.longitude %></p>
+                </div>
+                <%= link_to "Details", provider_order_path(order), class:"btn-details" %>   
+              </div>
+            </div>
+        <% end %>
+        
       </div>
 
-  <% end %>
-</div>
+    <div class="container col-lg-5 mt-3 border">
+      <p class="text-center mt-3">Filtrer suivant ma géolocalisation</p>
+    </div>
+
+  </div>
+</div>   

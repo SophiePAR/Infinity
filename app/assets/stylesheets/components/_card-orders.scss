@@ -2,10 +2,13 @@
   overflow: hidden;
   height: 120px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background-color:aliceblue;
   display: flex;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 12px;
+  border: 5px solid aliceblue;
+  border-radius: 20px 20px 0 0;
 }
 
 .card-product img {
@@ -33,23 +36,16 @@
   display: flex;
   width: 100%;
 }
-.btn-accept{
+.btn-details{
   flex-direction: column;
   align-self: flex-end;
   margin-left: auto;
   height: 30px;
   width: 80px;
-  color: #126B9A;
-  background-color: transparent;
-  border-radius: 8px;
-  border: 1px solid #126B9A;
-  bottom: 5px;
-  left: 100%;
+  color: white;
+  background-color: #126B9A;
+  border-radius: 4px;
   text-align: center;
   text-decoration: none;
 }
-.btn-accept:hover{
-  transition: 1s;
-  color: white;
-  background-color: #126B9A;
-}
+
