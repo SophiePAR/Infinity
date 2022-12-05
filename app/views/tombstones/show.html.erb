@@ -37,7 +37,9 @@
       </div>
     </div>
   </div>
-  <div class="fil-actualité">
+  <div class="fil-actualité tombstone" data-controller="tombstone-subscription"
+  data-tombstone-subscription-tombstone-id-value="<%= @tombstone.id %>"
+  >
     <% @tombstone.orders.each do |order| %>
       <% if order.accepted? %>
         <%= simple_form_for order do |f| %>
@@ -47,16 +49,19 @@
         <%= link_to "Refuse le prestation", order_path(order), class: "btn btn-danger"  %>
       <% end %>
     <% end %>
-    <div class="message">
+    <div class="message" data-tombstone-subscription-target="messages">
       <%= simple_form_for [@tombstone, @message],
-        html: {class: "d-flex"} do |f|
+          html: { data: { action: "turbo:submit-end->tombstone-subscription#resetForm" }, class: "d-flex" } do |f|
       %>
         <%= f.input :content,
           label: false,
-          # placeholder: "Message ##{@chatroom.name}",
+          placeholder: "Message ##{@tombstone.first_name}",
           wrapper_html: {class: "flex-grow-1"}
         %>
         <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+      <% end %>
+      <% @tombstone.messages.each do |message| %>
+        <%= render 'messages/message', message: message %>
       <% end %>
     </div>
   </div>

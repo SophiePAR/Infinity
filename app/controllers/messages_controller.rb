@@ -6,7 +6,12 @@ class MessagesController < ApplicationController
     @message.tombstone = @tombstone
     @message.user = current_user
     if @message.save
-      redirect_to tombstone_path(@tombstone)
+      TombstoneChannel.broadcast_to(
+        @tombstobne,
+        render_to_string(partial: "message", locals: {message: @message})
+      )
+      head :ok
+      # redirect_to tombstone_path(@tombstone)
     else
       render "tombstobne/show", status: :unprocessable_entity
     end
