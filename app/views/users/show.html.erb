@@ -30,7 +30,9 @@
         <%= link_to "Rechercher des missions", provider_orders_path , class: "btn btn-primary provider-show" %>
         <%= link_to "Voir mes missions", my_missions_path , class: "btn btn-primary btn-mymission" %>
     </div>
-      <div class="geo-map">
+    <br>
+    <br>
+      <div class="geo-map" >
       <div style="width: 100%; height: 600px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
