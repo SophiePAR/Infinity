@@ -1,11 +1,12 @@
 .card-product {
   overflow: hidden;
-  height: 120px;
+  height: auto;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 3px 5px 6px  rgba(54, 54, 54, 0.2);
   display: flex;
   align-items: center;
   margin-top: 30px;
+  border-radius: 8px;
 }
 
 .card-product img {
@@ -33,7 +34,7 @@
   display: flex;
   width: 100%;
 }
-.btn-accept{
+.btn-details{
   flex-direction: column;
   align-self: flex-end;
   margin-left: auto;
@@ -48,8 +49,11 @@
   text-align: center;
   text-decoration: none;
 }
-.btn-accept:hover{
+.btn-details:hover{
   transition: 1s;
   color: white;
   background-color: #126B9A;
+}
+.prestation-list{
+  padding-left: 24px;
 }

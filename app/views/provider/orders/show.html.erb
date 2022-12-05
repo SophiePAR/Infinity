@@ -1,5 +1,5 @@
 <br>
-<h1>Details de la prestation</h1>
+<h1 class="title">Details de la prestation</h1>
 <div class="container">
   <div class="show-map">
     <div id="show">
@@ -13,17 +13,19 @@
             <% sum = 0 %>
             <br>
             <h5>Details des prestations :</h5>
-            <% @order.order_items.each do |order_item|%>
-              <li><%= order_item.prestation.title %> - <%= order_item.price %>,00€ <br> Details: <%= order_item.details%></li>
-              <% sum = sum + order_item.price %>
-            <% end %>
+            <ul class="prestation-list">
+              <% @order.order_items.each do |order_item|%>
+                <li><%= order_item.prestation.title %> - <%= order_item.price %>,00€ <br> Details: <%= order_item.details%></li>
+                <% sum = sum + order_item.price %>
+              <% end %>
+            </ul>
           </div>
           <div class="total">
              <h5>Total: <strong><%= sum %>,00€</strong></h5>
              <br>
               <%= simple_form_for [:provider, @order] do |f| %>
                 <%= f.input :progress, value: 'pending', as: :hidden %>
-                <%= f.button :submit, "Accepter", class: "btn btn-primary" %>
+                <%= f.button :submit, "Accepter", class: "btn btn-primary btn-accept" %>
               <% end %>
           </div>
         </div>

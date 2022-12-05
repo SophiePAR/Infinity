@@ -1,20 +1,29 @@
 <div class="container row m-auto">
   <h1>Toutes les demandes de prestation</h1>
   <p>Filtrer suivant ma géolocalisation </p>
-
-  <% @orders.each do |order| %>
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-infos">
-          <div class="infos">
-            <% user = UserTombstone.find(order.user_tombstone_id).user %>
-            <h4>Demandé par: <strong><%= user.first_name %> <%= user.last_name %></strong></h4>
-            <h6>le: <%= order.date %></h6>
-            <p>adresse: <%= order.tombstone.latitude%> <%=order.tombstone.longitude %></p>
+  <div class="provaider">
+    <div class="prestations">
+      <% @orders.each do |order| %>
+          <div class="card-product">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div class="card-infos">
+              <div class="infos">
+                <% user = UserTombstone.find(order.user_tombstone_id).user %>
+                <h4>Demandé par: <strong><%= user.first_name %> <%= user.last_name %></strong></h4>
+                <h6>le: <%= order.date %></h6>
+                <p>adresse: <%= order.tombstone.latitude%> <%=order.tombstone.longitude %></p>
+                <ul class="prestation-list">
+                  <% order.order_items.each do |item| %>
+                    <li><%= item.prestation.title %></li>
+                  <% end %>
+                </ul>
+              </div>
+              <%= link_to "Details", provider_order_path(order), class:"btn-details" %>
+            </div>
           </div>
-          <%= link_to "Details", provider_order_path(order), class:"btn-accept" %>
-        </div>
-      </div>
-
-  <% end %>
+      <% end %>
+    </div>
+    <div class="map">
+    </div>
+  </div>
 </div>
