@@ -12,6 +12,7 @@ class TombstonesController < ApplicationController
 
   def create
     @tombstone = Tombstone.new(tombstone_params)
+
     if @tombstone.save
       UserTombstone.create(user: current_user, tombstone: @tombstone)
       redirect_to user_path(current_user)
