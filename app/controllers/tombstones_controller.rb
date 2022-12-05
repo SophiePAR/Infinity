@@ -8,15 +8,11 @@ class TombstonesController < ApplicationController
 
   def new
     @tombstone = Tombstone.new
-    # @marker = @tombstone.geocoded.map {
-    #     lat: tombstone.latitude,
-    #     lng: tombstone.longitude
-    #   }
-    # end
   end
 
   def create
     @tombstone = Tombstone.new(tombstone_params)
+
     if @tombstone.save
       UserTombstone.create(user: current_user, tombstone: @tombstone)
       redirect_to user_path(current_user)

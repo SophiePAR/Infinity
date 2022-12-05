@@ -5,6 +5,14 @@ class Provider::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+
+    @tombstonesmap = Tombstone.all
+    @markers = @tombstonesmap.map do |tombstonemap|
+      {
+        lat: tombstonemap.latitude,
+        lng: tombstonemap.longitude
+      }
+    end
   end
 
   def update

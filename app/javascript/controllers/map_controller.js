@@ -8,6 +8,11 @@ export default class extends Controller {
     markers: Array || null
   }
 
+  static targets = [
+    "long",
+    "lat"
+  ]
+
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
@@ -19,15 +24,11 @@ export default class extends Controller {
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl }))
 
-    console.log(this.markersValue)
     if (this.markersValue.length > 0){
     this.addMarkersToMap()
     this.fitMapToMarkers()
-
     }
-    // this.MapMouseEvent()
   }
-
 
   addMarkersToMap() {
     this.markersValue.forEach((marker) => {
@@ -44,10 +45,18 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
-  clickmap(e) {
-    // const map = new mapboxgl.Map({});
-    console.log(this.e)
-    console.log(`A click event has occurred at ${e.lngLat}`);
+  clickmap() {
+    this.map.on('click', (e) => {
+
+    this.longTarget.value = parseFloat(e.lngLat.lng)
+    this.latTarget.value = parseFloat(e.lngLat.lat)
+
+    console.log([ parseFloat(e.lngLat.lng), parseFloat(e.lngLat.lat) ])
+    new mapboxgl.Marker()
+        .setLngLat([ parseFloat(e.lngLat.lng) , parseFloat(e.lngLat.lat) ])
+        .addTo(this.map)
+    })
+
 
   }
 }
