@@ -20,10 +20,10 @@
   </div>
   <div class="text-center">
     <div class="mb-3">
-      <%= simple_form_for [@tombstone, @order] do |f| %>
-        <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id}, as: :hidden  %>
-        <%= f.submit "Ajouter une nouvelle prestation", class: "btn btn-primary px-5 py-3" %>
-      <% end %>
+      <%# <%= simple_form_for [@tombstone, @order] do |f| %> %>
+        <%# <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id}, as: :hidden  %> %>
+        <%# <%= f.submit "Ajouter une nouvelle prestation", class: "btn btn-primary px-5 py-3" %> %>
+      <%# <% end %> %>
     </div>
       <div class="meteo">
         <h3>Météo sur place</h3>
@@ -55,7 +55,7 @@
       %>
         <%= f.input :content,
           label: false,
-          placeholder: "Message ##{@tombstone.first_name}",
+          placeholder: "Ecrire un nouveau message",
           wrapper_html: {class: "flex-grow-1"}
         %>
         <%= f.submit "Send", class: "btn btn-primary mb-3" %>
