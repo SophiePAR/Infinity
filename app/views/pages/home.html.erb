@@ -45,19 +45,80 @@
   </div>
   <div class="card-clients">
     <h1 style="text-align: center">Nous clients</h1>
-    <div class="cards-client">
-      <div class="card-client">
-        <h5 class="card-client-title">Special title treatment</h5>
-        <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="cards-client">
+        <div class="card-client">
+          <h5 class="rating">4,9 <i class="fa-solid fa-star"></i></h5><br><br><br>
+          <div class="text">
+            <%= image_tag asset_path('user.png'), class: "avatar" %>
+            <h5 class="card-client-title">Alex</h5>
+          </div>
+          <br>
+            <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+        <div class="card-client">
+          <h5 class="rating">4,5 <i class="fa-solid fa-star"></i></h5><br><br><br>
+          <div class="text">
+            <%= image_tag asset_path('user.png'), class: "avatar" %>
+            <h5 class="card-client-title">Sophie</h5>
+          </div>
+          <br>
+            <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+        <div class="card-client">
+          <h5 class="rating">4,8 <i class="fa-solid fa-star"></i></h5><br><br><br>
+          <div class="text">
+            <%= image_tag asset_path('user.png'), class: "avatar" %>
+            <h5 class="card-client-title">Franci</h5>
+          </div>
+          <br>
+            <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
       </div>
-      <div class="card-client">
-        <h5 class="card-client-title">Special title treatment</h5>
-        <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
-      </div>
-      <div class="card-client">
-        <h5 class="card-client-title">Special title treatment</h5>
-        <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+    </div>
+    <div class="carousel-item active">
+      <div class="cards-client">
+        <div class="card-client">
+          <h5 class="rating">4,6 <i class="fa-solid fa-star"></i></h5><br><br><br>
+          <div class="text">
+            <%= image_tag asset_path('user.png'), class: "avatar" %>
+            <h5 class="card-client-title">Alex</h5>
+          </div>
+          <br>
+            <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+        <div class="card-client">
+          <h5 class="rating">5 <i class="fa-solid fa-star"></i></h5><br><br><br>
+          <div class="text">
+            <%= image_tag asset_path('user.png'), class: "avatar" %>
+            <h5 class="card-client-title">Sophie</h5>
+          </div>
+          <br>
+            <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+        <div class="card-client">
+          <h5 class="rating">4,9 <i class="fa-solid fa-star"></i></h5><br><br><br>
+          <div class="text">
+            <%= image_tag asset_path('user.png'), class: "avatar" %>
+            <h5 class="card-client-title">Franci</h5>
+          </div>
+          <br>
+            <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
       </div>
     </div>
   </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 </div>
