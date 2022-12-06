@@ -1,13 +1,15 @@
 class Provider::OrdersController < ApplicationController
   def index
     @orders = Order.where(progress: "pending")
-    @orders.each do |order|
-      @markers = order.tombstone
-      {
-        lat: order.tombstone.latitude,
-        lng: order.tombstone.longitude
-      }
+    @tombstones = @orders.map do |order|
+      order.tombstone
     end
+      @markers = @tombstones.map do |tomb|
+        {
+          lat: tomb.latitude,
+          lng: tomb.longitude
+        }
+      end
   end
 
   def show
