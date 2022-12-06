@@ -8,22 +8,23 @@ export default class extends Controller {
 
 
   connect() {
+    console.log('ok')
     this.channel = createConsumer().subscriptions.create(
       { channel: "TombstoneChannel", id: this.tombstoneIdValue },
-      { received: data => this.messagesTarget.insertAdjacentHTML("beforeend", data)
+      {
+        received: data => this.#insertMessageAndScrollDown(data),
       }
     )
 
-    console.log(`Subscribed to the tombstone with the id ${this.tombstoneIdValue}.`)
-    console.log('hello');
+  }
 
-  //   resetForm(event) {
-  //     event.target.reset()
-  //   }
+  #insertMessageAndScrollDown(data) {
+    this.messagesTarget.insertAdjacentHTML("beforeend", data)
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+  }
 
-  //   #insertMessageAndScrollDown(data) {
-  //     this.messagesTarget.insertAdjacentHTML("beforeend", data)
-  //     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
-  //   }
+
+  resetForm(event) {
+    event.target.reset()
   }
 }

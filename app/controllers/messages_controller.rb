@@ -7,8 +7,8 @@ class MessagesController < ApplicationController
     @message.user = current_user
     if @message.save
       TombstoneChannel.broadcast_to(
-        @tombstobne,
-        render_to_string(partial: "message", locals: { message: @message })
+        @tombstone,
+        render_to_string(partial: "messages/message", locals: { message: @message })
       )
       head :ok
     else

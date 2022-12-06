@@ -1,7 +1,7 @@
 class TombstoneChannel < ApplicationCable::Channel
   def subscribed
-    tombstobne = Tombstone.find(params[:id])
-    stream_for tombstobne
+    tombstone = Tombstone.find(params[:id])
+    stream_for tombstone
   end
 
   def unsubscribed
