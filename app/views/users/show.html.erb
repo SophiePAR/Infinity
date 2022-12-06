@@ -13,11 +13,11 @@
             <div class="card-category">
               <%= link_to tombstone.first_name, tombstone_path(tombstone), class: "name" %><%= link_to tombstone.last_name , tombstone_path(tombstone),class:"name" %>
 
-              <%# <% if tombstone.photo.key?%>
-              <%# <%= cl_image_tag tombstone.photo.key, height: 300, width: 200, crop: :fill %>
-              <%# <% else %>
-                <%# <%= image_tag asset_path('tombstone.png'), height: 300, width: 400 %>
-              <%# <% end  %>
+              <% if tombstone.photo.key?%>
+              <%= cl_image_tag tombstone.photo.key, height: 300, width: 200, crop: :fill %>
+              <% else %>
+               <%= image_tag asset_path('tombstone.png'), height: 300, width: 400 %>
+              <% end  %>
 
                 <% if tombstone.orders.where(:progress => [:pending, :accepted, :validated, :finished]).count == 0 %>
                   <div class="batg", style="visibility:hiden"></div>
