@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { createConsumer } from "@rails/actioncable"
 
 // Connects to data-controller="tombstone-subscription"
 export default class extends Controller {
@@ -7,23 +8,23 @@ export default class extends Controller {
 
 
   connect() {
+    console.log('ok')
     this.channel = createConsumer().subscriptions.create(
-      { channel: "tombstoneChannel", id: this.tombstoneIdValue },
-      { received: data =>
-        this.#insertMessageAndScrollDown(data)
+      { channel: "TombstoneChannel", id: this.tombstoneIdValue },
+      {
+        received: data => this.#insertMessageAndScrollDown(data),
       }
-
     )
-    console.log(`Subscribed to the tombstone with the id ${this.tombstoneIdValue}.`)
-    console.log('hello');
 
-    resetForm(event) {
-      event.target.reset()
-    }
+  }
 
-    #insertMessageAndScrollDown(data) {
-      this.messagesTarget.insertAdjacentHTML("beforeend", data)
-      this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
-    }
+  #insertMessageAndScrollDown(data) {
+    this.messagesTarget.insertAdjacentHTML("beforeend", data)
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+  }
+
+
+  resetForm(event) {
+    event.target.reset()
   }
 }

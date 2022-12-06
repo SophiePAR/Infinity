@@ -7,10 +7,11 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quod non error eum nostrum? Id sequi modi voluptatem, harum optio expedita illo quo facere, neque at nam delectus nesciunt aut.</p>
       </div>
       <div class="tombstone-cards">
-        <h2>Mes sépulture</h2>
+        <h2>Mes sépultures</h2>
         <div class="cards">
           <% @tombstones.each do |tombstone| %>
-            <% if tombstone.photo.attached? %>
+
+            <<% if tombstone.photo.attached? %>
               <% image = cl_image_path tombstone.photo.key, height: 300, crop: :fill %>
             <% else %>
 
@@ -19,27 +20,21 @@
 
         <div class="card-category"       
   style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image %>')"
->
+  >
               <%= link_to tombstone.first_name, tombstone_path(tombstone), class: "name-card" %>
               <%= link_to tombstone.last_name , tombstone_path(tombstone),class:"name-card" %>
-             
-          
-            
 
-
-
-
-
-
-
-
-                <div class="batg">
-                  <% if tombstone.orders.where(:progress => :accepted).count == 0 %>
-                    <p data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" Vous avez <%= tombstone.orders.where(:progress => [:pending, :accepted, :validated]).count  %> notifications:" class="badge"><%= tombstone.orders.where(:progress => [:pending, :accepted, :validated]).count %></p>
-                  <% elsif tombstone.orders.where(:progress => :accepted).count != 0 %>
-                    <p data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" Vous avez <%= tombstone.orders.where(:progress => [:pending, :accepted, :validated]).count  %> notifications:" class="badge-orange"><%= tombstone.orders.where(:progress => [:pending, :accepted, :validated]).count %></p>
-                  <% end %> 
-                </div>  
+                <% if tombstone.orders.where(:progress => [:pending, :accepted, :validated, :finished]).count == 0 %>
+                  <div class="batg", style="visibility:hiden"></div>
+                <% else %>
+                  <div class="batg">
+                    <% if tombstone.orders.where(:progress => :accepted).count == 0 %>
+                      <p data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" Vous avez <%= tombstone.orders.where(:progress => [:pending, :accepted, :validated]).count  %> notifications:" class="badge"><%= tombstone.orders.where(:progress => [:pending, :accepted, :validated]).count %></p>
+                    <% elsif tombstone.orders.where(:progress => :accepted).count != 0 %>
+                      <p data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" Vous avez <%= tombstone.orders.where(:progress => [:pending, :accepted, :validated]).count  %> notifications:" class="badge-orange"><%= tombstone.orders.where(:progress => [:pending, :accepted, :validated]).count %></p>
+                    <% end %>
+                  </div>
+                <% end %>
             </div>
             <% end %> 
           <p class="add-tomb"><%= link_to "Ajouter une sépulture", new_tombstone_path, class: "btn btn-primary" %></p>

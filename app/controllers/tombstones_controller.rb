@@ -10,6 +10,11 @@ class TombstonesController < ApplicationController
     res = Net::HTTP.get_response(uri)
     @data = JSON.parse(res.body)
     @message = Message.new
+    @markers = []
+    @markers << {
+          lat: @tombstone.latitude,
+          lng: @tombstone.longitude
+    }
   end
 
   def new
