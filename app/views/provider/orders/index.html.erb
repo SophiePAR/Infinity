@@ -13,7 +13,7 @@
                   <% user = UserTombstone.find(order.user_tombstone_id).user %>
 
                   <h5>Mise en ligne par : <br><strong><%= user.first_name %> <%= user.last_name %></strong></h5>
-                  <a>Le <%= order.created_at.strftime("%d %B %Y") %> </a>
+                  <p>Date d'intervention désirée le <strong><%= order.date.strftime('%d %B %Y') %></strong></p>
                   <p>adresse : <%= order.tombstone.latitude%> <%=order.tombstone.longitude %></p>
                 </div>
 

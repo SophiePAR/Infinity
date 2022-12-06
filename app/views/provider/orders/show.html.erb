@@ -11,10 +11,8 @@
           <div class="infos">
             <% user = UserTombstone.find(@order.user_tombstone_id).user %>
             <h4>Commande effectuée par : <strong><%= user.first_name %> <%= user.last_name %></strong></h4>
-            <a>le <%= @order.date.strftime("%d %B %Y") %> </a>
+            <p>Date d'intervention désirée le <strong><%= @order.date.strftime('%d %B %Y') %></strong></p>
             <% sum = 0 %>
-
-
               <h5 class="text-primary mt-3">Details des prestations :</h5>
               <ul class="prestation-list">
                 <% @order.order_items.each do |order_item|%>
