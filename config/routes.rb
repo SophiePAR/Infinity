@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   get 'pages/about', to: 'pages#about'
   get 'my_missions', to: 'users#my_missions'
+  resources :users, except: [:new, :create]
 end

@@ -28,12 +28,12 @@
       <div class="meteo">
         <h3>Météo sur place</h3>
           <p><%= Date.today.strftime("%d %B %Y") %></p>
-            <%# <img src="http://openweathermap.org/img/wn/<%=  @data["weather"].first["icon"] %>@2x.png" alt=""> %>
+            <img src="http://openweathermap.org/img/wn/<%=  @data["weather"].first["icon"] %>@2x.png" alt="">
             <div class="meteo-card">
-              <%# <p><%= @data["weather"].first["description"] %></p> %>
-              <%# <p>Température : <%= @data["main"]["temp"].round(1) %> °c</p> %>
-              <%# <p>Ressenti : <%= @data["main"]["feels_like"].round(1) %> °c</p> %>
-              <%# <p>Ville : <%= @data["name"] %></p> %>
+              <p><%= @data["weather"].first["description"] %></p>
+              <p>Température : <%= @data["main"]["temp"].round(1) %> °c</p>
+              <p>Ressenti : <%= @data["main"]["feels_like"].round(1) %> °c</p>
+              <p>Ville : <%= @data["name"] %></p>
       </div>
     </div>
   </div>
