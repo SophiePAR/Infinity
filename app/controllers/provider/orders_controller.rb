@@ -14,6 +14,11 @@ class Provider::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @markers = []
+    @markers << {
+          lat: @order.tombstone.latitude,
+          lng: @order.tombstone.longitude
+        }
   end
 
   def update

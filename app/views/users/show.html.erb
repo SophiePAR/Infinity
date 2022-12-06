@@ -11,16 +11,14 @@
         <div class="cards">
           <% @tombstones.each do |tombstone| %>
 
-            <<% if tombstone.photo.attached? %>
+            <% if tombstone.photo.attached? %>
               <% image = cl_image_path tombstone.photo.key, height: 300, crop: :fill %>
             <% else %>
 
               <% image = asset_path('tombstone.png') %>
             <% end %>
 
-        <div class="card-category"       
-  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image %>')"
-  >
+        <div class="card-category", style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image %>')">
               <%= link_to tombstone.first_name, tombstone_path(tombstone), class: "name-card" %>
               <%= link_to tombstone.last_name , tombstone_path(tombstone),class:"name-card" %>
 
@@ -36,7 +34,7 @@
                   </div>
                 <% end %>
             </div>
-            <% end %> 
+            <% end %>
           <p class="add-tomb"><%= link_to "Ajouter une sépulture", new_tombstone_path, class: "btn btn-primary" %></p>
         </div>
       </div>
