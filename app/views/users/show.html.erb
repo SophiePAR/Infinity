@@ -10,8 +10,15 @@
         <h2>Mes sépulture</h2>
         <div class="cards">
           <% @tombstones.each do |tombstone| %>
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+            <div class="card-category">
               <%= link_to tombstone.first_name, tombstone_path(tombstone), class: "name" %><%= link_to tombstone.last_name , tombstone_path(tombstone),class:"name" %>
+
+               <% if tombstone.photo.key?%>
+              <%= cl_image_tag tombstone.photo.key, height: 300, width: 200, crop: :fill %>
+              <% else %> 
+                <%= image_tag asset_path('tombstone.png'), height: 300, width: 400 %>
+              <% end %> 
+               
                 <% if tombstone.orders.where(:progress => [:pending, :accepted, :validated, :finished]).count == 0 %>
                   <div class="batg", style="visibility:hiden"></div>
                 <% else %>
@@ -23,6 +30,7 @@
                     <% end %>
                   </div>
                 <% end %>
+
             </div>
           <% end %>
           <p class="add-tomb"><%= link_to "Ajouter une sépulture", new_tombstone_path, class: "btn btn-primary" %></p>
