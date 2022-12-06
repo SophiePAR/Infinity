@@ -7,8 +7,13 @@
 .card{
   padding: 40px;
   align-self: center;
+  align-items: center;
   width: 100%;
   border: 0px;
+}
+.image-home{
+width: 200px;
+height: 200px;
 }
 .col{
   padding-top: 40px;
@@ -24,9 +29,9 @@
 }
 .badge{
   margin-left: auto;
-  position: relative;
-  top: -24mm;
-  right: -17mm;
+  position: absolute;
+  top: -15px;
+  right: -15px;
   align-self: flex-start;
   padding: 5px 13px;
   font-size: 16pt;
@@ -36,10 +41,10 @@
 }
 .badge-orange{
   margin-left: auto;
-  position: relative;
+  position: absolute;
   font-size: 16pt;
-  top: -24mm;
-  right: -17mm;
+  top: -15px;
+  right: -15px;
   align-self: flex-start;
   padding: 5px 13px;
   border-radius: 50%;
@@ -64,4 +69,37 @@
   100% {
       -webkit-box-shadow: 0 0 0 0 rgba(#d38614, 0);
   }
+}
+.cards-client{
+  display: flex;
+  justify-content: space-evenly;
+}
+.card-client{
+  position: relative;
+  background: rgba(18, 107, 154, 0.7);
+  width: 250px;
+  height: 300px;
+  border-radius: 16px;
+  border: 2px solid gray;
+  padding: 16px;
+  box-shadow: 3px 3px 3px gray;
+  margin-bottom: 16px;
+  color: white;
+}
+.rating{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 8px ;
+}
+.card-client-title{
+  align-items: center;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+.fa-star{
+  color: yellow;
+}
+.text{
+  display: flex;
 }

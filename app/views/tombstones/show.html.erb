@@ -37,6 +37,13 @@
       </div>
     </div>
   </div>
+  <div class="geo-map" >
+      <div style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+  </div>
   <div class="fil-actualité tombstone" data-controller="tombstone-subscription"
   data-tombstone-subscription-tombstone-id-value="<%= @tombstone.id %>"
   >
@@ -81,11 +88,15 @@
     <div class="order-statut m-1">
       <h3>Prestations en cours:</h3>
         <% @tombstone.orders.each do |order| %>
-          <h5>Commande du : <%= link_to order.created_at.strftime("%d %B %Y"), order_path(order) %></h5>
+          <h5>Commande du : <%= link_to order.created_at.strftime("%d %B %Y"), order_path(order)%></h5>
             <% @user = UserTombstone.find(order.user_tombstone_id).user %>
               <p>Faite par <strong><%= @user.first_name %> <%= @user.last_name  %></strong></p>
+              <p>Date d'intervention <strong><%= order.date.strftime('%d %B %Y') %></strong></p>
               <p>Statut: <%= order.progress %></p>
               <p>note : <%= order.rating %> <%= order.review %></p>
+              <% if order.photo.key? %>
+                <%= cl_image_tag order.photo.key, crop: :fill %>
+              <% end %>
         <% end %>
     </div>
   </div>

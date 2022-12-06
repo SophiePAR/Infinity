@@ -1,17 +1,24 @@
 class Provider::OrdersController < ApplicationController
   def index
     @orders = Order.where(progress: "pending")
-    @tombstonesmap = Tombstone.all
-    @markers = @tombstonesmap.map do |tombstonemap|
-      {
-        lat: tombstonemap.latitude,
-        lng: tombstonemap.longitude
-      }
+    @tombstones = @orders.map do |order|
+      order.tombstone
     end
+      @markers = @tombstones.map do |tomb|
+        {
+          lat: tomb.latitude,
+          lng: tomb.longitude
+        }
+      end
   end
 
   def show
     @order = Order.find(params[:id])
+    @markers = []
+    @markers << {
+          lat: @order.tombstone.latitude,
+          lng: @order.tombstone.longitude
+        }
   end
 
   def update

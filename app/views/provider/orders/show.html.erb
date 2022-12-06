@@ -11,10 +11,8 @@
           <div class="infos">
             <% user = UserTombstone.find(@order.user_tombstone_id).user %>
             <h4>Commande effectuée par : <strong><%= user.first_name %> <%= user.last_name %></strong></h4>
-            <a>le <%= @order.date.strftime("%d %B %Y") %> </a>
+            <p>Date d'intervention désirée le <strong><%= @order.date.strftime('%d %B %Y') %></strong></p>
             <% sum = 0 %>
-
-
               <h5 class="text-primary mt-3">Details des prestations :</h5>
               <ul class="prestation-list">
                 <% @order.order_items.each do |order_item|%>
@@ -51,5 +49,11 @@
     </div>
 
     <div class="container col-lg-5 mt-3 border">
-      <p class="text-center mt-3">géolocalisation de la sépulture</p>
-    </div>
+          <p class="text-center mt-3"></p>
+            <div style="width: 100%; height: 600px; border: 1px solid; margin-bottom: 10px;"
+              data-controller="map"
+              data-map-markers-value="<%= @markers.to_json %>"
+              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
+          </div>
+      </div>
