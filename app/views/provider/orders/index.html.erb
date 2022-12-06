@@ -23,19 +23,15 @@
               </div>
             </div>
         <% end %>
-
+    </div>
       <div class="container col-lg-5 mt-3 border">
           <p class="text-center mt-3">Filtrer suivant ma géolocalisation</p>
-          <br>
-          <div class="geo-map">
-          <div style="width: 100%; height: 600px;"
-            data-controller="map"
-            data-map-markers-value="<%= @markers.to_json %>"
-            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            <div style="width: 100%; height: 600px; border: 1px solid; margin-bottom: 10px;"
+              data-controller="map"
+              data-map-markers-value="<%= @markers.to_json %>"
+              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
           </div>
       </div>
-      </div>
-
-    </div>
   </div>
 </div>
