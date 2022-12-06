@@ -11,7 +11,7 @@
           <div class="infos">
             <% user = UserTombstone.find(@order.user_tombstone_id).user %>
             <h4>Commande effectuée par : <strong><%= user.first_name %> <%= user.last_name %></strong></h4>
-            <a>le <%= @order.date %> </a>
+            <a>le <%= @order.date.strftime("%d %B %Y") %> </a>
             <% sum = 0 %>
 
 
@@ -25,7 +25,7 @@
                     <% end %>
                   </li>
                   <% sum = sum + order_item.price %>
-                <% end %>      
+                <% end %>
               </ul>
 
             <h5>Total de la prestation : <strong><%= sum %>,00€</strong></h5>
@@ -33,7 +33,7 @@
               <%= f.input :progress, value: 'pending', as: :hidden %>
               <%= f.button :submit, "Accepter", class: "btn btn-primary btn-accept" %><%= link_to "Retour", :back, class: "btn btn-danger btn-accept ms-2" %>
             <% end %>
-            <div class="info-tombe border p-2 mt-4 text-center">     
+            <div class="info-tombe border p-2 mt-4 text-center">
               <h4 class="text-center m-2">Informations sur la tombe</h4>
               <h4><%= @order.tombstone.first_name %> <%= @order.tombstone.last_name %></h4>
               <a><%= @order.tombstone.birth_date.strftime('%d/%m/%Y') %> - <%= @order.tombstone.death_date.strftime('%d/%m/%Y') %></a>
@@ -53,5 +53,3 @@
     <div class="container col-lg-5 mt-3 border">
       <p class="text-center mt-3">géolocalisation de la sépulture</p>
     </div>
-
-
