@@ -29,11 +29,11 @@ height: 200px;
 }
 .badge{
   margin-left: auto;
-  position: absolute;
+  position: relative;
   top: -15px;
   right: -15px;
   align-self: flex-start;
-  padding: 5px 13px;
+  padding: 10px 14px;
   font-size: 16pt;
   border-radius: 50%;
   background-color: #CF0A0A;
@@ -41,12 +41,13 @@ height: 200px;
 }
 .badge-orange{
   margin-left: auto;
-  position: absolute;
-  font-size: 16pt;
+  position: relative;
   top: -15px;
   right: -15px;
   align-self: flex-start;
-  padding: 5px 13px;
+  padding: 5px 14px;
+  font-size: 16pt;
+  font-weight: bold;
   border-radius: 50%;
   background-color: #F49D1A;
   box-shadow:0 0 0 rgba(#b5710d, 0.4) ;
