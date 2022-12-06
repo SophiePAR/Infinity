@@ -10,22 +10,38 @@
         <h2>Mes sépulture</h2>
         <div class="cards">
           <% @tombstones.each do |tombstone| %>
-            <div class="card-category">
-              <%= link_to tombstone.first_name, tombstone_path(tombstone), class: "name" %><%= link_to tombstone.last_name , tombstone_path(tombstone),class:"name" %>
-                          <% if tombstone.photo.key?%>
-              <%= cl_image_tag tombstone.photo.key, height: 300, width: 200, crop: :fill %>
-            <% else %> 
-              <%= image_tag asset_path('tombstone.png'), height: 300, width: 400 %>
-            <% end %> 
+            <% if tombstone.photo.attached? %>
+              <% image = cl_image_path tombstone.photo.key, height: 300, crop: :fill %>
+            <% else %>
+
+              <% image = asset_path('tombstone.png') %>
+            <% end %>
+
+        <div class="card-category"       
+  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image %>')"
+>
+              <%= link_to tombstone.first_name, tombstone_path(tombstone), class: "name-card" %>
+              <%= link_to tombstone.last_name , tombstone_path(tombstone),class:"name-card" %>
+             
+          
+            
+
+
+
+
+
+
+
+
                 <div class="batg">
                   <% if tombstone.orders.where(:progress => :accepted).count == 0 %>
                     <p data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" Vous avez <%= tombstone.orders.where(:progress => [:pending, :accepted, :validated]).count  %> notifications:" class="badge"><%= tombstone.orders.where(:progress => [:pending, :accepted, :validated]).count %></p>
                   <% elsif tombstone.orders.where(:progress => :accepted).count != 0 %>
                     <p data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" Vous avez <%= tombstone.orders.where(:progress => [:pending, :accepted, :validated]).count  %> notifications:" class="badge-orange"><%= tombstone.orders.where(:progress => [:pending, :accepted, :validated]).count %></p>
-                  <% end %>
-                </div>
+                  <% end %> 
+                </div>  
             </div>
-          <% end %>
+            <% end %> 
           <p class="add-tomb"><%= link_to "Ajouter une sépulture", new_tombstone_path, class: "btn btn-primary" %></p>
         </div>
       </div>
