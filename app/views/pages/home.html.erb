@@ -17,10 +17,10 @@
 </div>
 
 <div class="container">
-   <div class="row">
+  <div class="row">
     <div class="col col-lg-4 col-md-6 col-sm-12">
       <div class="card" >
-         <%= image_tag asset_path('proche.png') %>
+         <%= image_tag asset_path('proche.png'), class: "image-home" %>
         <div class="card-body">
           <p class="card-text">Suivez l'actualité des tombes des défunts avec vos proches</p>
         </div>
@@ -28,7 +28,7 @@
     </div>
     <div class="col col-lg-4 col-md-6 col-sm-12">
       <div class="card"  >
-         <%= image_tag asset_path('arrose-les-plantes.png') %>
+         <%= image_tag asset_path('arrose-les-plantes.png'), class: "image-home" %>
         <div class="card-body">
           <p class="card-text">Commandez des prestations à distance : entretien, dépose de fleurs, arrosage, demandes particulières</p>
         </div>
@@ -36,11 +36,27 @@
     </div>
     <div class="col col-lg-4 col-md-6 col-sm-12">
       <div class="card" >
-        <%= image_tag asset_path('calme.png')%>
-        </div>
+        <%= image_tag asset_path('calme.png'), class: "image-home"%>
         <div class="card-body">
           <p class="card-text">Offrez de la serenité en devenant prestataire à votre tour</p>
-        <%# </div> %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-clients">
+    <h1 style="text-align: center">Nous clients</h1>
+    <div class="cards-client">
+      <div class="card-client">
+        <h5 class="card-client-title">Special title treatment</h5>
+        <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+      </div>
+      <div class="card-client">
+        <h5 class="card-client-title">Special title treatment</h5>
+        <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+      </div>
+      <div class="card-client">
+        <h5 class="card-client-title">Special title treatment</h5>
+        <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
       </div>
     </div>
   </div>
