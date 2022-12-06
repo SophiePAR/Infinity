@@ -81,6 +81,9 @@
               <p>Faite par <strong><%= @user.first_name %> <%= @user.last_name  %></strong></p>
               <p>Statut: <%= order.progress %></p>
               <p>note : <%= order.rating %> <%= order.review %></p>
+              <% if order.photo.key? %>
+                <%= cl_image_tag order.photo.key, crop: :fill %>
+              <% end %>
         <% end %>
     </div>
   </div>
