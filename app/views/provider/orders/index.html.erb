@@ -16,16 +16,16 @@
                   <a>le <%= order.date %> </a>
                   <p>adresse : <%= order.tombstone.latitude%> <%=order.tombstone.longitude %></p>
                 </div>
-                
 
-                <%= link_to "Details", provider_order_path(order), class:"btn-details" %>   
+
+                <%= link_to "Details", provider_order_path(order), class:"btn-details" %>
 
               </div>
             </div>
         <% end %>
     </div>
       <div class="container col-lg-5 mt-3 border">
-          <p class="text-center mt-3">Filtrer suivant ma géolocalisation</p>
+          <p class="text-center mt-3"></p>
             <div style="width: 100%; height: 600px; border: 1px solid; margin-bottom: 10px;"
               data-controller="map"
               data-map-markers-value="<%= @markers.to_json %>"
