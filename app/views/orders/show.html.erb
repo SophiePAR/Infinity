@@ -11,6 +11,7 @@
   <%= f.input :prestation_id, as: :select, collection: @prestations = Prestation.all,label: 'Prestation *' %>
   <%= f.input :details, label: 'Détails (donnez nous des précisions)' %>
   <%= f.input :price, label: 'Prix de la prestation' %>
+
   <%= f.button :submit, "Valider cette prestation", class: "btn btn-primary" %>
 <% end %>
 <br>
@@ -42,6 +43,11 @@
 
   <%= simple_form_for @order do |f| %>
   <%= f.input :progress, value: 'pending', as: :hidden %>
+
+  <div class="col">
+    <%= f.input :date, as: :string, label: "Date d'intervention souhaitée",
+                input_html: { data: { controller: "flatpickr" } } %>
+  </div>
   <%= f.button :submit, "Valider la selection", class: "btn btn-primary" %>
   <%= button_to "Annuler", @order, class: "btn btn-warning", method: :create %>
 <% end %>
