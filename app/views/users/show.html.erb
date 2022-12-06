@@ -15,7 +15,7 @@
               <% image = cl_image_path tombstone.photo.key, height: 300, crop: :fill %>
             <% else %>
 
-              <% image = asset_path('tombstone.png') %>
+              <% image = image_tag asset_path('tombstone.png') %>
             <% end %>
 
         <div class="card-category", style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image %>')">
