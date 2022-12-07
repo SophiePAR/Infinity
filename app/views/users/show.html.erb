@@ -16,7 +16,7 @@
             <% end %>
             <%= link_to tombstone_path(tombstone) do %>
 
-              <div class="card-category ", style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url('<%= image %>'); background-size: cover; background-position: center">
+              <div class="card-category " style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url('<%= image %>'); background-size: cover; background-position: center">
                 <%# -----badge notification-----  %>
                 <% if tombstone.orders.where(:progress => [:pending, :accepted, :validated, :finished]).count == 0 %>
                   <div class="batg" style="visibility:hiden">
@@ -42,7 +42,7 @@
         </div>
  
     <div class="container col-4">
-            <div class="container-btn mt-3" style="background-color: Ivory; border: 2px solid #FFFACD; padding: 50px; border-radius: 16px">
+            <div class="container-btn mt-3" style="background-color: AliceBlue; padding: 50px; border-radius: 16px">
           <%= link_to "Rechercher des missions", provider_orders_path , class:"btn btn-primary w-100 m-2" %>
           
           <%= link_to "Voir mes missions", my_missions_path , class: "btn btn-info w-70 w-100 m-2" %>
