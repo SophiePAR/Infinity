@@ -1,51 +1,4 @@
-.meteo {
-  background-color: #daedf7;
-}
 
-.tomb-info {
-  margin-bottom: 40px;
-  .back-btn {
-    padding-left: 140px;
-  }
-}
-
-
-.my-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  // grid-template-rows: 1fr 1fr 1fr;
-  gap: 5px 5px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "photo info meteo"
-    "fil-actualité fil-actualité membre-de-la-famille"
-    "fil-actualité fil-actualité prestation-en-cours";
-}
-
-.photo {
-  grid-area: photo;
-}
-
-.info {
-  grid-area: info;
-  display: block;
-}
-
-.meteo {
-  grid-area: meteo;
-}
-
-.fil-actualité {
-  grid-area: fil-actualité;
-}
-
-.membre-de-la-famille {
-  grid-area: membre-de-la-famille;
-}
-
-.prestation-en-cours {
-  grid-area: prestation-en-cours;
-}
 // -----------------------------------------------------------------------------
 .level-one{
   display: flex;
@@ -67,6 +20,18 @@ border-top-right-radius: 8px;
 border-bottom-right-radius: 8px ;
 width: 40%;
 height: 420px;
+}
+.btn-add-prest
+{
+  background-color: #F9DA56;
+  border-radius: 16px;
+  font-weight: 900;
+}
+.btn-add-prest:hover
+{
+  background-color: #b9a031;
+  border-radius: 16px;
+  font-weight: 900;
 }
 .level-two{
   display: flex;
@@ -103,3 +68,128 @@ height: 420px;
 .ltwo-meteo-img{
   margin: auto;
 }
+.accept-order{
+  display: flex;
+  width: 60%;
+  border: 1px solid gray;
+  padding: 12px;
+  border-radius: 16px;
+  margin-left: 8px;
+  margin-bottom: 12px;
+}
+.btn-accept-refuse{
+  display: flex;
+  margin: auto;
+  align-items: flex-end;
+}
+.btn-accept{
+  border-radius: 16px;
+  border: 1px solid green;
+  margin-right: 12px;
+  color: green;
+}
+.btn-refuse{
+  border-radius: 16px;
+  border: 1px solid red;
+  text-decoration: none;
+  align-items: center;
+  color: red;
+}
+.btn-accept:hover{
+  border-radius: 16px;
+  border: 1px solid green;
+  margin-right: 12px;
+  color: white;
+  background-color: green;
+}
+.btn-refuse:hover{
+  border-radius: 16px;
+  border: 1px solid red;
+  text-decoration: none;
+  align-items: center;
+  color: white;
+  background-color: red;
+
+}
+.level-four{
+  display: flex;
+  margin-top: 30px;
+}
+.message{
+  height: auto;
+  max-height: 400px;
+  min-height: 150px;
+  border: 1px solid gray;
+  overflow: scroll;
+  border-radius: 8px;
+}
+.mess{
+width: 50%;
+}
+.send{
+  margin: 0px;
+}
+#message-{
+  margin: 8px;
+  padding: 8px;
+  border: 1px solid gray;
+  border-radius: 16px;
+  box-shadow: 3px 3px 2px gray;
+  background-color: rgba($color: #929090, $alpha: 0.1);
+  display: flex;
+  position: relative;
+  }
+  .message-time{
+    position: absolute;
+    align-self: flex-end;
+    top: 5px;
+    right: 10px;
+  }
+  .message-info p{
+    margin-left: 8px;
+  }
+  .feed-presta{
+    height: auto;
+    max-height: 400px;
+    min-height: 150px;
+    border: 1px solid gray;
+    overflow: scroll;
+    border-radius: 8px;
+    margin-left: 12px;
+    margin-top: 60px;
+    padding: 12px;
+  }
+  .prest{
+    width: 50%;
+  }
+  .prest h3{
+    text-align: right;
+  }
+  .one-presta{
+    margin: 8px;
+    padding: 8px;
+    border: 1px solid gray;
+    border-radius: 16px;
+    box-shadow: 3px 3px 2px gray;
+    background-color: rgba($color: #929090, $alpha: 0.1);
+  }
+  .presta-img img{
+    width: 560px;
+    height: 400px;
+    object-fit: contain;
+    align-self: center;
+    border-radius: 8px;
+  }
+  .tomb-info{
+    display: flex;
+    margin-bottom: 30px;
+  }
+  .tomb-info a{
+    margin-top: 45px;
+    text-decoration: none;
+    color: blue($color: #000000);
+    font-size: large;
+  }
+  .tomb-info h1{
+    margin: auto;
+  }
