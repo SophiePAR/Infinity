@@ -6,26 +6,34 @@
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  grid-gap: 20px;
 }
 
 .card-category {
   height: 180px;
   width:250px;
   display: flex;
-  // justify-content: center;
+
   // align-items: center;
-  // object-fit: contain;
-  object-fit: cover;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  // a {
-  //   text-decoration: none;
-  //   color: white;
-  // }
+  font-size: 18px;
+  // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 20px 2px 20px 2px;
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-bottom: 25px;
+  a {
+    text-decoration: none;
+    color: #126B9A;
+  }
+}
+
+.name-card {
+  margin-left: auto;
+  position: relative;
+  bottom: -180px;
+  text-align: center;
+
+
+
 }
 
 
@@ -40,6 +48,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.geo-map-users {
+  margin-top: 30px;
+  width: 400px;
+  height: 500px;
+  color: white;
+  font-weight: bolder;
+  font-size: 30px;
 }
 
 .provider-show {
