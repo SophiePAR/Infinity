@@ -2,7 +2,7 @@
 <div class="container">
   <div class="tomb-info">
   <%= link_to '' ,user_path(current_user), class:" fa-solid fa-arrow-left-long" %>
-    <h1 class='text-center text-primary' style="margin-top: 30px">Bienvenue sur la sépulture de <%= @tombstone.first_name.capitalize %></h1>
+    <h1 class='text-center text-primary' style="margin-top: 30px">Bienvenue sur la sépulture de <%= @tombstone.first_name.capitalize %> <%= @tombstone.last_name.capitalize %></h1>
     <%= link_to '' ,new_user_invitation_path, class:" fa-solid fa-share-nodes" %>
   </div>
   <div class="level-one"> <%# open level one img + map %>
