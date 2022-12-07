@@ -1,6 +1,6 @@
 <div class="container">
   <div class="tomb-info">
-    <h1 class='text-center text-primary' style="margin-top: 30px">Prestation demandé pour la sépulture de <%= @order.tombstone.first_name %> <%= @order.tombstone.last_name %></h1>
+    <h1 class='text-center text-primary' style="margin-top: 30px">Prestation demandée pour la sépulture de <%= @order.tombstone.first_name %> <%= @order.tombstone.last_name %></h1>
   </div>
   <div class="level-one"> <%# open level one img + map %>
     <div class="lone-img">
@@ -15,7 +15,7 @@
   <div class="level-fl">
     <div class="heyy">
       <div class="ltwo-info my-card-product">
-        <h4 class="text-center">Deamande pour le  <%= @order.date.strftime('%d %B %Y') %></h4>
+        <h4 class="text-center">Demande du  <%= @order.date.nil? ? "": @order.date.strftime('%d %B %Y') %></h4>
           <ul class="prestation-list">
             <% sum = 0 %>
             <% @order.order_items.each do |order_item|%>
@@ -40,8 +40,8 @@
                 <div class="tomb-stone">
                   <h6><strong>Sépulture au nom de:</strong></h6>
                     <p><%= @order.tombstone.first_name.capitalize %> <%= @order.tombstone.last_name %></p>
-                    <p><%= @order.tombstone.birth_date.strftime("%d %B %Y") %></p>
-                    <p><%= @order.tombstone.death_date.strftime("%d %B %Y") %></p>
+                    <p><%= @order.tombstone.birth_date.nil? ? "": @order.tombstone.birth_date.strftime("%d %B %Y") %></p>
+                    <p><%= @order.tombstone.death_date.nil? ? "": @order.tombstone.death_date.strftime("%d %B %Y") %></p>
                 </div>
                 <div class="prestataire-info">
                   <h6><strong>Contactez le responsable de la sépulture</strong></h6>
@@ -57,7 +57,7 @@
     <div class="orders-buttons text-center">
       <%= simple_form_for [:provider, @order] do |f| %>
       <%= f.input :progress, value: 'pending', as: :hidden %>
-      <%= f.button :submit, "Faire cette mission", class: "btn btn-primary btn-accept px-5 py-3" %>
+      <%= f.button :submit, "Accepter cette mission", class: "btn btn-primary btn-accept px-5 py-3" %>
       <%= link_to "Retour aux prestations", provider_orders_path, class: "btn btn-flat btn-accept ms-2 px-5 py-3" %>
     <% end %>
     </div>

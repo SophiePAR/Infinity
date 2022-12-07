@@ -1,28 +1,33 @@
 <div class="container">
   <div class="mission-style">
     <div class="card-user">
-      <h1>Missions en attende</h1>
+      <h1>Missions en attente</h1>
+      <br>
       <% @orders.each do |order| %>
         <% if order.aasm.current_state != :finished %>
             <div class="card-product">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+              <% if order.tombstone.photo.key? %>
+                <%= cl_image_tag order.tombstone.photo.key, class:"img-tomb" %>
+              <% else %>
+                <%= image_tag asset_path('tombstone.png'), class:"img-tomb"%>
+              <% end %>
               <div class="card-infos">
                 <div class="infos">
                   <% user = UserTombstone.find(order.user_tombstone_id).user %>
-                  <h4>Commande faite par: <strong><%= user.first_name %> <%= user.last_name %></strong></h4>
-                  <h6>Quand: <%= order.date %></h6>
-                  <p><%= order.tombstone.latitude%> <%=order.tombstone.longitude %></p>
+                  <h4>Commande de <strong><%= user.first_name %> <%= user.last_name %></strong></h4>
+                  <h6>pour le <%= order.date.nil? ? "": order.date.strftime("%d %B %Y") %></h6>
+                  <%# <p><%= order.tombstone.latitude <%=order.tombstone.longitude %></p>
                     <% order.order_items.each do |item| %>
-                      <li><%= item.prestation.title %></li>
+                      <li><strong><%= item.prestation.title %></strong></li>
                     <% end %>
                 </div>
                 <div class="status">
                   <h5 class="statut">Statut</h5>
                         <% if order.aasm.current_state == :accepted %>
-                          <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title=" En attendant de validation."class="statut-pending"></div>
+                          <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title=" En attente de validation"class="statut-pending"></div>
                         <% elsif order.aasm.current_state == :validated %>
-                          <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title=" En cours." class="statut-accepted"></div>
-                          <%= link_to "Validé", order_finish_path(order) , class: "btn btn-primary btn-valide" %>
+                          <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title=" Validé" class="statut-accepted"></div>
+                          <%= link_to "Terminer", order_finish_path(order) , class: "btn btn-primary btn-valide" %>
                     <% end %>
                 </div>
               </div>
@@ -31,28 +36,33 @@
       <% end %>
     </div>
     <div class="card-user-finish">
-    <h1>Missions termine</h1>
+    <h1>Missions terminées</h1>
+    <br>
        <% @orders.each do |order| %>
         <% if order.aasm.current_state == :finished %>
             <div class="card-product">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-              <div class="card-infos">
-                <div class="infos">
-                  <% user = UserTombstone.find(order.user_tombstone_id).user %>
-                  <h4>Commande faite par: <strong><%= user.first_name %> <%= user.last_name %></strong></h4>
-                  <h6>Quand: <%= order.date %></h6>
-                  <p><%= order.tombstone.latitude%> <%=order.tombstone.longitude %></p>
-                    <% order.order_items.each do |item| %>
-                      <li><%= item.prestation.title %></li>
-                    <% end %>
-                </div>
-                <div class="status">
-                  <h5 class="statut">Statut</h5>
-                        <% if order.aasm.current_state == :finished %>
-                          <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Terminé" class="statut-validated"></div>
-                    <% end %>
-                </div>
+              <% if @tombstone.photo.key? %>
+                <%= cl_image_tag @tombstone.photo.key, class:"img-tomb" %>
+              <% else %>
+                <%= image_tag asset_path('tombstone.png'), class:"img-tomb"%>
+              <% end %>
+            <div class="card-infos">
+              <div class="infos">
+                <% user = UserTombstone.find(order.user_tombstone_id).user %>
+                <h4>Commande de <strong><%= user.first_name %> <%= user.last_name %></strong></h4>
+                <h6>effectuée le <%= order.date.nil? ? "": order.date.strftime("%d %B %Y") %></h6>
+                <%# <p><%= order.tombstone.latitude <%=order.tombstone.longitude %></p>
+                  <% order.order_items.each do |item| %>
+                    <li><strong><%= item.prestation.title %></strong></li>
+                  <% end %>
               </div>
+              <div class="status">
+                <h5 class="statut">Statut</h5>
+                      <% if order.aasm.current_state == :finished %>
+                        <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Terminée" class="statut-validated"></div>
+                  <% end %>
+              </div>
+            </div>
           </div>
         <% end %>
       <% end %>
