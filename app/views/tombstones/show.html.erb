@@ -20,8 +20,8 @@
         <h3>Informations <%= link_to '' ,edit_tombstone_path(@tombstone), class:"fa-regular fa-pen-to-square" %></h3>
         <p><strong>Prénom : </strong><%= @tombstone.first_name.capitalize %></p>
         <p><strong>Nom : </strong><%= @tombstone.last_name %></p>
-        <p> Date de naissance: <%= @tombstone.birth_date.strftime("%d %B %Y") %></p>
-        <p>Date de décés: <%= @tombstone.death_date.strftime("%d %B %Y") %></p>
+        <p> Date de naissance: <%= @tombstone.birth_date.nil? ? "": @tombstone.birth_date.strftime("%d %B %Y") %></p>
+        <p>Date de décés: <%= @tombstone.death_date.nil? ? "": @tombstone.death_date.strftime("%d %B %Y") %></p>
       </div>
       <div class="ltwo-btn">
         <%= simple_form_for [@tombstone, @order] do |f| %>
@@ -93,7 +93,7 @@
               <h5>Commande du : <%= link_to order.created_at.strftime("%d %B %Y"), order_path(order)%></h5>
               <% @user = UserTombstone.find(order.user_tombstone_id).user %>
                 <p>Faite par <strong><%= @user.first_name %> <%= @user.last_name  %></strong></p>
-                <p>Date d'intervention <strong><%= order.date.strftime('%d %B %Y') %></strong></p>
+                <p>Date d'intervention <strong><%= order.date.nil? ? "": order.date.strftime('%d %B %Y') %></strong></p>
                 <p>Statut: <%= order.progress %></p>
                 <p>note : <%= order.rating %> <%= order.review %></p>
                 <div class="presta-img">
