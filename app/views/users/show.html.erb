@@ -19,6 +19,7 @@
             <% if tombstone.orders.where(:progress => [:pending, :accepted, :validated, :finished]).count == 0 %>
               <div class="batg", style="visibility:hiden">
               </div>
+              
                 <% else %>
               <div class="batg">
                 <% if tombstone.orders.where(:progress => :accepted).count == 0 %>
