@@ -14,31 +14,29 @@
   width:250px;
   display: flex;
 
+
   // align-items: center;
   font-size: 18px;
   // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 20px 2px 20px 2px;
+  border-radius: 16px 16px 16px 16px;
   // box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin-bottom: 25px;
+  margin-bottom: 5px;
   a {
     text-decoration: none;
     color: #126B9A;
   }
 }
 
-.name-card {
+.name-card{
   margin-left: auto;
   position: relative;
   bottom: -180px;
   text-align: center;
-
-
-
 }
 
 
 .geo-map {
-  background: orange;
+  background: #ffa500;
   margin-left: 50px;
   width: 400px;
   height: 500px;

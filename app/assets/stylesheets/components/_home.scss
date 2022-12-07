@@ -31,7 +31,7 @@ height: 200px;
   margin-left: auto;
   position: relative;
   top: -15px;
-  right: -15px;
+  right: -220px;
   align-self: flex-start;
   padding: 10px 14px;
   font-size: 16pt;
@@ -43,8 +43,8 @@ height: 200px;
   margin-left: auto;
   position: relative;
   top: -15px;
-  right: -15px;
-  align-self: flex-start;
+  right: -220px;
+  align-self: flex-end;
   padding: 5px 14px;
   font-size: 16pt;
   font-weight: bold;
@@ -57,6 +57,10 @@ height: 200px;
 .name{
   text-decoration: none;
   color: white;
+}
+
+.name-user{
+  text-align: center;
 }
 
 
