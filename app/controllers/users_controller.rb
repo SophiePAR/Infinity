@@ -13,6 +13,9 @@ class UsersController < ApplicationController
 
   def my_missions
     @orders = Order.where(user: current_user)
+    @orders.each do |order|
+      @tombstone = order.tombstone
+    end
   end
 
   def edit
