@@ -6,8 +6,8 @@
       <% @orders.each do |order| %>
         <% if order.aasm.current_state != :finished %>
             <div class="card-product">
-              <% if @tombstone.photo.key? %>
-                <%= cl_image_tag @tombstone.photo.key, class:"img-tomb" %>
+              <% if order.tombstone.photo.key? %>
+                <%= cl_image_tag order.tombstone.photo.key, class:"img-tomb" %>
               <% else %>
                 <%= image_tag asset_path('tombstone.png'), class:"img-tomb"%>
               <% end %>
