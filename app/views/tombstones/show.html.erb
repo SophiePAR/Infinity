@@ -3,6 +3,7 @@
   <div class="tomb-info">
   <%= link_to '' ,user_path(current_user), class:" fa-solid fa-arrow-left-long" %>
     <h1 class='text-center text-primary' style="margin-top: 30px">Bienvenue sur la sépulture de <%= @tombstone.first_name %></h1>
+    <%= link_to '' ,new_user_invitation_path, class:" fa-solid fa-share-nodes" %>
   </div>
   <div class="level-one"> <%# open level one img + map %>
     <div class="lone-img">
@@ -22,11 +23,25 @@
         <p><strong>Nom : </strong><%= @tombstone.last_name %></p>
         <p> Date de naissance: <%= @tombstone.birth_date.strftime("%d %B %Y") %></p>
         <p>Date de décés: <%= @tombstone.death_date.strftime("%d %B %Y") %></p>
+        <p class="fa-solid fa-share-nodes" style="font-size: 32px" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" Tombe partagé avec:
+          <% @tombstone.users.each do |user| %>
+            <%= user.first_name %>
+          <% end %>" >
+        </p>
       </div>
       <div class="ltwo-btn">
-        <%= simple_form_for [@tombstone, @order] do |f| %>
-          <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id}, as: :hidden  %>
-          <%= f.submit "Ajouter une nouvelle prestation", class:"btn btn-add-prest px-5 py-3" %>
+        <% @tombstone.users.each do |user| %>
+          <% if current_user.id != user.id %>
+            <%= simple_form_for [@tombstone, @order] do |f| %>
+              <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id}, as: :hidden  %>
+              <%= f.submit "Ajouter une nouvelle prestation", class:"btn btn-add-prest-disable px-5 py-3" %>
+            <% end %>
+          <% else %>
+              <%= simple_form_for [@tombstone, @order] do |f| %>
+                <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id}, as: :hidden  %>
+                <%= f.submit "Ajouter une nouvelle prestation", class:"btn btn-add-prest px-5 py-3" %>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -34,7 +49,7 @@
       <h3>Météo sur place</h3>
       <div class="ltwo-meteo-img-info">
         <div class="ltwo-meteo-info">
-          <p><%= @data["weather"].first["description"] %></p>
+          <p><%= @data["weather"].first["description"].capitalize %></p>
           <p>Température : <%= @data["main"]["temp"].round(1) %> °c</p>
           <p>Ressenti : <%= @data["main"]["feels_like"].round(1) %> °c</p>
           <p>Ville : <%= @data["name"] %></p>
@@ -47,9 +62,9 @@
       </div>
     </div> <%# close level two%>
     <div class="lthree-accept-order"> <%# open level-three %>
-      <h3>Prestation a validé:</h3>
       <% @tombstone.orders.each do |order| %>
         <% if order.accepted? %>
+      <h3>Prestation a validé:</h3>
             <div class="accept-order">
               <div class="accept-order-info">
                 <h4>Nom de perssone: <%= order.user.first_name%> <%= order.user.last_name %></h4>
