@@ -20,17 +20,19 @@
   <div class="row">
     <div class="col col-lg-4 col-md-6 col-sm-12">
       <div class="card" >
-         <%= image_tag asset_path('proche.png'), class: "image-home" %>
+        <%= image_tag asset_path('proche.png'), class: "image-home" %>
         <div class="card-body">
-          <p class="card-text">Suivez l'actualité des tombes des défunts avec vos proches</p>
+        <br>
+          <p class="card-text"><strong>Suivez toute l'actualité des tombes de défunts avec vos proches</strong></p>
         </div>
       </div>
     </div>
     <div class="col col-lg-4 col-md-6 col-sm-12">
       <div class="card"  >
-         <%= image_tag asset_path('arrose-les-plantes.png'), class: "image-home" %>
+        <%= image_tag asset_path('arrose-les-plantes.png'), class: "image-home" %>
         <div class="card-body">
-          <p class="card-text">Commandez des prestations à distance : entretien, dépose de fleurs, arrosage, demandes particulières</p>
+        <br>
+          <p class="card-text"><strong>Commandez à distance toutes les prestations de votre choix et fixez en le prix</strong></p>
         </div>
       </div>
     </div>
@@ -38,13 +40,15 @@
       <div class="card" >
         <%= image_tag asset_path('calme.png'), class: "image-home"%>
         <div class="card-body">
-          <p class="card-text">Offrez de la serenité en devenant prestataire à votre tour</p>
+          <br>
+          <p class="card-text"><strong>Offrez de la serenité en devenant prestataire à votre tour</strong></p>
         </div>
       </div>
     </div>
   </div>
   <div class="card-clients">
-    <h1 style="text-align: center">Nous clients</h1>
+    <h1 style="text-align: center">Ils parlent de nous</h1>
+    <br>
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -53,59 +57,59 @@
           <h5 class="rating">4,9 <i class="fa-solid fa-star"></i></h5><br><br><br>
           <div class="text">
             <%= image_tag asset_path('user.png'), class: "avatar" %>
-            <h5 class="card-client-title">Alex</h5>
+            <h5 class="card-client-title">Alexandre</h5>
           </div>
           <br>
-            <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-client-text">'Moi qui suis loin de mes proches et plutôt anxieux dans un cimetière, la solution infinity me permet d'être enfin serein'</p>
         </div>
         <div class="card-client">
           <h5 class="rating">4,5 <i class="fa-solid fa-star"></i></h5><br><br><br>
           <div class="text">
             <%= image_tag asset_path('user.png'), class: "avatar" %>
-            <h5 class="card-client-title">Sophie</h5>
+            <h5 class="card-client-title">Joëlle</h5>
           </div>
           <br>
-            <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-client-text">'Grâce à l'application je peux communiquer avec les autres membres de la famille pour nous organiser sur l'entretien et le fleurissement. Merci !'</p>
         </div>
         <div class="card-client">
           <h5 class="rating">4,8 <i class="fa-solid fa-star"></i></h5><br><br><br>
           <div class="text">
             <%= image_tag asset_path('user.png'), class: "avatar" %>
-            <h5 class="card-client-title">Franci</h5>
+            <h5 class="card-client-title">Françoise</h5>
           </div>
           <br>
-            <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-client-text">'Une application humaine et de qualité, qui simplifie notre quotidien.'</p>
         </div>
       </div>
     </div>
-    <div class="carousel-item active">
+    <div class="carousel-item">
       <div class="cards-client">
+        <div class="card-client">
+          <h5 class="rating">4,9 <i class="fa-solid fa-star"></i></h5><br><br><br>
+          <div class="text">
+            <%= image_tag asset_path('user.png'), class: "avatar" %>
+            <h5 class="card-client-title">Lucas</h5>
+          </div>
+          <br>
+            <p class="card-client-text">'Vous avez réussi à me rendre serein sur un sujet sur lequel je ne l'étais jamais. Merci!'</p>
+        </div>
         <div class="card-client">
           <h5 class="rating">4,6 <i class="fa-solid fa-star"></i></h5><br><br><br>
           <div class="text">
             <%= image_tag asset_path('user.png'), class: "avatar" %>
-            <h5 class="card-client-title">Alex</h5>
+            <h5 class="card-client-title">Marie</h5>
           </div>
           <br>
-            <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-client">
-          <h5 class="rating">5 <i class="fa-solid fa-star"></i></h5><br><br><br>
-          <div class="text">
-            <%= image_tag asset_path('user.png'), class: "avatar" %>
-            <h5 class="card-client-title">Sophie</h5>
-          </div>
-          <br>
-            <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-client-text">'Je commande régulièrement des prestations et je vois tout ce qui se passe. Ce service me simplifie la vie.'</p>
         </div>
         <div class="card-client">
           <h5 class="rating">4,9 <i class="fa-solid fa-star"></i></h5><br><br><br>
           <div class="text">
             <%= image_tag asset_path('user.png'), class: "avatar" %>
-            <h5 class="card-client-title">Franci</h5>
+            <h5 class="card-client-title">Jean</h5>
           </div>
           <br>
-            <p class="card-client-text">With supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-client-text">'Un service de qualité, où nous pouvons demander ce que nous voulons et en fixer nous même le prix. Une application humaine!'</p>
         </div>
       </div>
     </div>

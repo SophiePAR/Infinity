@@ -10,6 +10,8 @@
   align-items: center;
   width: 100%;
   border: 0px;
+  margin-top: 10px;
+  margin-bottom:20px;
 }
 .image-home{
 width: 200px;
@@ -21,6 +23,9 @@ height: 200px;
 }
 .card-text{
   text-align: center;
+  color: rgb(5, 71, 82);
+  font-weight: 500;
+  font-size: 20px;
 }
 .add-tomb{
   display: flex;
@@ -31,7 +36,7 @@ height: 200px;
   margin-left: auto;
   position: relative;
   top: -15px;
-  right: -15px;
+  right: -220px;
   align-self: flex-start;
   padding: 10px 14px;
   font-size: 16pt;
@@ -43,8 +48,8 @@ height: 200px;
   margin-left: auto;
   position: relative;
   top: -15px;
-  right: -15px;
-  align-self: flex-start;
+  right: -220px;
+  align-self: flex-end;
   padding: 5px 14px;
   font-size: 16pt;
   font-weight: bold;
@@ -57,6 +62,10 @@ height: 200px;
 .name{
   text-decoration: none;
   color: white;
+}
+
+.name-user{
+  text-align: center;
 }
 
 
@@ -81,9 +90,9 @@ height: 200px;
   width: 250px;
   height: 300px;
   border-radius: 16px;
-  border: 2px solid gray;
+  // border: 0px solid gray;
   padding: 16px;
-  box-shadow: 3px 3px 3px gray;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
   margin-bottom: 16px;
   color: white;
 }
@@ -103,4 +112,9 @@ height: 200px;
 }
 .text{
   display: flex;
+}
+
+.card-clients h1 {
+  color: rgb(5, 71, 82);
+  margin-bottom: 25px;
 }
