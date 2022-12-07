@@ -25,10 +25,11 @@ class Order < ApplicationRecord
   end
 
   belongs_to :user, optional: true
-
   belongs_to :tombstone
   has_many :order_items, dependent: :destroy
   has_many :prestations, through: :order_items
+
+  validates :date, presence: true
 
   def go_to_next_step
     case self.aasm.current_state

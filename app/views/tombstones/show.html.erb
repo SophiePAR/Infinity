@@ -34,7 +34,7 @@
         <div class="ltwo-meteo-info">
           <p><%= @data["weather"].first["description"] %></p>
           <p>Température : <%= @data["main"]["temp"].round(1) %> °c</p>
-          <p>Ressenti : <%= @data["main"]["feels_like"].round(1) %> °c</p>
+          <p>Ressenti : <%= @data["main"]["feels_like"].round %> °c</p>
           <p>Ville : <%= @data["name"] %></p>
         </div>
         <div class="ltwo-meteo-img">

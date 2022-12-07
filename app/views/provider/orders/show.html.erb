@@ -14,19 +14,9 @@
             <p>Date d'intervention désirée le <strong><%= @order.date.strftime('%d %B %Y') %></strong></p>
             <% sum = 0 %>
               <h5 class="text-primary mt-3">Details des prestations :</h5>
-              <ul class="prestation-list">
-                <% @order.order_items.each do |order_item|%>
-                  <li>
-                    <%= order_item.prestation.title %> - <%= order_item.price %>,00€ <br>
-                    <% if order_item.details != nil && order_item.details!= ""%>
-                      <%='Details de la prestation :'%><%= order_item.details %>
-                    <% end %>
-                  </li>
-                  <% sum = sum + order_item.price %>
-                <% end %>
-              </ul>
 
-            <h5>Total de la prestation : <strong><%= sum %>,00€</strong></h5>
+
+
             <%= simple_form_for [:provider, @order] do |f| %>
               <%= f.input :progress, value: 'pending', as: :hidden %>
               <%= f.button :submit, "Accepter", class: "btn btn-primary btn-accept" %><%= link_to "Retour", :back, class: "btn btn-danger btn-accept ms-2" %>
@@ -57,3 +47,46 @@
             </div>
           </div>
       </div>
+<div class="container">
+  <div class="tomb-info">
+    <h1 class='text-center text-primary' style="margin-top: 30px">Bienvenue sur la sépulture de <%= @order.tombstone.first_name %></h1>
+  </div>
+  <div class="level-one"> <%# open level one img + map %>
+    <div class="lone-img">
+      <% if @order.tombstone.photo.key? %>
+        <%= cl_image_tag @order.tombstone.photo.key, class:"img-tomb" %>
+      <% else %>
+       <%= image_tag asset_path('tombstone.png'), class:"img-tomb"%>
+      <% end %>
+    </div>
+    <div class="lone-map" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div><%#  close level one img + map %>
+  <div class="level-two">
+    <div class="ltwo-info-btn">
+      <div class="ltwo-info">
+        <h3>Deamande pour le  <%= @order.date.strftime('%d %B %Y') %></h3>
+          <ul class="prestation-list">
+            <% @order.order_items.each do |order_item|%>
+              <li>
+                <%= order_item.prestation.title %> - <%= order_item.price %>,00€ <br>
+                  <% if order_item.details != nil && order_item.details!= ""%>
+                    <%='Details de la prestation :'%><%= order_item.details %>
+                  <% end %>
+              </li>
+              <% sum = sum + order_item.price %>
+            <% end %>
+          </ul>
+        <h5>Total de la prestation : <strong><%= sum %>,00€</strong></h5>
+      </div>
+      <div class="ltwo-btn">
+      </div>
+    </div>
+    </div> <%# close level two%>
+    <div class="lthree-accept-order">
+
+        <p><strong>Prénom : </strong><%= @order.tombstone.first_name.capitalize %></p>
+        <p><strong>Nom : </strong><%= @order.tombstone.last_name %></p>
+        <p> Date de naissance: <%= @order.tombstone.birth_date.strftime("%d %B %Y") %></p>
+        <p>Date de décés: <%= @order.tombstone.death_date.strftime("%d %B %Y") %></p>
+    </div>
+</div>
