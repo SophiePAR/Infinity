@@ -1,8 +1,59 @@
-<div class="tomb-info">
-    <h1 class='text-center text-primary'>Bienvenue sur la sépulture de <%= @tombstone.first_name %></h1>
-      <p class='back-btn'><%= link_to "Retour au profil", user_path(current_user), class: "btn btn-flat mb-2" %></p>
+<div class="container">
+  <div class="tomb-info">
+    <h1 class='text-center text-primary' style="margin-top: 30px">Bienvenue sur la sépulture de <%= @tombstone.first_name %></h1>
+  </div>
+  <div class="level-one"> <%# open level one img + map %>
+    <div class="lone-img">
+      <% if @tombstone.photo.key? %>
+        <%= cl_image_tag @tombstone.photo.key, class:"img-tomb" %>
+      <% else %>
+       <%= image_tag asset_path('tombstone.png'), class:"img-tomb"%>
+      <% end %>
+    </div>
+    <div class="lone-map" data-controller="map" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div><%#  close level one img + map %>
+  <div class="level-two">
+    <div class="ltwo-info-btn">
+      <div class="ltwo-info">
+        <h3>Informations <%= link_to '' ,edit_tombstone_path(@tombstone), class:"fa-regular fa-pen-to-square" %></h3>
+        <p><strong>Prénom : </strong><%= @tombstone.first_name.capitalize %></p>
+        <p><strong>Nom : </strong><%= @tombstone.last_name %></p>
+        <p> Date de naissance: <%= @tombstone.birth_date.strftime("%d %B %Y") %></p>
+        <p>Date de décés: <%= @tombstone.death_date.strftime("%d %B %Y") %></p>
+      </div>
+      <div class="ltwo-btn">
+        <%= simple_form_for [@tombstone, @order] do |f| %>
+          <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id}, as: :hidden  %>
+          <%= f.submit "Ajouter une nouvelle prestation", class:"btn btn-primary px-5 py-3" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="ltwo-meteo"> <%# level two %>
+      <h3>Météo sur place</h3>
+      <div class="ltwo-meteo-img-info">
+        <div class="ltwo-meteo-info">
+          <p><%= @data["weather"].first["description"] %></p>
+          <p>Température : <%= @data["main"]["temp"].round(1) %> °c</p>
+          <p>Ressenti : <%= @data["main"]["feels_like"].round(1) %> °c</p>
+          <p>Ville : <%= @data["name"] %></p>
+        </div>
+        <div class="ltwo-meteo-img">
+          <p><strong><%= Date.today.strftime("%d %B %Y") %></strong></p>
+          <img src="http://openweathermap.org/img/wn/<%=  @data["weather"].first["icon"] %>@2x.png" alt="">
+        </div>
+      </div>
+      </div>
+    </div> <%# close level two%>
+    <div class="lthree-accept-order">
+
+    </div>
 </div>
+<%# ------------------------------------------------------------------------- %>
 <div class="container my-container mt-5">
+  <div class="tomb-info">
+      <h1 class='text-center text-primary'>Bienvenue sur la sépulture de <%= @tombstone.first_name %></h1>
+        <p class='back-btn'><%= link_to "Retour au profil", user_path(current_user), class: "btn btn-flat mb-2" %></p>
+  </div>
   <div class="photo">
     <% if @tombstone.photo.key? %>
       <%= cl_image_tag @tombstone.photo.key, height: 300, width: 200, crop: :fill %>
