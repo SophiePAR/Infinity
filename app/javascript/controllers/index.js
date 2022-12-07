@@ -16,5 +16,5 @@ application.register("map", MapController)
 import TombstoneSubscriptionController from "./tombstone_subscription_controller"
 application.register("tombstone-subscription", TombstoneSubscriptionController)
 
-// import TooltipController from "./tooltip_controller"
-// application.register("tooltip", TooltipController)
+import TooltipController from "./tooltip_controller"
+application.register("tooltip", TooltipController)
