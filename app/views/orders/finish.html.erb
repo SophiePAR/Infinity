@@ -1,8 +1,8 @@
  <div class="finish-complet">
   <div class="form-finish">
     <%= simple_form_for @order do |f| %>
-      <%= f.input :review, as: :text%>
-      <%= f.input :photo, as: :file %>
+      <%= f.input :review, label: 'Remarque', as: :text %>
+      <%= f.input :photo, as: :file%>
       <%= f.button :submit, "Terminer la prestation", class: "btn btn-primary" %>
       <%= link_to "Retour", user_path(current_user), class: "btn btn-flat" %>
     <% end %>

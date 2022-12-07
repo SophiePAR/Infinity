@@ -26,7 +26,7 @@
                         <% if order.aasm.current_state == :accepted %>
                           <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title=" En attente de validation"class="statut-pending"></div>
                         <% elsif order.aasm.current_state == :validated %>
-                          <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title=" En cours" class="statut-accepted"></div>
+                          <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title=" Validé" class="statut-accepted"></div>
                           <%= link_to "Terminer", order_finish_path(order) , class: "btn btn-primary btn-valide" %>
                     <% end %>
                 </div>
