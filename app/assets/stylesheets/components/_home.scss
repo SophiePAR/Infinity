@@ -21,6 +21,9 @@ height: 200px;
 }
 .card-text{
   text-align: center;
+  color: rgb(5, 71, 82);
+  font-weight: 500;
+  font-size: 20px;
 }
 .add-tomb{
   display: flex;
@@ -107,4 +110,8 @@ height: 200px;
 }
 .text{
   display: flex;
+}
+
+.card-clients h1 {
+  color: rgb(5, 71, 82);
 }
