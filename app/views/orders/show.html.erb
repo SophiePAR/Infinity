@@ -1,8 +1,7 @@
-<div class="container">
-
-<h1>Choix des prestations</h1>
+<div class="container mt-4 w-50">
+<h2 class="text-primary text-center">Choix des prestations</h2>
 <br>
-<p>Validez chacune des prestations désirées et validez la selection pour terminer.</p>
+<p class="text-para" style="font-size: 18px">Validez chacune des prestations désirées et validez la selection pour terminer.</p>
 
 <br>
 
@@ -11,23 +10,23 @@
   <%= f.input :details, label: 'Détails (donnez nous des précisions)' %>
   <%= f.input :price, label: 'Prix de la prestation' %>
 
-  <%= f.button :submit, "Valider cette prestation", class: "btn btn-primary" %>
+  <%= f.button :submit, "Valider la prestation", class: "text-white btn btn-success btn-lg rounded-4" %>
 <% end %>
 <br>
-  <div class="card text-center">
+  <div class="card-commande text-center">
     <% @order.order_items.each do |order_item| %>
     <li class="list-group-item">
     <ul> <strong><%= order_item.prestation.title %></strong> : <%= order_item.price %> euros </ul>
-      <ul><%= order_item.prestation.content %></ul>
+      <ul><%= order_item.prestation.content %></ul> 
       <ul><% if order_item.details != nil && order_item.details!= ""%> <%='Details de la prestation :'%> <%= order_item.details %>
           <% end %></ul>
-      <ul><%= button_to "Retirer la prestation", order_item, class: "btn btn-warning", method: :delete %></ul>
+      <ul><%= button_to "Retirer la prestation", order_item, class: "btn btn-danger btn-sm rounded", method: :delete %></ul>
       <br>
     </li>
     <% end %>
   </div>
-  <div class="card">
-    <h2>Total de votre commande : </h2>
+  <div class="card-commande" style="font-size: 26px; font-weight: 700; border-top: 1px solid black;">
+    <h6 class="text mt-3">Total de votre commande : </h6>
     <% @sum = 0 %>
     <% @order.order_items.each do |order_item| %>
     <% @price = order_item.price %>
@@ -37,9 +36,6 @@
     euros
   </div>
 
-<br>
-
-
   <%= simple_form_for @order do |f| %>
   <%= f.input :progress, value: 'pending', as: :hidden %>
 
@@ -47,9 +43,7 @@
     <%= f.input :date, as: :string, label: "Date d'intervention souhaitée *",
                 input_html: { data: { controller: "flatpickr" } } %>
   </div>
-  <br>
-  <%= f.button :submit, "Valider la selection", class: "btn btn-primary" %>
-  <%= button_to "Annuler", @order, class: "btn btn-warning", method: :create %>
+  <%= f.button :submit, "Valider la selection", class: "btn btn-primary btn-lg rounded-4" %>
+  <%= button_to "Annuler", @order, class: "btn btn-danger btn-lg rounded-4", method: :create %>
 <% end %>
-
 </div>
