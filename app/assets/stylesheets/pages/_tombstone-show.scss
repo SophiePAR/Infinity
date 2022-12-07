@@ -46,3 +46,60 @@
 .prestation-en-cours {
   grid-area: prestation-en-cours;
 }
+// -----------------------------------------------------------------------------
+.level-one{
+  display: flex;
+}
+.lone-img{
+  width: 60%;
+  margin-right: 12px;
+}
+.img-tomb{
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px ;
+  object-fit: cover;
+  width: 100%;
+  height: 420px;
+  margin-bottom: 8px;
+}
+.lone-map{
+border-top-right-radius: 8px;
+border-bottom-right-radius: 8px ;
+width: 40%;
+height: 420px;
+}
+.level-two{
+  display: flex;
+  margin-bottom: 100px;
+  margin-top: 30px;
+}
+.ltwo-info-btn{
+  display: flex;
+  width: 60%;
+}
+.ltwo-info{
+  margin-left: 8px ;
+}
+.ltwo-info p{
+  margin-left: 8px;
+}
+.ltwo-info i{
+  font-size: 24px;
+}
+.ltwo-btn{
+  align-self: center;
+  margin: auto;
+}
+.ltwo-meteo{
+  width: 40%;
+  margin-left: 12px;
+}
+.ltwo-meteo-img-info{
+  display: flex;
+}
+.ltwo-meteo h3{
+  text-align: center;
+}
+.ltwo-meteo-img{
+  margin: auto;
+}
