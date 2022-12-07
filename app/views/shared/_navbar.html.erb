@@ -21,8 +21,8 @@
             <%= link_to "Contactez nous", "#", class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-          <% if current_user.avatar.key? %>
-            <%= cl_image_tag current_user.avatar.key, style: "display: inline-block; width: 50px; height: 50px; border-radius: 50%; object-fit: cover;", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% if current_user.avatar.key? %>
+              <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% else %>
               <%= image_tag "user.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
