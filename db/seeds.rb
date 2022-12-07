@@ -34,6 +34,7 @@ user_tombstone1 = UserTombstone.create(user_id: user1.id, tombstone_id: tombe2.i
 user_tombstone2 = UserTombstone.create(user_id: user2.id, tombstone_id: tombe1.id);
 user_tombstone3 = UserTombstone.create(user_id: user3.id, tombstone_id: tombe4.id);
 user_tombstone4 = UserTombstone.create(user_id: user4.id, tombstone_id: tombe3.id);
+user_tombstone5 = UserTombstone.create(user_id: user3.id, tombstone_id: tombe2.id);
 
 order1 = Order.create!(review: '', rating: nil, date: '29/11/2022', tombstone_id: tombe3.id, user_tombstone_id: user_tombstone4.id);
 order2 = Order.create!(review: '', rating: nil, date: '26/11/2022', tombstone_id: tombe2.id, user_tombstone_id: user_tombstone1.id);

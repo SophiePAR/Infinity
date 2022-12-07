@@ -2,7 +2,8 @@
 <div class="container">
   <div class="tomb-info">
   <%= link_to '' ,user_path(current_user), class:" fa-solid fa-arrow-left-long" %>
-    <h1 class='text-center text-primary' style="margin-top: 30px">Bienvenue sur la sépulture de <%= @tombstone.first_name %></h1>
+    <h1 class='text-center text-primary' style="margin-top: 30px">Bienvenue sur la sépulture de <%= @tombstone.first_name.capitalize %></h1>
+    <%= link_to '' ,new_user_invitation_path, class:" fa-solid fa-share-nodes" %>
   </div>
   <div class="level-one"> <%# open level one img + map %>
     <div class="lone-img">
@@ -19,14 +20,29 @@
       <div class="ltwo-info">
         <h3>Informations <%= link_to '' ,edit_tombstone_path(@tombstone), class:"fa-regular fa-pen-to-square" %></h3>
         <p><strong>Prénom : </strong><%= @tombstone.first_name.capitalize %></p>
-        <p><strong>Nom : </strong><%= @tombstone.last_name %></p>
+        <p><strong>Nom : </strong><%= @tombstone.last_name.capitalize %></p>
         <p> Date de naissance: <%= @tombstone.birth_date.nil? ? "": @tombstone.birth_date.strftime("%d %B %Y") %></p>
-        <p>Date de décés: <%= @tombstone.death_date.nil? ? "": @tombstone.death_date.strftime("%d %B %Y") %></p>
+        <p>Date de décès: <%= @tombstone.death_date.nil? ? "": @tombstone.death_date.strftime("%d %B %Y") %></p>
+        <p class="fa-solid fa-share-nodes" style="font-size: 32px" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" Tombe partagée avec:
+          <% @tombstone.users.each do |user| %>
+            <%= user.first_name %>
+          <% end %>" >
+        </p>
+
       </div>
       <div class="ltwo-btn">
-        <%= simple_form_for [@tombstone, @order] do |f| %>
-          <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id}, as: :hidden  %>
-          <%= f.submit "Ajouter une nouvelle prestation", class:"btn btn-add-prest px-5 py-3" %>
+        <% @tombstone.users.each do |user| %>
+          <% if current_user.id != user.id %>
+            <%= simple_form_for [@tombstone, @order] do |f| %>
+              <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id}, as: :hidden  %>
+              <%= f.submit "Ajouter une nouvelle prestation", class:"btn btn-add-prest-disable px-5 py-3" %>
+            <% end %>
+          <% else %>
+              <%= simple_form_for [@tombstone, @order] do |f| %>
+                <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id}, as: :hidden  %>
+                <%= f.submit "Ajouter une nouvelle prestation", class:"btn btn-add-prest px-5 py-3" %>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -34,9 +50,8 @@
       <h3>Météo sur place</h3>
       <div class="ltwo-meteo-img-info">
         <div class="ltwo-meteo-info">
-          <p><%= @data["weather"].first["description"] %></p>
+          <p><%= @data["weather"].first["description"].capitalize %></p>
           <p>Température : <%= @data["main"]["temp"].round(1) %> °c</p>
-          <p>Ressenti : <%= @data["main"]["feels_like"].round(1) %> °c</p>
           <p>Ville : <%= @data["name"] %></p>
         </div>
         <div class="ltwo-meteo-img">
@@ -47,20 +62,20 @@
       </div>
     </div> <%# close level two%>
     <div class="lthree-accept-order"> <%# open level-three %>
-      <h3>Prestation a validé:</h3>
       <% @tombstone.orders.each do |order| %>
         <% if order.accepted? %>
+      <h3>Prestation à valider:</h3>
             <div class="accept-order">
               <div class="accept-order-info">
-                <h4>Nom de perssone: <%= order.user.first_name%> <%= order.user.last_name %></h4>
+                <h4>Nom du prestataire: <%= order.user.first_name%> <%= order.user.last_name %></h4>
                 <h5>Tel: <%= order.user.phone %></h5>
               </div>
               <div class="btn-accept-refuse">
                 <%= simple_form_for order do |f| %>
                   <%= f.input :progress, value: 'accepted', as: :hidden %>
-                  <%= f.button :submit, "Validé", class: "btn-accept" %>
+                  <%= f.button :submit, "Accepter", class: "btn-accept" %>
                 <% end %>
-                <%= link_to "Refusé", order_path(order), class:"btn btn-refuse"  %>
+                <%= link_to "Refuser", order_path(order), class:"btn btn-refuse"  %>
               </div>
             </div>
         <% end %>
@@ -77,7 +92,7 @@
                 placeholder: "Ecrire un nouveau message",
                 wrapper_html: {class: "flex-grow-1"}
               %>
-              <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+              <%= f.submit "Envoyer", class: "btn btn-primary mb-3" %>
             <% end %>
           <div class="message" data-tombstone-subscription-target="messages">
             <% @tombstone.messages.each do |message| %>
@@ -86,7 +101,7 @@
           </div>
         </div>
       <div class="prest">
-        <h3>Historique de Prestations</h3>
+        <h3>Historique des prestations</h3>
         <div class="feed-presta">
           <% @tombstone.orders.each do |order| %>
             <div class="one-presta">
@@ -95,7 +110,7 @@
                 <p>Faite par <strong><%= @user.first_name %> <%= @user.last_name  %></strong></p>
                 <p>Date d'intervention <strong><%= order.date.nil? ? "": order.date.strftime('%d %B %Y') %></strong></p>
                 <p>Statut: <%= order.progress %></p>
-                <p>note : <%= order.rating %> <%= order.review %></p>
+                <p>Remarque : <%= order.rating %> <%= order.review %></p>
                 <div class="presta-img">
                   <% if order.photo.key? %>
                     <%= cl_image_tag order.photo.key %>
