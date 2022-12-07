@@ -5,17 +5,18 @@
       <br>
       <% @orders.each do |order| %>
         <% if order.aasm.current_state != :finished %>
-            <div class="card-product">
-              <% if @tombstone.photo.key? %>
-                <%= cl_image_tag @tombstone.photo.key, class:"img-tomb" %>
+            <% if order.tombstone.photo.key? %>
+                <%= cl_image_tag order.tombstone.photo.key, class:"img"%>
               <% else %>
-                <%= image_tag asset_path('tombstone.png'), class:"img-tomb"%>
+                <%= image_tag asset_path('tombstone.png'), class:"img"%>
               <% end %>
+              <div class="card-product">
+
               <div class="card-infos">
                 <div class="infos">
                   <% user = UserTombstone.find(order.user_tombstone_id).user %>
                   <h4>Commande de <strong><%= user.first_name %> <%= user.last_name %></strong></h4>
-                  <h6>pour le <%= order.date.nil? ? "": order.date.strftime("%d %B %Y") %></h6>
+                  <h6>Pour le <%= order.date.nil? ? "": order.date.strftime("%d %B %Y") %></h6>
                   <%# <p><%= order.tombstone.latitude <%=order.tombstone.longitude %></p>
                     <% order.order_items.each do |item| %>
                       <li><strong><%= item.prestation.title %></strong></li>
@@ -26,11 +27,12 @@
                         <% if order.aasm.current_state == :accepted %>
                           <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title=" En attente de validation"class="statut-pending"></div>
                         <% elsif order.aasm.current_state == :validated %>
-                          <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title=" En cours" class="statut-accepted"></div>
+                          <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title=" Validé" class="statut-accepted"></div>
                           <%= link_to "Terminer", order_finish_path(order) , class: "btn btn-primary btn-valide" %>
                     <% end %>
                 </div>
               </div>
+
           </div>
         <% end %>
       <% end %>
@@ -39,13 +41,15 @@
     <h1>Missions terminées</h1>
     <br>
        <% @orders.each do |order| %>
+
         <% if order.aasm.current_state == :finished %>
-            <div class="card-product">
-              <% if @tombstone.photo.key? %>
-                <%= cl_image_tag @tombstone.photo.key, class:"img-tomb" %>
+            <% if order.tombstone.photo.key? %>
+                <%= cl_image_tag order.tombstone.photo.key, class:"img"%>
               <% else %>
-                <%= image_tag asset_path('tombstone.png'), class:"img-tomb"%>
+                <%= image_tag asset_path('tombstone.png'), class:"img"%>
               <% end %>
+            <div class="card-product">
+
             <div class="card-infos">
               <div class="infos">
                 <% user = UserTombstone.find(order.user_tombstone_id).user %>

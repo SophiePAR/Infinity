@@ -5,6 +5,7 @@
 
   // box-shadow: 0 0 15px rgba(0,0,0,0.2);;
   display: flex;
+
   align-items: center;
   // margin-top: 50px;
   // border-bottom: 5px solid aliceblue;
@@ -52,4 +53,62 @@
 .card-infos {
   block-size: 250px;
   border-radius: 16px;
+}
+
+.prix-total {
+  margin-top: 50px;
+}
+
+
+.heyy {
+  width: auto;
+  margin: auto;
+}
+
+.my-card-product {
+  height: auto;
+  background-color:aliceblue;
+  display: flex;
+  margin-top: 12px;
+  border-radius: 20px 20px 20px 20px;
+  padding: 15px 0 15px 0;
+  justify-content: space-around;
+}
+
+
+
+.order-foot-card {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.okok {
+  margin-top: 40px;
+  h5 {
+    font-size: 32px;
+    font-weight: 500;
+  }
+
+}
+
+.level-fl {
+  margin-top: 30px;
+}
+
+.prix {
+  display: block;
+  margin: 0;
+  h5 {
+    font-size: 30px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 22px;
+  }
+}
+
+.orders-buttons {
+  margin-top: 40px;
 }
