@@ -31,19 +31,17 @@
 
       </div>
       <div class="ltwo-btn">
-        <% @tombstone.users.each do |user| %>
-          <% if current_user.id != user.id %>
-            <%= simple_form_for [@tombstone, @order] do |f| %>
-              <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id}, as: :hidden  %>
-              <%= f.submit "Ajouter une nouvelle prestation", class:"btn btn-add-prest-disable px-5 py-3" %>
-            <% end %>
-          <% else %>
+          <% if @tombstone.users.map(&:id).include?(current_user.id) %>
               <%= simple_form_for [@tombstone, @order] do |f| %>
-                <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone).id}, as: :hidden  %>
+                <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone)&.id}, as: :hidden  %>
                 <%= f.submit "Ajouter une nouvelle prestation", class:"btn btn-add-prest px-5 py-3" %>
             <% end %>
+          <% else %>
+            <%= simple_form_for [@tombstone, @order] do |f| %>
+              <%= f.input :user_tombstone_id, input_html:{value: current_user.find_user_tombstone(@tombstone)&.id}, as: :hidden  %>
+              <%= f.submit "Ajouter une nouvelle prestation", class:"btn btn-add-prest-disable px-5 py-3" %>
+            <% end %>
           <% end %>
-        <% end %>
       </div>
     </div>
     <div class="ltwo-meteo"> <%# level two %>
