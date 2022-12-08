@@ -2,16 +2,17 @@
   <div class="container">
     <h1 id="banner-txt">Infinity</h1>
     <br>
-    <h2 class ='text-white shadow-sem'>Rendre hommage à nos proches, en toute sérennité </h2>
+    <h2 class ='text-white shadow-sem'>Rendre hommage à nos proches, en toute sérénité</h2>
     <br>
-    <% if user_signed_in? %>
-      <%= link_to "Demander une prestation", user_path(current_user), class: "btn btn-flat" %>
-    <% else %>
-      <%= link_to "Demander une prestation", user_session_path, class: "btn btn-flat" %>
-    <% end %>
-    <br>
-    <br>
-      <%= link_to "Effectuer une prestation", provider_orders_path, class: "btn btn-primary" %>
+    <div style="border-left: 3px solid white;" class="bg-opacity-50">
+      <h5 class ='text-white shadow-sem mx-4'>Commandez des prestations à distance pour prendre soin des sépultures de vos proches.</h5>
+      <h5 class ='text-white shadow-sem mx-4'>Devenez prestataire pour effectuer des missions autour de vous.</h5>
+    </div>
+      <% if user_signed_in? %>
+        <%= link_to "Demandez une prestation", user_path(current_user), class: "btn btn-flat rounded-4 fs-6 border-left my-4 btn-lg" %> <%= link_to "Devenez prestataire", provider_orders_path, class: "btn btn-primary rounded-4 fs-6 mx-4 my-4 btn-lg" %>
+      <% else %>
+        <%= link_to "Demandez une prestation", user_session_path, class: "btn btn-flat rounded-4 fs-6 border-left my-4 btn-lg" %> <%= link_to "Devenez prestataire", provider_orders_path, class: "btn btn-primary rounded-4 fs-6 mx-4 my-4 btn-lg" %>
+      <% end %>
 
   </div>
 </div>
@@ -69,7 +70,7 @@
             <h5 class="card-client-title">Joëlle</h5>
           </div>
           <br>
-            <p class="card-client-text">'Grâce à l'application je peux communiquer avec les autres membres de la famille pour nous organiser sur l'entretien et le fleurissement. Merci !'</p>
+            <p class="card-client-text">'Grâce à l'application je peux m'organiser avec ma famille pour l'entretien et le fleurissement. Merci !'</p>
         </div>
         <div class="card-client">
           <h5 class="rating">4,8 <i class="fa-solid fa-star"></i></h5><br><br><br>
@@ -91,7 +92,7 @@
             <h5 class="card-client-title">Lucas</h5>
           </div>
           <br>
-            <p class="card-client-text">'Vous avez réussi à me rendre serein sur un sujet sur lequel je ne l'étais jamais. Merci!'</p>
+            <p class="card-client-text">'Vous avez réussi à me rendre serein sur un sujet sur lequel je ne l'étais pas. Merci!'</p>
         </div>
         <div class="card-client">
           <h5 class="rating">4,6 <i class="fa-solid fa-star"></i></h5><br><br><br>
