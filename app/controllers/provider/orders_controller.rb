@@ -13,10 +13,10 @@ class Provider::OrdersController < ApplicationController
 
     end
 
-      # @markers.each do |geo|
-      # @adress = Geocoder.search([geo[:lat], geo[:lng]])
-      # @adress.first.address
-      # end
+      @markers.each do |geo|
+      @adress = Geocoder.search([geo[:lat], geo[:lng]])
+      @adress.first.address
+      end
   end
 
   def show

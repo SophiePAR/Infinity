@@ -3,7 +3,7 @@
   <div class="row">
     <%# stylessheets/componements/_card-orders.scss%>
     <div class="container col-lg-7 mt-3">
-      <h2 class="text-primary text-center">Demandes de prestation</h2>
+      <h2 class="text-primary text-center", style="margin-top:70">Demandes de prestation</h2>
       <br>
       <h4 class='text-para' style="font-weight: 300; line-height: 30px;">Retrouvez toutes les demandes de prestation près de chez vous</h4>
 
@@ -14,26 +14,29 @@
               <% else %>
                 <% image = asset_url('tombstone.png') %>
               <% end %>
-              </div>
-             <div class="card-product-image mt-5" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url('<%= image %>'); background-size: cover; background-position: center; width: 150px; height: 150px; margin-top: 25px; border-radius: 16px; ">
-    
-              <div class="card-infos" style="width: 500px; text-align: left; margin-left: 200px;"> 
+            </div>
+            <div class="card-product-image mt-5" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url('<%= image %>'); background-size: cover; background-position: center; width: 150px; height: 160px; margin-top: 25px; border-radius: 16px; ">
+
+              <div class="card-infos" style="width: 500px; text-align: left; margin-left: 200px;">
                 <div class="infos">
-                  <% user = UserTombstone.find(order.user_tombstone_id).user %>     
-                  <p>Date d'intervention désirée le <strong><%= order.date.nil? ? "": order.date.strftime('%d %B %Y') %></strong></p>
-                  <p>Mise en ligne par : <strong><%= user.first_name %> <%= user.last_name %></strong></p>
-                  <%# <p>adresse : <%= order.adress%></p>
+                  <% user = UserTombstone.find(order.user_tombstone_id).user %>
+                  <p>Date d'intervention le <strong><%= order.date.nil? ? "": order.date.strftime('%d %B %Y') %></strong></p>
+
+                  <p><strong>Municipalité :</strong> <%= Geocoder.search([order.tombstone.latitude, order.tombstone.longitude]).first.data["address"]["municipality"]%></p>
+                  <p><strong>Prestations attendues: </strong></p>
                   <% @sum = 0 %>
                   <% order.order_items.each do |item|%>
+                  <li class= "mx-4">
                   <%= item.prestation.title %>
-                  <p>Pour : </p>
+                  </li>
                     <% @price = item.price %>
                     <% @sum += @price %>
                   <% end %>
-                    <%= @sum %>,00 euros
+                  <p> <strong>Total des prestations : </strong></p>
+                  <p class= "mx-4"> <%= @sum %>,00 euros</p>
                 </div>
-                
-                <%= link_to "", provider_order_path(order), class:"fa-sharp fa-solid fa-arrow-up-right-from-square mt-2" %>
+
+<%= link_to "", provider_order_path(order), class:"fa-sharp fa-solid fa-arrow-up-right-from-square mt-2" %>
 
               </div>
             </div>
