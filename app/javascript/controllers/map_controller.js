@@ -19,6 +19,8 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/satellite-streets-v12",
+      center: [2.61878695312962, 47.8249046208979],
+      zoom: 5
     })
 
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
