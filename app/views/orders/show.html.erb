@@ -1,4 +1,6 @@
-<div class="container mt-4 w-50">
+<div class="container mt-4">
+  <div class="row">
+    <div class="container col-7 mt-2">
 <h2 class="text-primary text-center">Choix des prestations</h2>
 <br>
 <p class="text-para" style="font-size: 18px">Validez chacune des prestations désirées et validez la selection pour terminer.</p>
@@ -9,20 +11,18 @@
   <%= f.input :prestation_id, as: :select, collection: @prestations = Prestation.all,label: 'Prestation *' %>
   <%= f.input :details, label: 'Détails (donnez nous des précisions)' %>
   <%= f.input :price, label: 'Prix de la prestation' %>
-
-  <%= f.button :submit, "Valider la prestation", class: "text-white btn btn-success btn-lg rounded-4" %>
+  <%= f.button :submit, "Ajouter", class: "btn btn-info fs-6 rounded-4" %>
 <% end %>
-<br>
-  <div class="card-commande text-center">
+</div>
+  <div class="container col-4" style="margin-top:100px; background-color: #EDF4F5; padding: 20px; border-radius: 16px;">
+
+  <div class="card-commande text-start">
     <% @order.order_items.each do |order_item| %>
-    <li class="list-group-item">
-    <ul> <strong><%= order_item.prestation.title %></strong> : <%= order_item.price %> euros </ul>
-      <ul><%= order_item.prestation.content %></ul> 
-      <ul><% if order_item.details != nil && order_item.details!= ""%> <%='Details de la prestation :'%> <%= order_item.details %>
-          <% end %></ul>
-      <ul><%= button_to "Retirer la prestation", order_item, class: "btn btn-danger btn-sm rounded", method: :delete %></ul>
-      <br>
-    </li>
+    <%# <li class="prestation" style='decoration: none;'> %>
+    <strong><%= order_item.prestation.title %></strong> : <%= order_item.price %> euros<div class="fa-solid"><%= button_to "", order_item, class: "fa-solid fa-xmark btn", method: :delete %></div><br>
+    <%= order_item.prestation.content %>
+    <% if order_item.details != nil && order_item.details!= ""%> <%='Details de la prestation :'%> <%= order_item.details %><br>
+      <% end %><br>
     <% end %>
   </div>
   <div class="card-commande" style="font-size: 26px; font-weight: 700; border-top: 1px solid black;">
@@ -39,11 +39,13 @@
   <%= simple_form_for @order do |f| %>
   <%= f.input :progress, value: 'pending', as: :hidden %>
 
-  <div class="col">
+  <div class="col-date">
     <%= f.input :date, as: :string, label: "Date d'intervention souhaitée *",
                 input_html: { data: { controller: "flatpickr" } } %>
   </div>
-  <%= f.button :submit, "Valider la selection", class: "btn btn-primary btn-lg rounded-4" %>
-  <%= button_to "Annuler", @order, class: "btn btn-danger btn-lg rounded-4", method: :create %>
+  <%= f.button :submit, "Valider la selection", class: "btn btn-info rounded-4 fs-6" %>
+  <%= button_to "Annuler", @order, class: "btn border border-danger rounded-4 fs-6", method: :create %>
 <% end %>
 </div>
+</div>
+
