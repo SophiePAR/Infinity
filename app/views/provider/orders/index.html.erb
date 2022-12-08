@@ -8,52 +8,49 @@
       <h4 class='text-para' style="font-weight: 300; line-height: 30px;">Retrouvez toutes les demandes de prestation près de chez vous</h4>
           <form>
           <input class = "form-control me-2" name="query" type="search" placeholder="Recherchez" aria-label="Search" value="<%= params[:query]%>">
-          <button type = "submit" >Rechercher</button>
+          <%# <button type = "submit"></button> %>
           </form>
 
           <% @orders.each do |order| %>
-            <div class="card-product">
-              <% if order.tombstone.photo.attached? %>
-                <% image = cl_image_path order.tombstone.photo.key, crop: :fill %>
-              <% else %>
-                <% image = asset_url('tombstone.png') %>
-              <% end %>
-            </div>
-            <div class="card-product-image mt-5" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url('<%= image %>'); background-size: cover; background-position: center; width: 150px; height: 160px; margin-top: 25px; border-radius: 16px; ">
-
-              <div class="card-infos" style="width: 500px; text-align: left; margin-left: 200px;">
-                <div class="infos">
-                  <% user = UserTombstone.find(order.user_tombstone_id).user %>
-                  <p>Date d'intervention le <strong><%= order.date.nil? ? "": order.date.strftime('%d %B %Y') %></strong></p>
-
-                  <p><strong>Municipalité :</strong> <%= Geocoder.search([order.tombstone.latitude, order.tombstone.longitude]).first.data["address"]["municipality"]%></p>
-                  <p><strong>Prestations attendues: </strong></p>
-                  <% @sum = 0 %>
-                  <% order.order_items.each do |item|%>
-                  <li class= "mx-4">
-                  <%= item.prestation.title %>
-                  </li>
-                    <% @price = item.price %>
-                    <% @sum += @price %>
-                  <% end %>
-                  <p> <strong>Total des prestations : </strong></p>
-                  <p class= "mx-4"> <%= @sum %>,00 euros</p>
-                </div>
-
-<%= link_to "", provider_order_path(order), class:"fa-sharp fa-solid fa-arrow-up-right-from-square mt-2" %>
-
+            <div class="cards-order"></div>
+              <div class="card-product">
+                <% if order.tombstone.photo.attached? %>
+                  <% image = cl_image_path order.tombstone.photo.key, crop: :fill %>
+                <% else %>
+                  <% image = asset_url('tombstone.png') %>
+                <% end %>
               </div>
+              <div class="card-product-image mt-5" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url('<%= image %>'); background-size: cover; background-position: center; width: 150px; height: 160px; margin-top: 25px; border-radius: 16px; ">
+                <div class="card-infos" style="width: 500px; text-align: left; margin-left: 200px;">
+                  <div class="infos">
+                    <% user = UserTombstone.find(order.user_tombstone_id).user %>
+                    <p>Date d'intervention le <strong><%= order.date.nil? ? "": order.date.strftime('%d %B %Y') %></strong></p>
+                    <%# <p><strong>Municipalité :</strong> <%= Geocoder.search([order.tombstone.latitude, order.tombstone.longitude]).first.data["address"]["municipality"]%></p>
+                    <p><strong>Ville : </strong><%= Geocoder.search([order.tombstone.latitude, order.tombstone.longitude]).first.data["address"]["city"]%></p>
+                    <p><strong>Prestations attendues: </strong></p>
+                    <% @sum = 0 %>
+                    <% order.order_items.each do |item|%>
+                      <li class= "mx-4">
+                      <%= item.prestation.title %>
+                      </li>
+                      <% @price = item.price %>
+                      <% @sum += @price %>
+                    <% end %>
+                    <p> <strong>Total des prestations : </strong></p>
+                    <p class= "mx-4"> <%= @sum %>,00 euros</p>
+                  </div>
+                <%= link_to "", provider_order_path(order), class:"fa-sharp fa-solid fa-arrow-up-right-from-square mt-2" %>
             </div>
-        <% end %>
+            </div>
+          <% end %>
     </div>
       <div class="container col-lg-4 mt-5 mb-5">
-            <p class="text-center mt-5"></p>
-              <div style="width: 100%; height: 600px;"
-                data-controller="map"
-                data-map-markers-value="<%= @markers.to_json %>"
-                data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-              </div>
-      </div>
+          <p class="text-center mt-5"></p>
+            <div style="width: 100%; height: 600px;"
+              data-controller="map"
+              data-map-markers-value="<%= @markers.to_json %>"
+              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
       </div>
   </div>
 </div>
