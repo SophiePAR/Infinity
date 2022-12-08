@@ -161,10 +161,15 @@
   margin: 0;
 }
 
-.cards-order{
+// .cards-order{
+//   display: flex;
+//   margin-top: 16px;
+//   background-color: #EDF4F5;
+//   padding: 16px;
+//   border-radius: 16px;
+// }
+
+.btn-detail{
   display: flex;
-  margin-top: 16px;
-  background-color: #EDF4F5;
-  padding: 16px;
-  border-radius: 16px;
+  justify-content: right;
 }
