@@ -1,7 +1,55 @@
 .mission-style{
   display: flex;
-  margin-top: 16px;
 }
+.l-one{
+  display: flex;
+  margin-top: 80px;
+  width: 100%;
+  justify-content: space-around;
+}
+.card-open{
+  width: 50%;
+}
+.card-open h2{
+  margin-top: 100px;
+}
+.one-card-open{
+  display: flex;
+  margin-top: 16px;
+  background-color: #EDF4F5;
+  padding: 16px;
+  border-radius: 16px;
+}
+.open-card-img img{
+  width: 180px;
+  height: 180px;
+  margin: 0px;
+  margin-right: 16px;
+}
+.one-card-info-statut{
+  display: flex;
+}
+.one-card-statut{
+  align-self: flex-end;
+}
+.statut-V2{
+  display: flex;
+}
+.statut-V2 h5{
+  margin-right: 8px;
+}
+.statut-V3{
+  display: flex;
+}
+.statut-V3 h5{
+  margin-right: 8px;
+}
+.card-finish{
+  margin-top: 100px;
+  margin-left: 16px;
+}
+
+//------------------------------------------------------------------------------
 .statut{
   margin-left: 16px;
 }
@@ -12,12 +60,16 @@
   margin-left: auto;
 }
 .card-user{
+  width: 50%;
+  margin-top: 70px;
   margin-right: 16px;
   border-right: 3px solid gray;
   padding-right: 16px;
 }
-.card-image {
-  width: 200px;
-  height: 200px;
-
+.card-user img {
+  width: 180px;
+  height: 180px;
+}
+.card-user-finish{
+  margin-top: 70px;
 }
