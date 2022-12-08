@@ -37,8 +37,8 @@
 .fa-circle-plus{
   font-size: 50px;
   color: #F9DA56;
-  margin-top:38%;
-  margin-left: 40%;
+  // margin-top:38%;
+  // margin-left: 40%;
   text-align: center;
 }
 .fa-circle-plus :hover{
@@ -77,6 +77,16 @@
 .btn-mymission {
   margin-left: 10px;
   margin-bottom: 10px;
+}
+
+.new-tomb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  height: 180px;
+  width: 250px;
+  border: dotted 5px #F9DA56;
 }
 
 // Smallest device

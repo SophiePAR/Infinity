@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-puts 'cleaning db'
+puts 'cleaning db..............'
 
 Order.destroy_all
 UserTombstone.destroy_all
@@ -13,16 +13,24 @@ User.destroy_all
 Tombstone.destroy_all
 Prestation.destroy_all
 
-puts 'creating users'
+puts 'creating users..........'
 user1 = User.create!(email: 'alex@mail.com', password: 'azerty', first_name: 'Alex', last_name: 'Cazacu', phone:'0680808080');
 user2 = User.create!(email: 'franci@mail.com', password: 'azerty', first_name: 'Franci', last_name: 'Lalane', phone:'0610101010');
 user3 = User.create!(email: 'sophie@mail.com', password: 'azerty', first_name: 'Sophie', last_name: 'Parisot', phone:'0620202020');
 user4 = User.create!(email: 'vanessa@mail.com', password: 'azerty', first_name: 'Vanessa', last_name: 'Reynes', phone:'0630303030');
 
+<<<<<<< HEAD
+puts 'creating tombstones.........'
+
+tombe1 = Tombstone.create!(first_name: 'Charles', last_name: 'Holle', birth_date: '10/11/1989', death_date: '12/11/2022', latitude:'48.862725', longitude:'2.287592');
+=======
 tombe1 = Tombstone.create!(first_name: 'Charles', last_name: 'Holle', birth_date: '10/11/1989', death_date: '12/11/2022', latitude:'41.873988', longitude:'12.564167');
+>>>>>>> 83cd114c823a1655dd6cb7b2e429d91a7890129c
 tombe2 = Tombstone.create!(first_name: 'Henri', last_name: 'Charlot', birth_date: '10/10/1945', death_date: '12/12/2000', latitude:'45.5296630859', longitude:'-0.239325001836');
 tombe3 = Tombstone.create!(first_name: 'Michelle', last_name: 'Tourny', birth_date: '09/01/1950', death_date: '01/02/2010', latitude:'20.862725', longitude:'2.287592');
 tombe4 = Tombstone.create!(first_name: 'Gabrielle', last_name: 'Sollet', birth_date: '30/03/1946', death_date: '04/03/1990', latitude:'40.419266', longitude:'-3.633170');
+
+puts 'creating prestations........'
 
 prestation0 = Prestation.create!(title: 'Arrosage', price: '', content: '');
 prestation1 = Prestation.create!(title: 'Photographie', price: '', content: '');

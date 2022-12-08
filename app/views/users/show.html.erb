@@ -32,13 +32,11 @@
                   </div>
                 <% end %>
               </div>
-             <h4 class="name-user m-2"><%= tombstone.first_name %> <%= tombstone.last_name %></h4>
+              <h4 class="name-user m-2"><%= tombstone.first_name %> <%= tombstone.last_name %></h4>
             <% end %>
           <% end %>
-
-          <%# <p data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ajoutez une tombe" class="tooltip-ajout" style="text-align: center; color: lightgrey; position: relative; background-color: AliceBlue; border-radius: 16px; height: 182px;"</p> %>
-          <p data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ajoutez une tombe" class="card-sup" style="border-radius: 16px; height: 183px; border: dotted 5px #F9DA56;">
-          <%= link_to "", new_tombstone_path, class: "fa-solid fa-circle-plus fa-xl" %></p>
+          <div data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ajoutez une tombe" class="card-sup new-tomb">
+          <%= link_to "", new_tombstone_path, class: "fa-solid fa-circle-plus fa-xl" %></div>
         </div>
 
         </div>
@@ -56,7 +54,7 @@
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
-      </div> 
+      </div>
     </div>
   </div>
 </div>
