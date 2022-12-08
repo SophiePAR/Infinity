@@ -23,12 +23,6 @@
         <p><strong>Nom : </strong><%= @tombstone.last_name.capitalize %></p>
         <p> Date de naissance: <%= @tombstone.birth_date.nil? ? "": @tombstone.birth_date.strftime("%d %B %Y") %></p>
         <p>Date de décès: <%= @tombstone.death_date.nil? ? "": @tombstone.death_date.strftime("%d %B %Y") %></p>
-        <p class="fa-solid fa-share-nodes" style="font-size: 32px" data-controller="tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title=" Tombe partagée avec:
-          <% @tombstone.users.each do |user| %>
-            <%= user.first_name %>
-          <% end %>" >
-        </p>
-
       </div>
       <div class="ltwo-btn">
           <% if @tombstone.users.map(&:id).include?(current_user.id) %>
@@ -59,6 +53,18 @@
       </div>
       </div>
     </div> <%# close level two%>
+    <div class="level-two-five">
+      <h3>Partagé avec:</h3>
+      <div class="ltwo-five-avatar">
+        <% @tombstone.users.each do |user| %>
+          <% if current_user.avatar.key? %>
+            <%= cl_image_tag current_user.avatar.key, class: "avatar",  'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= image_tag "user.png", class: "avatar",data: { controller: "tooltip", bs_toggle: "tooltip", bs_placement: "top", bs_title: "#{user.first_name} #{user.last_name}" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
     <div class="lthree-accept-order"> <%# open level-three %>
       <% @tombstone.orders.each do |order| %>
         <% if order.accepted? %>
