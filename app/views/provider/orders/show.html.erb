@@ -14,44 +14,52 @@
   </div><%#  close level one img + map %>
   <div class="level-fl">
     <div class="heyy">
-      <div class="ltwo-info my-card-product">
-        <h4 class="text-center">Demande pour le  <%= @order.date.nil? ? "": @order.date.strftime('%d %B %Y') %></h4>
-          <ul class="prestation-list">
-            <% sum = 0 %>
-            <% @order.order_items.each do |order_item|%>
-              <li>
-                <%= order_item.prestation.title %> - <%= order_item.price %>,00€ <br>
-                  <% if order_item.details != nil && order_item.details!= ""%>
-                    <%='Details de la prestation :'%><%= order_item.details %>
-                  <% end %>
-              </li>
-              <% sum = sum + order_item.price %>
-            <% end %>
-          </ul>
-          <div class="prix">
-            <h5 class="prix prix-total"><strong>Total</strong></h5>
-              <p><%= sum %>,00€</p>
-          </div>
-              <% user = UserTombstone.find(@order.user_tombstone_id).user %>
+      <div class="my-card-product">
+      <div class="mini-card-1">
+                <div class="order-date">
+                  <h4 class="text-center">Date : </h4>
+                  <p><%= @order.date.nil? ? "": @order.date.strftime('%d %B %Y') %></p>
+                </div>
+              <ul class="prestation-list">
+                <% sum = 0 %>
+                <% @order.order_items.each do |order_item|%>
+                  <li>
+                    <%= order_item.prestation.title %><br>
+                      <% if order_item.details != nil && order_item.details!= ""%>
+                        <%='Details de la prestation :'%><%= order_item.details %>
+                      <% end %>
+                  </li>
+                  <% sum = sum + order_item.price %>
+                <% end %>
+              </ul>
+              <div class="prix">
+                <h5 class="prix prix-total"><strong>Total</strong></h5>
+                  <p><%= sum %>,00€</p>
+              </div>
       </div>
-
+      <div class="mini-card-2">
           <div class="okok">
-            <h5 class="text-center">Informations complémentaires</h5>
+              <% user = UserTombstone.find(@order.user_tombstone_id).user %>
+            <h4 class="text-center">Informations complémentaires</h4>
               <div class="order-foot-card">
                 <div class="tomb-stone">
-                  <h6><strong>Sépulture au nom de:</strong></h6>
-                    <p><%= @order.tombstone.first_name.capitalize %> <%= @order.tombstone.last_name %></p>
+                  <h6><strong>Sépulture</strong></h6>
+                    <p><strong><%= @order.tombstone.first_name.capitalize %> <%= @order.tombstone.last_name %></strong></p>
                     <p><%= @order.tombstone.birth_date.nil? ? "": @order.tombstone.birth_date.strftime("%d %B %Y") %></p>
                     <p><%= @order.tombstone.death_date.nil? ? "": @order.tombstone.death_date.strftime("%d %B %Y") %></p>
                 </div>
                 <div class="prestataire-info">
-                  <h6><strong>Contactez le responsable de la sépulture</strong></h6>
-                  <p> <strong><%= user.first_name %> <%= user.last_name %></strong></p>
+                  <h6><strong>Responsable</strong></h6>
+                  <p><strong><%= user.first_name %> <%= user.last_name %></strong></p>
                   <p><%= user.email %></p>
                   <p><%= user.phone %></p>
                   <p></p>
                 </div>
               </div>
+      </div>
+
+      </div>
+
 
           </div>
     </div>
@@ -59,8 +67,8 @@
     <div class="orders-buttons text-center">
       <%= simple_form_for [:provider, @order] do |f| %>
       <%= f.input :progress, value: 'pending', as: :hidden %>
-      <%= f.button :submit, "Accepter cette mission", class: "btn btn-primary  px-5 py-3" %>
-      <%= link_to "Retour aux prestations", provider_orders_path, class: "btn btn-flat  ms-2 px-5 py-3" %>
+      <%= f.button :submit, "Faire cette mission", class: "btn btn-primary  px-4 py-3 border rounded-4 fs-6" %>
+      <%= link_to "Retour aux prestations", provider_orders_path, class: "btn btn-info rounded-4 fs-6 ms-2 px-4 py-3" %>
     <% end %>
     </div>
 </div>
