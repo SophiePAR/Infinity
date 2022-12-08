@@ -26,7 +26,7 @@
                   <li>
                     <%= order_item.prestation.title %><br>
                       <% if order_item.details != nil && order_item.details!= ""%>
-                        <%='Details de la prestation :'%><%= order_item.details %>
+                        <p><%= order_item.details %></p>
                       <% end %>
                   </li>
                   <% sum = sum + order_item.price %>
