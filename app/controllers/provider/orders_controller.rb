@@ -33,10 +33,6 @@ class Provider::OrdersController < ApplicationController
       end
     end
 
-
-
-
-
   end
 
   def show
