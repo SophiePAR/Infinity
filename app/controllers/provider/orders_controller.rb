@@ -4,11 +4,13 @@ class Provider::OrdersController < ApplicationController
     @tombstones = @orders.map do |order|
       order.tombstone
     end
+
     @markers = @tombstones.map do |tomb|
       {
         lat: tomb.latitude,
         lng: tomb.longitude
       }
+
     end
 
       # @markers.each do |geo|

@@ -107,7 +107,16 @@
               <% @user = UserTombstone.find(order.user_tombstone_id).user %>
                 <p>Faite par <strong><%= @user.first_name %> <%= @user.last_name  %></strong></p>
                 <p>Date d'intervention <strong><%= order.date.nil? ? "": order.date.strftime('%d %B %Y') %></strong></p>
-                <p>Statut: <%= order.progress %></p>
+                <% case order.progress %>
+                <% when "pending"%>
+                <p>Statut: En attente</p>
+                <% when "accepted"%>
+                <p>Statut: Accepté</p>
+                <% when "validated"%>
+                <p>Statut: Validé</p>
+                <% when "finished"%>
+                <p>Statut: Terminé</p>
+                <% end %>
                 <p>Remarque : <%= order.rating %> <%= order.review %></p>
                 <div class="presta-img">
                   <% if order.photo.key? %>
