@@ -8,6 +8,19 @@
     <%= f.input :birth_date, label: 'Date de naissance' %>
     <%= f.input :death_date, label: 'Date de décès' %>
     <%= f.input :photo, as: :file%>
+      <div data-controller="map"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        style="width: 100%; height: 500px;"
+        class="p-0 m-0">
+
+        <%= f.input  :longitude, as: :hidden,
+                      input_html: { 'data-map-target': "long" },
+                      wrapper_class: "m-0"  %>
+
+        <%= f.input  :latitude, as: :hidden,
+                      input_html: { 'data-map-target': "lat" },
+                      wrapper_class: "m-0"   %>
+  </div>
     <%= f.button :submit, "Editer la sépulture", class: "btn btn-primary" %>
     <%= link_to "Retour", tombstone_path(@tombstone), class: "btn btn-warning" %>
   <% end %>
