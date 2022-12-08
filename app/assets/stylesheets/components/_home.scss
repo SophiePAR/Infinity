@@ -44,6 +44,9 @@ height: 200px;
   background-color: #CF0A0A;
   color: white;
 }
+.badge-visib{
+  visibility: hidden;
+}
 .badge-orange{
   margin-left: auto;
   position: relative;
@@ -88,7 +91,7 @@ height: 200px;
   position: relative;
   background: #EDF4F5;
   width: 250px;
-  height: 300px;
+  height: auto;
   border-radius: 16px;
   // border: 0px solid gray;
   padding: 4px;
