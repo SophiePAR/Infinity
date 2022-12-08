@@ -1,22 +1,42 @@
 class Provider::OrdersController < ApplicationController
   def index
-    @orders = Order.where(progress: "pending")
-    @tombstones = @orders.map do |order|
-      order.tombstone
-    end
+    if params[:query].present?
+      @query = params[:query]
+      coordinates = Geocoder.search(@query).first.coordinates
+      # @orders = Order.where(progress: "pending").map(&:tombstone).near(coordinates, 20)
+      @tombstones = Tombstone.near(coordinates, 20)
+      @orders = @tombstones.map(&:orders).flatten.select { |order| order.progress == "pending" }
 
-    @markers = @tombstones.map do |tomb|
-      {
-        lat: tomb.latitude,
-        lng: tomb.longitude
-      }
-
-    end
-
-      @markers.each do |geo|
-      @adress = Geocoder.search([geo[:lat], geo[:lng]])
-      @adress.first.address
+        @tombstones = @orders.map do |order|
+        order.tombstone
       end
+
+      @markers = @tombstones.map do |tomb|
+        {
+          lat: tomb.latitude,
+          lng: tomb.longitude
+        }
+
+      end
+    else
+        @orders = Order.where(progress: "pending")
+        @tombstones = @orders.map do |order|
+        order.tombstone
+      end
+
+      @markers = @tombstones.map do |tomb|
+        {
+          lat: tomb.latitude,
+          lng: tomb.longitude
+        }
+
+      end
+    end
+
+
+
+
+
   end
 
   def show
