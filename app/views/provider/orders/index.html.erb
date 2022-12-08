@@ -6,6 +6,10 @@
       <h2 class="text-primary text-center", style="margin-top:70">Demandes de prestation</h2>
       <br>
       <h4 class='text-para' style="font-weight: 300; line-height: 30px;">Retrouvez toutes les demandes de prestation près de chez vous</h4>
+          <form>
+          <input class = "form-control me-2" name="query" type="search" placeholder="Recherchez" aria-label="Search" value="<%= params[:query]%>">
+          <button type = "submit" >Rechercher</button>
+          </form>
 
           <% @orders.each do |order| %>
             <div class="card-product">

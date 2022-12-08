@@ -7,4 +7,7 @@ class Tombstone < ApplicationRecord
   has_one_attached :photo
 
   validates :first_name, :last_name, presence: true
+
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode
 end
