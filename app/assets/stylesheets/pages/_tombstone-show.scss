@@ -35,12 +35,16 @@ height: 420px;
 }
 .level-two{
   display: flex;
-  margin-bottom: 100px;
-  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-top: 4px;
 }
 .ltwo-info-btn{
   display: flex;
   width: 60%;
+  background-color: #EDF4F5;
+  padding: 8px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px ;
 }
 .ltwo-info{
   margin-left: 8px ;
@@ -54,10 +58,15 @@ height: 420px;
 .ltwo-btn{
   align-self: center;
   margin: auto;
+  height: auto;
 }
 .ltwo-meteo{
   width: 40%;
   margin-left: 12px;
+  background-color: #EDF4F5;
+  padding: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px ;
 }
 .ltwo-meteo-img-info{
   display: flex;
@@ -109,8 +118,8 @@ height: 420px;
   align-items: center;
   color: white;
   background-color: red;
-
 }
+
 .level-four{
   display: flex;
   margin-top: 30px;
@@ -119,7 +128,6 @@ height: 420px;
   height: auto;
   max-height: 400px;
   min-height: 150px;
-  border: 1px solid gray;
   overflow: scroll;
   border-radius: 8px;
 }
@@ -148,11 +156,30 @@ width: 50%;
   .message-info p{
     margin-left: 8px;
   }
+  #message-cu{
+    margin: 8px;
+    padding: 8px;
+    border: 1px solid gray;
+    border-radius: 16px;
+    border-bottom-right-radius: 0px;
+    box-shadow: 3px 3px 2px gray;
+    background-color: rgba($color: #126B9A, $alpha: 0.2);
+    display: flex;
+    position: relative;
+    }
+    .message-time-cu{
+      position: absolute;
+      align-self: flex-end;
+      top: 5px;
+      right: 10px;
+    }
+    .message-info-cu p{
+      margin-left: 8px;
+    }
   .feed-presta{
     height: auto;
     max-height: 400px;
     min-height: 150px;
-    border: 1px solid gray;
     overflow: scroll;
     border-radius: 8px;
     margin-left: 12px;
@@ -167,6 +194,7 @@ width: 50%;
   }
   .one-presta{
     margin: 8px;
+    margin-top: 0px;
     padding: 8px;
     border: 1px solid gray;
     border-radius: 16px;
@@ -183,6 +211,7 @@ width: 50%;
   .tomb-info{
     display: flex;
     margin-bottom: 30px;
+    padding-top: 40px;
   }
   .tomb-info a{
     margin-top: 45px;
@@ -199,3 +228,142 @@ width: 50%;
     font-weight: 900;
     visibility: hidden;
   }
+// ........................................................................................
+//   ............................RECHERCHE BTN MISSION................................
+// ........................................................................................
+
+$thick : 3px;
+$pad : 0.7em;
+$extra : calc(#{$pad} * 1.2);
+$color : #f26522;
+
+
+.portfolio-experiment {
+  background: #2d2d2d;
+  
+  a {
+    color: white;
+    padding: $pad $extra;
+    display: inline-block;
+    border: $thick solid transparent;
+    position: relative;
+    font-size: 1.5em;
+    cursor: pointer;
+    letter-spacing: 0.07em;
+
+    .text {
+      // padding: 0 0.3em;
+      font-family: proxima-nova, monospace;
+      transform: translate3d(0,$pad,0);
+      display: block;
+      transition: transform 0.4s cubic-bezier(.2,0,0,1) 0.4s;
+    }
+
+    &:after {
+      position: absolute;
+      content: '';
+      bottom: -$thick;
+      left: $extra;
+      right: $extra;
+      height: $thick;
+      background: $color;
+      // z-index: -1;
+      transition: 
+        transform 0.8s cubic-bezier(1,0,.37,1) 0.2s,
+        right 0.2s cubic-bezier(.04,.48,0,1) 0.6s,
+        left 0.4s cubic-bezier(.04,.48,0,1) 0.6s;
+      transform-origin: left;
+    }
+
+  }
+
+  .line {
+    position: absolute;
+    background: $color;
+
+    &.-right,
+    &.-left {
+      width: $thick;
+      bottom: -$thick;
+      top: -$thick;
+      transform: scale3d(1,0,1);
+    }  
+
+    &.-top,
+    &.-bottom {
+      height: $thick;
+      left: -$thick;
+      right: -$thick;
+      transform: scale3d(0,1,1);
+    }
+
+    &.-right {
+      right: -$thick;
+      transition: transform 0.1s cubic-bezier(1,0,.65,1.01) 0.23s;
+      transform-origin: top;
+    }
+
+    &.-top {
+      top: -$thick;
+      transition: transform 0.08s linear 0.43s;
+      transform-origin: left;
+    }
+
+    &.-left {
+      left: -$thick;
+      transition: transform 0.08s linear 0.51s;
+      transform-origin: bottom;
+    }
+
+    &.-bottom {
+      bottom: -$thick;
+      transition: transform 0.3s cubic-bezier(1,0,.65,1.01);
+      transform-origin: right;
+    }  
+  }
+
+  a:hover,
+  a:active {
+
+    .text {
+      transform: translate3d(0,0,0);
+      transition: transform 0.6s cubic-bezier(.2,0,0,1) 0.4s;
+    }
+
+    &:after {
+      transform: scale3d(0,1,1);
+      right: -$thick;
+      left: -$thick;
+      transform-origin: right;
+      transition: 
+        transform 0.2s cubic-bezier(1,0,.65,1.01) 0.17s,
+        right 0.2s cubic-bezier(1,0,.65,1.01),
+        left 0s 0.3s;
+    }
+
+    .line {
+      transform: scale3d(1,1,1);
+
+      &.-right {
+        transition: transform 0.1s cubic-bezier(1,0,.65,1.01) 0.2s;
+        transform-origin: bottom;
+      }
+
+      &.-top {
+        transition: transform 0.08s linear 0.4s;
+        transform-origin: right;
+      }
+
+      &.-left {
+        transition: transform 0.08s linear 0.48s;
+        transform-origin: top;
+      }
+
+      &.-bottom {
+        transition: transform 0.5s cubic-bezier(0,.53,.29,1) 0.56s;
+        transform-origin: left;
+      }
+    }
+
+  }
+}
