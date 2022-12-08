@@ -9,6 +9,6 @@
     <%= f.input :death_date, label: 'Date de décès' %>
     <%= f.input :photo, as: :file%>
     <%= f.button :submit, "Editer la sépulture", class: "btn btn-primary" %>
-    <%= link_to "Retour", user_path(current_user), class: "btn btn-warning" %>
+    <%= link_to "Retour", tombstone_path(@tombstone), class: "btn btn-warning" %>
   <% end %>
 </div>
