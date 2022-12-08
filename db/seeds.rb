@@ -36,9 +36,9 @@ user_tombstone3 = UserTombstone.create(user_id: user3.id, tombstone_id: tombe4.i
 user_tombstone4 = UserTombstone.create(user_id: user4.id, tombstone_id: tombe3.id);
 user_tombstone5 = UserTombstone.create(user_id: user3.id, tombstone_id: tombe2.id);
 
-order1 = Order.create!(review: '', rating: nil, date: '29/11/2022', tombstone_id: tombe3.id, user_tombstone_id: user_tombstone4.id);
-order2 = Order.create!(review: '', rating: nil, date: '26/11/2022', tombstone_id: tombe2.id, user_tombstone_id: user_tombstone1.id);
-order3 = Order.create!(review: '', rating: nil, date: '27/11/2022', tombstone_id: tombe4.id, user_tombstone_id: user_tombstone3.id);
+# order1 = Order.create!(review: '', rating: nil, date: '29/11/2022', tombstone_id: tombe3.id, user_tombstone_id: user_tombstone4.id);
+# order2 = Order.create!(review: '', rating: nil, date: '26/11/2022', tombstone_id: tombe2.id, user_tombstone_id: user_tombstone1.id);
+# order3 = Order.create!(review: '', rating: nil, date: '27/11/2022', tombstone_id: tombe4.id, user_tombstone_id: user_tombstone3.id);
 # order4 = Order.create!(review: 'Super!', rating: 5, date: '24/11/2022', user_id: user1.id, tombstone_id: tombe1.id);
 
 # OrderItem.create!(details: '', price: 30, prestation_id: prestation1.id, order_id: order1.id);

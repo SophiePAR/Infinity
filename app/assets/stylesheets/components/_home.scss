@@ -86,15 +86,16 @@ height: 200px;
 }
 .card-client{
   position: relative;
-  background: rgba(18, 107, 154, 0.7);
+  background: #EDF4F5;
   width: 250px;
   height: 300px;
   border-radius: 16px;
   // border: 0px solid gray;
-  padding: 16px;
-  box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
-  margin-bottom: 16px;
-  color: white;
+  padding: 4px;
+  box-shadow: 0px 0px 5px #156c9b;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  border-color: #0b3e5a;
 }
 .rating{
   position: absolute;
@@ -105,13 +106,21 @@ height: 200px;
 .card-client-title{
   align-items: center;
   margin-top: 8px;
+  margin-bottom: 8px;
   margin-left: 8px;
 }
 .fa-star{
-  color: yellow;
+  color: #ffe15c;
 }
 .text{
   display: flex;
+  margin-left: 8px;
+}
+
+.card-client-text{
+  font-size: 18px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .card-clients h1 {
