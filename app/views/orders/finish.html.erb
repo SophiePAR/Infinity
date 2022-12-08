@@ -1,10 +1,13 @@
- <div class="finish-complet">
-  <div class="form-finish">
-    <%= simple_form_for @order do |f| %>
-      <%= f.input :review, label: 'Remarque', as: :text %>
-      <%= f.input :photo, as: :file%>
-      <%= f.button :submit, "Terminer la prestation", class: "btn btn-primary" %>
-      <%= link_to "Retour", user_path(current_user), class: "btn btn-flat" %>
-    <% end %>
+ <div class="container">
+  <div class="row">
+    <div class="finish w-50 p-5" style="background-color: #EDF4F5; border-radius: 16px; margin: 100px; ">
+      <h2 class="text-center m-3 ">Merci pour votre participation </h2><br>
+      <%= simple_form_for @order do |f| %>
+        <%= f.input :review, label: 'Remarque', as: :text %><br>
+        <%= f.input :photo, as: :file%>
+        <%= f.button :submit, "Terminer la prestation", class: "btn btn-primary rounded-4 fs-6 mt-3" %>
+        <%= link_to "Retour", user_path(current_user), class: "btn btn-info rounded-4 fs-6 mx-4 mt-3" %>
+      <% end %>
+    </div>
   </div>
  </div>
