@@ -8,7 +8,7 @@
       <% if user_signed_in? %>
         <%= link_to "Demandez une prestation", user_path(current_user), class: "btn btn-flat rounded-4 fs-6 mt-4 border-left btn-lg" %> <%= link_to "Devenez prestataire", provider_orders_path, class: "btn btn-primary rounded-4 fs-6 mt-4 btn-lg" %>
       <% else %>
-        <%= link_to "Demandez une prestation", user_session_path, class: "btn btn-flat rounded-4 fs-6 mt-4 border-left2 btn-lg" %> <%= link_to "Devenez prestataire", provider_orders_path, class: "btn btn-primary rounded-4 fs-6 mt-4 mx-2 btn-lg" %>
+        <%= link_to "Demandez une prestation", user_session_path, class: "btn btn-flat rounded-4 fs-6 mt-4 border-left btn-lg" %> <%= link_to "Devenez prestataire", provider_orders_path, class: "btn btn-primary rounded-4 fs-6 mt-4 mx-2 btn-lg" %>
       <% end %>
   </div>
 </div>

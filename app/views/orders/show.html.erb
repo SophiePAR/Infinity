@@ -39,7 +39,7 @@
   <%= simple_form_for @order do |f| %>
   <%= f.input :progress, value: 'pending', as: :hidden %>
 
-  <div class="col-date">
+  <div class="col-date text-danger">
     <%= f.input :date, as: :string, label: "Date d'intervention souhaitée *",
                 input_html: { data: { controller: "flatpickr" } } %>
   </div>
