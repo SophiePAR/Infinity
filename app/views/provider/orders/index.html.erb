@@ -21,26 +21,28 @@
                 <% end %>
               </div>
               <div class="card-product-image mt-5" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url('<%= image %>'); background-size: cover; background-position: center; width: 150px; height: 160px; margin-top: 25px; border-radius: 16px; ">
-                <div class="card-infos" style="width: 500px; text-align: left; margin-left: 200px;">
+                <div class="card-infos" style="width: 560px; text-align: left; margin-left: 180px; padding: 10px; height: 160px;">
                   <div class="infos">
                     <% user = UserTombstone.find(order.user_tombstone_id).user %>
                     <p>Date d'intervention le <strong><%= order.date.nil? ? "": order.date.strftime('%d %B %Y') %></strong></p>
                     <%# <p><strong>Municipalité :</strong> <%= Geocoder.search([order.tombstone.latitude, order.tombstone.longitude]).first.data["address"]["municipality"]%></p>
-                    <p><strong>Ville : </strong><%= Geocoder.search([order.tombstone.latitude, order.tombstone.longitude]).first.data["address"]["city"]%></p>
-                    <p><strong>Prestations attendues: </strong></p>
+                    <p class="mt-2"><strong>Ville : </strong><%= Geocoder.search([order.tombstone.latitude, order.tombstone.longitude]).first.data["address"]["city"]%></p>
+                    <%# <p><strong>Prestations attendues: </strong></p> %>
                     <% @sum = 0 %>
                     <% order.order_items.each do |item|%>
-                      <li class= "mx-4">
+                      <%# <li class= "mx-4" style="text-decoration: none">
                       <%= item.prestation.title %>
-                      </li>
+                      <%# </li> %>
                       <% @price = item.price %>
                       <% @sum += @price %>
                     <% end %>
-                    <p> <strong>Total des prestations : </strong></p>
+                    <p class="mt-2"> <strong>Montant de la prestation : </strong></p>
                     <p class= "mx-4"> <%= @sum %>,00 euros</p>
-                  </div>
-                <%= link_to "", provider_order_path(order), class:"fa-sharp fa-solid fa-arrow-up-right-from-square mt-2" %>
-            </div>
+                    <div class="btn-detail">
+                      <%= link_to "Afficher le détail", provider_order_path(order), class:"btn border border-primary rounded-4 fs-6" %>
+                    </div>
+                  </div>  
+             </div>
             </div>
           <% end %>
     </div>
