@@ -67,8 +67,8 @@
     <div class="orders-buttons text-center">
       <%= simple_form_for [:provider, @order] do |f| %>
       <%= f.input :progress, value: 'pending', as: :hidden %>
-      <%= f.button :submit, "Faire cette mission", class: "btn btn-primary  px-4 py-3 border rounded-4 fs-6" %>
-      <%= link_to "Retour aux prestations", provider_orders_path, class: "btn btn-info rounded-4 fs-6 ms-2 px-4 py-3" %>
+      <%= f.button :submit, "Faire cette mission", class: "btn btn-info rounded-4 fs-6" %>
+      <%= link_to "Retour aux prestations", provider_orders_path, class: "btn btn-primary rounded-4 fs-6 ms-2" %>
     <% end %>
     </div>
 </div>
