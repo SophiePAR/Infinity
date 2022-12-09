@@ -38,21 +38,23 @@
           <% end %>
       </div>
     </div>
-    <div class="ltwo-meteo"> <%# level two %>
-      <h3>Météo sur place</h3>
-      <div class="ltwo-meteo-img-info">
-        <div class="ltwo-meteo-info">
-          <p><%= @data["weather"].first["description"].capitalize %></p>
-          <p>Température : <%= @data["main"]["temp"].round(1) %> °c</p>
-          <p>Ville : <%= @data["name"] %></p>
-        </div>
-        <div class="ltwo-meteo-img">
-          <p><strong><%= Date.today.strftime("%d %B %Y") %></strong></p>
-          <img src="http://openweathermap.org/img/wn/<%=  @data["weather"].first["icon"] %>@2x.png" alt="">
+    <% if @data["weather"].present? %>
+      <div class="ltwo-meteo"> <%# level two %>
+        <h3>Météo sur place</h3>
+        <div class="ltwo-meteo-img-info">
+          <div class="ltwo-meteo-info">
+            <p><%= @data["weather"].first["description"].capitalize %></p>
+            <p>Température : <%= @data["main"]["temp"].round(1) %> °c</p>
+            <p>Ville : <%= @data["name"] %></p>
+          </div>
+          <div class="ltwo-meteo-img">
+            <p><strong><%= Date.today.strftime("%d %B %Y") %></strong></p>
+            <img src="http://openweathermap.org/img/wn/<%=  @data["weather"].first["icon"] %>@2x.png" alt="">
+          </div>
         </div>
       </div>
-      </div>
-    </div> <%# close level two%>
+    <% end %>
+  </div> <%# close level two%>
     <div class="level-two-five">
       <h3>Partagé avec:</h3>
       <div class="ltwo-five-avatar">
