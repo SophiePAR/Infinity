@@ -31,3 +31,8 @@ a {
     text-decoration: inherit; /* no underline */
   }
 }
+
+.mapboxgl-map {
+  position: sticky;
+  top: 60px;
+}
