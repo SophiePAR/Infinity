@@ -22,9 +22,9 @@ user4 = User.create!(email: 'vanessa@mail.com', password: 'azerty', first_name: 
 puts 'creating tombstones.........'
 
 tombe1 = Tombstone.create!(first_name: 'Charles', last_name: 'Holle', birth_date: '10/11/1989', death_date: '12/11/2022', latitude:'41.873988', longitude:'12.564167');
-tombe2 = Tombstone.create!(first_name: 'Henri', last_name: 'Charlot', birth_date: '10/10/1945', death_date: '12/12/2000', latitude:'45.5296630859', longitude:'-0.239325001836');
-tombe3 = Tombstone.create!(first_name: 'Michelle', last_name: 'Tourny', birth_date: '09/01/1950', death_date: '01/02/2010', latitude:'20.862725', longitude:'2.287592');
-tombe4 = Tombstone.create!(first_name: 'Gabrielle', last_name: 'Sollet', birth_date: '30/03/1946', death_date: '04/03/1990', latitude:'40.419266', longitude:'-3.633170');
+tombe2 = Tombstone.create!(first_name: 'Henri', last_name: 'Charlot', birth_date: '10/10/1945', death_date: '12/12/2000', latitude:'47.4730892', longitude:'-0.5273345');
+tombe3 = Tombstone.create!(first_name: 'Michelle', last_name: 'Tourny', birth_date: '09/01/1950', death_date: '01/02/2010', latitude:'48.8610954284668', longitude:'2.3943281173706055');
+tombe4 = Tombstone.create!(first_name: 'Gabrielle', last_name: 'Sollet', birth_date: '30/03/1946', death_date: '04/03/1990', latitude:'45.6993534', longitude:'5.910564');
 
 puts 'creating prestations........'
 
@@ -39,6 +39,8 @@ user_tombstone2 = UserTombstone.create(user_id: user2.id, tombstone_id: tombe1.i
 user_tombstone3 = UserTombstone.create(user_id: user3.id, tombstone_id: tombe4.id);
 user_tombstone4 = UserTombstone.create(user_id: user4.id, tombstone_id: tombe3.id);
 user_tombstone5 = UserTombstone.create(user_id: user3.id, tombstone_id: tombe2.id);
+user_tombstone5 = UserTombstone.create(user_id: user4.id, tombstone_id: tombe2.id);
+
 
 # order1 = Order.create!(review: '', rating: nil, date: '29/11/2022', tombstone_id: tombe3.id, user_tombstone_id: user_tombstone4.id);
 # order2 = Order.create!(review: '', rating: nil, date: '26/11/2022', tombstone_id: tombe2.id, user_tombstone_id: user_tombstone1.id);
