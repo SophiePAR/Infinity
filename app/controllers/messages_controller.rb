@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
       )
       head :ok
     else
-      render "tombstobne/show", status: :unprocessable_entity
+      render "/tombstones/show", status: :unprocessable_entity
     end
   end
 
