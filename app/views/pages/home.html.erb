@@ -3,12 +3,12 @@
     <h1 id="banner-txt">Infinity</h1>
     <h2 class ='text-white' style='font-weight: 700'>Rendre hommage à nos proches<br>en toute sérénité</h2>
 
-      <h5 class ='text-primary' style='font-weight: 700'>Commandez des prestations à distance.</h5>
-      <h5 class ='text-primary' style='font-weight: 700'>Devenez prestataire pour effectuer des missions.</h5>
+      <h5 class ='text-primary' style='font-weight: 700'>Nous vous mettons en relation pour effectuer </h5>
+      <h5 class ='text-primary' style='font-weight: 700'>les prestations de votre choix à distance</h5>
       <% if user_signed_in? %>
-        <%= link_to "Demandez une prestation", user_path(current_user), class: "btn btn-flat rounded-4 fs-6 mt-4 border-left btn-lg" %> <%= link_to "Devenez prestataire", provider_orders_path, class: "btn btn-primary rounded-4 fs-6 mt-4 btn-lg" %>
+        <%= link_to "Demander une prestation", user_path(current_user), class: "btn btn-flat rounded-4 fs-6 mt-4 border-left btn-lg" %> <%= link_to "Devenir prestataire", provider_orders_path, class: "btn btn-primary rounded-4 fs-6 mt-4 mx-2 btn-lg" %>
       <% else %>
-        <%= link_to "Demandez une prestation", user_session_path, class: "btn btn-flat rounded-4 fs-6 mt-4 border-left2 btn-lg" %> <%= link_to "Devenez prestataire", provider_orders_path, class: "btn btn-primary rounded-4 fs-6 mt-4 mx-2 btn-lg" %>
+        <%= link_to "Demander une prestation", user_session_path, class: "btn btn-flat rounded-4 fs-6 mt-4 border-left2 btn-lg" %> <%= link_to "Devenir prestataire", provider_orders_path, class: "btn btn-primary rounded-4 fs-6 mt-4 mx-2 btn-lg" %>
       <% end %>
   </div>
 </div>
