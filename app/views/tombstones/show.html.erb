@@ -60,9 +60,9 @@
       <div class="ltwo-five-avatar">
         <% @tombstone.users.each do |user| %>
           <% if user.avatar.attached? %>
-            <%= cl_image_tag current_user.try(:avatar).try(:key), class: "avatar", data: { controller: "tooltip", bs_toggle: "tooltip", bs_placement: "top", bs_title: "#{user.first_name} #{user.last_name}" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <%# else %>
-            <%#= image_tag "user.png",
+            <%= cl_image_tag user.try(:avatar).try(:key), class: "avatar", data: { controller: "tooltip", bs_toggle: "tooltip", bs_placement: "top", bs_title: "#{user.first_name} #{user.last_name}" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= image_tag "user.png",
                           class: "avatar",
                           data: {
                             controller: "tooltip",
